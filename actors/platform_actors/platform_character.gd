@@ -6,13 +6,13 @@ var state = IDLE setget set_state, get_state
 export (int) var walk_speed = 100
 export (int) var jump_height = 800
 
-var direction = 1
+var direction = 0
 var was_walking = false
 
 onready var in_jump_speed = walk_speed
 
 const GRAVITY = 50
-const FLOOR_NORMAL = Vector2(2, -1)
+const FLOOR_NORMAL = Vector2(0, -1)
 
 var velocity = Vector2(0, 0)
 
@@ -22,7 +22,7 @@ func set_state(new_state):
 		return
 	match new_state:
 		IDLE:
-			velocity = stop()
+			velocity = Vector2(0,0)
 			was_walking = false
 		WALK:
 			was_walking = true
@@ -49,6 +49,7 @@ func walk(direction, speed):
 	return(speed)
 	
 func stop():
+	direction = 0
 	return(Vector2(0, velocity.y))
 	
 func _physics_process(delta):
@@ -57,6 +58,8 @@ func _physics_process(delta):
 			pass
 		WALK:
 			velocity.x = walk(direction, walk_speed)
+			if velocity.y > 0:
+				set_state(FALL)
 		JUMP:
 			if velocity.y > 0:
 				set_state(FALL)
@@ -67,4 +70,4 @@ func _physics_process(delta):
 				else:
 					set_state(IDLE)
 	velocity.y += GRAVITY
-	velocity = move_and_slide(velocity, FLOOR_NORMAL)
+	velocity = move_and_slide(velocity, FLOOR_NORMAL, 0)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://actors/juan_alpaca/basic_platform_character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://actors/platform_actors/player_platform_character.gd" type="Script" id=2]
 [ext_resource path="res://actors/juan_alpaca/cutout_character.tscn" type="PackedScene" id=3]
+[ext_resource path="res://actors/platform_actors/pickup_character.tscn" type="PackedScene" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -19,7 +20,10 @@ jump_height = 1200
 
 position = Vector2( 0, -16 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="cutout_character" parent="." index="1" instance=ExtResource( 3 )]
+
+[node name="pickup_character" parent="." index="2" instance=ExtResource( 4 )]
 
 
