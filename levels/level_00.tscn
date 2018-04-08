@@ -1,22 +1,123 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://objects/rocket/rocket.tscn" type="PackedScene" id=1]
-[ext_resource path="res://levels/tilesets/tileset.tres" type="TileSet" id=2]
+[ext_resource path="res://levels/tilesets/tileset_godot.tres" type="TileSet" id=2]
 [ext_resource path="res://objects/computer/computer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://actors/juan_alpaca/juan_alpaca.tscn" type="PackedScene" id=4]
 [ext_resource path="res://interface/hud/hud.tscn" type="PackedScene" id=5]
+[ext_resource path="res://screens/basic_screen.tscn" type="PackedScene" id=6]
+[ext_resource path="res://levels/spawner.gd" type="Script" id=7]
+[ext_resource path="res://actors/enemies/bugs.tscn" type="PackedScene" id=8]
 
-[node name="level_00" type="Node2D" index="0"]
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Node2D
+
+func _ready():
+	$rocket.connect(\"tree_exited\", self, \"_on_rocket_tree_exited\")
+	
+func _on_timer_timeout():
+	get_tree().set_pause(true)
+	$animator.play(\"release\")
+	yield($animator, \"animation_finished\")
+	$juan/camera.tween_position()
+	yield($juan/camera/tween, \"tween_completed\")
+	$rocket.launch()
+
+func _on_rocket_tree_exited():
+	$screen/game_screen.change_scene()"
+
+[sub_resource type="GDScript" id=3]
+
+script/source = "extends Camera2D
+
+export (NodePath) var rocket_path
+onready var rocket = get_node(rocket_path)
+
+func tween_position():
+	var target_pos = rocket.get_node(\"center\").global_position
+	$tween.interpolate_property(self, \"global_position\", global_position, target_pos,
+		2.0, Tween.TRANS_SINE, Tween.EASE_IN)
+	$tween.start()"
+
+[sub_resource type="LineShape2D" id=1]
+
+custom_solver_bias = 0.0
+normal = Vector2( 1, 0 )
+d = 0.0
+
+[sub_resource type="LineShape2D" id=5]
+
+custom_solver_bias = 0.0
+normal = Vector2( -1, 0 )
+d = 0.0
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "release"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade/color_rect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.509804 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("tilemap:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.509804, 0.509804, 0.509804, 1 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+
+resource_name = "idle"
+length = 5.0
+loop = true
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 72, -680 ), Vector2( 1752, -680 ) ]
+}
+
+[node name="level_00" type="Node2D"]
+
+script = SubResource( 2 )
 
 [node name="rocket" parent="." index="0" instance=ExtResource( 1 )]
 
-position = Vector2( 888, 512 )
+position = Vector2( 1632, 0 )
+_sections_unfolded = [ "Pause", "Z Index" ]
 icons_path = NodePath("../interface/hud/items_container/items")
 score_path = NodePath("../interface/hud/score")
 
 [node name="tilemap" type="Node2D" parent="." index="1"]
 
+editor/display_folded = true
 position = Vector2( 0, 256 )
+_sections_unfolded = [ "Visibility", "Z Index" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -40,30 +141,32 @@ collision_layer = 1
 collision_mask = 1
 occluder_light_mask = 1
 format = 1
-tile_data = PoolIntArray( -196608, 19, 0, -196607, 19, 0, -196606, 19, 0, -196605, 19, 0, -196604, 19, 0, -196603, 19, 0, -65528, 6, 0, 65541, 6, 0, 262144, 2, 0, 262145, 2, 0, 262146, 2, 0, 262147, 2, 0, 262148, 2, 0, 262149, 2, 0, 262150, 2, 0, 262151, 2, 0, 262152, 2, 0, 262153, 2, 0, 262154, 2, 0, 262155, 2, 0, 262156, 2, 0, 262157, 2, 0, 262158, 2, 0, 262159, 2, 0, 327680, 3, 0, 327681, 3, 0, 327682, 3, 0, 327683, 3, 0, 327684, 3, 0, 327685, 3, 0, 327686, 3, 0, 327687, 3, 0, 327688, 3, 0, 327689, 3, 0, 327690, 3, 0, 327691, 3, 0, 327692, 3, 0, 327693, 3, 0, 327694, 3, 0, 327695, 3, 0 )
-_sections_unfolded = [ "Cell", "Transform" ]
+tile_data = PoolIntArray( -262144, 0, 0, -262143, 2, 0, -262142, 1, 0, -262141, 0, 0, -262125, 6, 0, -262122, 1, 0, -262121, 0, 0, -262120, 2, 0, -262119, 1, 0, -262118, 0, 0, -262117, 2, 0, -262116, 1, 0, -196603, 6, 0, -196591, 6, 0, -131058, 6, 0, -65529, 6, 0, 3, 6, 0, 18, 6, 0, 131077, 6, 0, 131087, 6, 0, 262144, 2, 0, 262145, 1, 0, 262146, 0, 0, 262147, 2, 0, 262148, 1, 0, 262149, 0, 0, 262150, 2, 0, 262151, 1, 0, 262152, 0, 0, 262153, 2, 0, 262154, 1, 0, 262155, 0, 0, 262156, 2, 0, 262157, 1, 0, 262158, 0, 0, 262159, 2, 0, 262160, 0, 0, 262161, 2, 0, 262162, 1, 0, 262163, 0, 0, 262164, 2, 0, 262165, 1, 0, 262166, 0, 0, 262167, 2, 0, 262168, 1, 0, 262169, 0, 0, 262170, 2, 0, 262171, 1, 0, 262172, 0, 0, 327680, 3, 0, 327681, 5, 0, 327682, 4, 0, 327683, 3, 0, 327684, 5, 0, 327685, 4, 0, 327686, 3, 0, 327687, 5, 0, 327688, 4, 0, 327689, 3, 0, 327690, 5, 0, 327691, 4, 0, 327692, 3, 0, 327693, 5, 0, 327694, 4, 0, 327695, 3, 0, 327696, 5, 0, 327697, 4, 0, 327698, 3, 0, 327699, 5, 0, 327700, 4, 0, 327701, 3, 0, 327702, 5, 0, 327703, 4, 0, 327704, 3, 0, 327705, 5, 0, 327706, 4, 0, 327707, 3, 0, 327708, 5, 0 )
+_sections_unfolded = [ "Cell", "Collision", "Transform" ]
 
 [node name="computer" parent="." index="2" instance=ExtResource( 3 )]
 
-position = Vector2( 0, 328 )
+position = Vector2( 0, -168 )
 icons_path = NodePath("../interface/hud/items_container/items")
-score_path = NodePath("../interface/hud/score")
 
-[node name="platform_character" parent="." index="3" instance=ExtResource( 4 )]
+[node name="juan" parent="." index="3" instance=ExtResource( 4 )]
 
 editor/display_folded = true
-position = Vector2( 192, 256 )
+position = Vector2( 72, 448 )
+z_index = 1
+_sections_unfolded = [ "Z Index" ]
 
-[node name="camera" type="Camera2D" parent="platform_character" index="3"]
+[node name="camera" type="Camera2D" parent="juan" index="3"]
 
+pause_mode = 2
 anchor_mode = 1
 rotating = false
 current = true
 zoom = Vector2( 1, 1 )
-limit_left = -10000000
+limit_left = 0
 limit_top = -10000000
-limit_right = 10000000
-limit_bottom = 10000000
+limit_right = 1856
+limit_bottom = 638
 limit_smoothed = false
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
@@ -76,11 +179,55 @@ drag_margin_top = 0.2
 drag_margin_right = 0.2
 drag_margin_bottom = 0.2
 editor_draw_screen = true
-editor_draw_limits = false
-editor_draw_drag_margin = false
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = SubResource( 3 )
+_sections_unfolded = [ "Limit", "Pause" ]
+rocket_path = NodePath("../../rocket")
 
-[node name="interface" type="CanvasLayer" parent="." index="4"]
+[node name="tween" type="Tween" parent="juan/camera" index="0"]
 
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="left_wall" type="StaticBody2D" parent="." index="4"]
+
+editor/display_folded = true
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="left_wall" index="0"]
+
+shape = SubResource( 1 )
+
+[node name="right_wall" type="StaticBody2D" parent="." index="5"]
+
+editor/display_folded = true
+position = Vector2( 1856, 8 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="shape" type="CollisionShape2D" parent="right_wall" index="0"]
+
+shape = SubResource( 5 )
+
+[node name="interface" type="CanvasLayer" parent="." index="6"]
+
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -89,11 +236,87 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="hud" parent="interface" index="0" instance=ExtResource( 5 )]
 
-[node name="score" parent="interface/hud" index="1"]
+level_path = NodePath("../..")
 
-margin_top = 88.0
-margin_bottom = 144.0
-align = 0
+[node name="screen" type="CanvasLayer" parent="." index="7"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="game_screen" parent="screen" index="0" instance=ExtResource( 6 )]
+
+pause_mode = 2
+next_scene = "res://screens/game_over/game_over_screen.tscn"
+
+[node name="fade" type="CanvasLayer" parent="." index="8"]
+
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="color_rect" type="ColorRect" parent="fade" index="0"]
+
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0, 0, 0, 1 )
+_sections_unfolded = [ "Mouse", "Rect", "Visibility" ]
+
+[node name="animator" type="AnimationPlayer" parent="." index="9"]
+
+pause_mode = 2
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/release = SubResource( 4 )
+blend_times = [  ]
+_sections_unfolded = [ "Pause" ]
+
+[node name="spawner" type="Position2D" parent="." index="10"]
+
+editor/display_folded = true
+position = Vector2( 119.361, -680 )
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
+min_time = 3.0
+max_time = 8.0
+
+[node name="timer" type="Timer" parent="spawner" index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="animator" type="AnimationPlayer" parent="spawner" index="1"]
+
+root_node = NodePath("..")
+autoplay = "idle"
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/idle = SubResource( 6 )
+blend_times = [  ]
+
+[node name="bugs" parent="." index="11" instance=ExtResource( 8 )]
 
 
 [editable path="interface/hud"]

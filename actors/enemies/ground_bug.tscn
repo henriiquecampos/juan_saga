@@ -1,0 +1,95 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://actors/enemies/ground_bug.gd" type="Script" id=1]
+[ext_resource path="res://actors/enemies/screen_bug.png" type="Texture" id=2]
+[ext_resource path="res://actors/enemies/screen_bug_pressed.png" type="Texture" id=3]
+[ext_resource path="res://actors/enemies/screen_bug_hilit.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 16, 16 )
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 112.0
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 24.0
+
+[node name="ground_bug" type="KinematicBody2D"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+walk_speed = 300
+jump_height = 800
+
+[node name="shape" type="CollisionShape2D" parent="." index="0"]
+
+shape = SubResource( 1 )
+
+[node name="area" type="Area2D" parent="." index="1"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="shape" type="CollisionShape2D" parent="area" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="attach_area" type="Area2D" parent="." index="2"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="shape" type="CollisionShape2D" parent="attach_area" index="0"]
+
+shape = SubResource( 3 )
+
+[node name="button" type="TextureButton" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 16.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+_sections_unfolded = [ "Mouse", "Textures", "Visibility" ]
+
+[connection signal="area_entered" from="area" to="." method="_on_area_entered"]
+
+[connection signal="area_entered" from="attach_area" to="." method="_on_attach_area_entered"]
+
+

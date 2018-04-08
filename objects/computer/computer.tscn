@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://objects/computer/computer.gd" type="Script" id=1]
 [ext_resource path="res://objects/computer/computer.png" type="Texture" id=2]
 [ext_resource path="res://interface/progress_bar_fg.tres" type="StyleBox" id=3]
 [ext_resource path="res://interface/progress_bar_bg.tres" type="StyleBox" id=4]
+[ext_resource path="res://interface/theme.tres" type="Theme" id=5]
+[ext_resource path="res://actors/enemies/bugs.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -22,7 +24,6 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 icons_path = null
-score_path = null
 
 [node name="shape" type="CollisionShape2D" parent="." index="0"]
 
@@ -64,9 +65,7 @@ rounded = false
 percent_visible = false
 _sections_unfolded = [ "custom_styles" ]
 
-[node name="bugs" type="Node2D" parent="." index="3"]
-
-[node name="debug" type="Label" parent="." index="4"]
+[node name="debug" type="Label" parent="." index="3"]
 
 visible = false
 anchor_left = 0.0
@@ -83,10 +82,14 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-text = "DEBUG!!"
+theme = ExtResource( 5 )
+text = "debug!!"
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
+[node name="bugs" parent="." index="4" instance=ExtResource( 6 )]
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 

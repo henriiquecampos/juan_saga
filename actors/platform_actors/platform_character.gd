@@ -63,9 +63,10 @@ func _physics_process(delta):
 		JUMP:
 			if velocity.y > 0:
 				set_state(FALL)
+
 		FALL:
 			if is_on_floor():
-				if was_walking:
+				if Input.is_action_pressed("left") or Input.is_action_pressed("right"):
 					set_state(WALK)
 				else:
 					set_state(IDLE)

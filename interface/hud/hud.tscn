@@ -1,4 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://interface/theme.tres" type="Theme" id=1]
+[ext_resource path="res://interface/hud/hud.gd" type="Script" id=2]
+[ext_resource path="res://interface/hud/items.gd" type="Script" id=3]
+[ext_resource path="res://interface/hud/count_down.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
 
@@ -17,6 +22,7 @@ func set_score(value, MODE):
 			score = clamp(0, score - value, 999999)
 	var t = \"score: {amount}\"
 	text = t.format({\"amount\":int(score)})
+	score_container.score = score
 	
 func _ready():
 	set_score(0, SET)"
@@ -31,11 +37,14 @@ margin_right = 1024.0
 margin_bottom = 100.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-_sections_unfolded = [ "Rect", "custom_constants" ]
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+_sections_unfolded = [ "Theme", "custom_constants" ]
+level_path = null
 
 [node name="items_container" type="ScrollContainer" parent="." index="0"]
 
@@ -47,7 +56,7 @@ margin_right = 1024.0
 margin_bottom = 80.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 0
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
@@ -67,24 +76,27 @@ margin_right = 1024.0
 margin_bottom = 80.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
-mouse_filter = 1
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_constants/separation = 8
 alignment = 0
+script = ExtResource( 3 )
 _sections_unfolded = [ "custom_constants" ]
 
-[node name="score" type="Label" parent="." index="1"]
+[node name="score" type="Label" parent="." index="1" groups=[
+"score",
+]]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_left = 32.0
-margin_top = 72.0
+margin_top = 32.0
 margin_right = 992.0
-margin_bottom = 128.0
+margin_bottom = 88.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -92,11 +104,17 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 text = "score: {amount}"
-align = 1
-valign = 1
+align = 2
+valign = 2
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 script = SubResource( 1 )
+
+[node name="counter" parent="." index="2" instance=ExtResource( 4 )]
+
+margin_left = 446.0
+margin_top = 32.0
+margin_bottom = 104.0
 
 

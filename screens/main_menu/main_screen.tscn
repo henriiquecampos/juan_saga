@@ -1,0 +1,116 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://screens/basic_screen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/tilesets/tileset_godot.tres" type="TileSet" id=2]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends VBoxContainer
+
+# class member variables go here, for example:
+# var a = 2
+# var b = \"textvar\"
+
+func _ready():
+	$\"play\".grab_focus()
+"
+
+[node name="main_screen" index="0" instance=ExtResource( 1 )]
+
+next_scene = "res://levels/level_00.tscn"
+
+[node name="tile_map" type="TileMap" parent="." index="0"]
+
+modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 2, 2, 0, 4, 1, 0, 6, 0, 0, 8, 2, 0, 10, 1, 0, 12, 0, 0, 14, 2, 0, 131072, 1073741827, 0, 131074, 1073741829, 0, 131076, 1073741828, 0, 131078, 1073741827, 0, 131080, 1073741829, 0, 131082, 1073741828, 0, 131084, 1073741827, 0, 131086, 1073741829, 0, 262144, 1073741828, 0, 262146, 1073741827, 0, 262148, 1073741829, 0, 262150, 1073741828, 0, 262152, 1073741827, 0, 262154, 1073741829, 0, 262156, 1073741828, 0, 262158, 1073741827, 0, 393216, 1073741829, 0, 393218, 1073741828, 0, 393220, 1073741827, 0, 393222, 1073741829, 0, 393224, 1073741828, 0, 393226, 1073741827, 0, 393228, 1073741829, 0, 393230, 1073741828, 0, 524288, 1073741825, 0, 524290, 1073741824, 0, 524292, 1073741826, 0, 524294, 1073741825, 0, 524296, 1073741824, 0, 524298, 1073741826, 0, 524300, 1073741825, 0, 524302, 1073741824, 0 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="menu" type="VBoxContainer" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 376.0
+margin_top = 424.0
+margin_right = 600.0
+margin_bottom = 512.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_constants/separation = 19
+alignment = 0
+script = SubResource( 1 )
+_sections_unfolded = [ "custom_constants" ]
+
+[node name="play" type="Button" parent="menu" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 224.0
+margin_bottom = 34.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "play"
+flat = false
+align = 1
+_sections_unfolded = [ "Size Flags" ]
+
+[node name="credits" type="Button" parent="menu" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 53.0
+margin_right = 224.0
+margin_bottom = 88.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "credits"
+flat = false
+align = 1
+_sections_unfolded = [ "Size Flags" ]
+
+[connection signal="button_up" from="menu/play" to="." method="change_scene"]
+
+
