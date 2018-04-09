@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://interface/theme.tres" type="Theme" id=1]
+[ext_resource path="res://interface/menu_bar_hilit.tres" type="Theme" id=1]
 [ext_resource path="res://interface/hud/hud.gd" type="Script" id=2]
 [ext_resource path="res://interface/hud/items.gd" type="Script" id=3]
 [ext_resource path="res://interface/hud/count_down.tscn" type="PackedScene" id=4]

@@ -1,8 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://screens/basic_screen.tscn" type="PackedScene" id=1]
-[ext_resource path="res://levels/tilesets/tileset_godot.tres" type="TileSet" id=2]
-[ext_resource path="res://promo/title_screen_01.png" type="Texture" id=3]
+[ext_resource path="res://interface/theme.tres" type="Theme" id=2]
+[ext_resource path="res://screens/main_menu/main_screen.gd" type="Script" id=3]
+[ext_resource path="res://levels/tilesets/tileset_godot.tres" type="TileSet" id=4]
+[ext_resource path="res://promo/title_screen_01.png" type="Texture" id=5]
+[ext_resource path="res://interface/menu_bar_hilit.tres" type="Theme" id=6]
+[ext_resource path="res://assets/sfx/2_damage.ogg" type="AudioStream" id=7]
 
 [sub_resource type="GDScript" id=1]
 
@@ -16,15 +20,39 @@ func _ready():
 	$\"play\".grab_focus()
 "
 
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends HSlider
+
+func _on_bgm_volume_focus_entered():
+	set_process(true)
+	
+func _on_bgm_volume_focus_exited():
+	set_process(false)
+
+func _ready():
+	set_process(false)
+
+func _process(delta):
+	if Input.is_action_pressed(\"left\"):
+		value -= 1
+	elif Input.is_action_pressed(\"right\"):
+		value += 1
+
+
+"
+
 [node name="main_screen" index="0" instance=ExtResource( 1 )]
 
+theme = ExtResource( 2 )
+script = ExtResource( 3 )
 next_scene = "res://levels/level_00.tscn"
 
 [node name="tile_map" type="TileMap" parent="." index="0"]
 
 modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
 mode = 0
-tile_set = ExtResource( 2 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 64, 64 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -56,7 +84,7 @@ mouse_filter = 1
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 1
-texture = ExtResource( 3 )
+texture = ExtResource( 5 )
 stretch_mode = 0
 _sections_unfolded = [ "Rect" ]
 
@@ -156,8 +184,126 @@ flat = false
 align = 1
 _sections_unfolded = [ "Size Flags" ]
 
+[node name="bgm_volume" type="HSlider" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 688.0
+margin_top = 416.0
+margin_right = 1008.0
+margin_bottom = 456.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+theme = ExtResource( 6 )
+min_value = -24.0
+max_value = 12.0
+step = 1.0
+page = 0.0
+value = -8.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 0
+script = SubResource( 2 )
+_sections_unfolded = [ "Percent", "Theme" ]
+
+[node name="label" type="Label" parent="bgm_volume" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = -16.0
+margin_right = 320.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "background music"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="sfx_volume" type="HSlider" parent="." index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 688.0
+margin_top = 480.0
+margin_right = 1008.0
+margin_bottom = 520.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+theme = ExtResource( 6 )
+min_value = -24.0
+max_value = 12.0
+step = 1.0
+page = 0.0
+value = -8.0
+exp_edit = false
+rounded = false
+editable = true
+tick_count = 0
+ticks_on_borders = false
+focus_mode = 0
+script = SubResource( 2 )
+_sections_unfolded = [ "Percent", "Theme" ]
+
+[node name="label" type="Label" parent="sfx_volume" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = -16.0
+margin_right = 320.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "sound effects"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="sfx_test" type="AudioStreamPlayer" parent="sfx_volume" index="1"]
+
+stream = ExtResource( 7 )
+volume_db = 0.0
+autoplay = false
+mix_target = 0
+bus = "sfx"
+
 [connection signal="button_up" from="menu/play" to="." method="change_scene"]
 
 [connection signal="button_up" from="menu/instructions" to="." method="change_scene" binds= [ "res://screens/instructions/instructions_screen.tscn" ]]
+
+[connection signal="value_changed" from="bgm_volume" to="." method="_on_bgm_volume_value_changed"]
+
+[connection signal="value_changed" from="sfx_volume" to="." method="_on_sfx_volume_value_changed"]
 
 
