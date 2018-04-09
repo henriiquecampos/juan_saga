@@ -30,6 +30,9 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 walk_speed = 300
 jump_height = 800
+health = 3
+bugs_spawn = 1
+score = 15
 
 [node name="shape" type="CollisionShape2D" parent="." index="0"]
 

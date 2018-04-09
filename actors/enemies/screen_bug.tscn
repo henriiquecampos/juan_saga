@@ -29,6 +29,8 @@ tracks/0/keys = {
 
 script = ExtResource( 1 )
 _sections_unfolded = [ "Rect", "Textures" ]
+damage = 5
+score = 15
 
 [node name="timer" type="Timer" parent="." index="0"]
 
