@@ -11,3 +11,4 @@ func _on_state_changed(from, to):
 			animator.play("fall")
 		JUMP:
 			animator.play("jump")
+			$sfx.play()

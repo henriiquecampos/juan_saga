@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://actors/enemies/ground_bug.gd" type="Script" id=1]
 [ext_resource path="res://actors/enemies/screen_bug.png" type="Texture" id=2]
 [ext_resource path="res://actors/enemies/screen_bug_pressed.png" type="Texture" id=3]
 [ext_resource path="res://actors/enemies/screen_bug_hilit.png" type="Texture" id=4]
+[ext_resource path="res://assets/sfx/1_jump.ogg" type="AudioStream" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -87,6 +88,16 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 texture_hover = ExtResource( 4 )
 _sections_unfolded = [ "Mouse", "Textures", "Visibility" ]
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="." index="4"]
+
+stream = ExtResource( 5 )
+volume_db = 4.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "enemies"
+area_mask = 1
 
 [connection signal="area_entered" from="area" to="." method="_on_area_entered"]
 

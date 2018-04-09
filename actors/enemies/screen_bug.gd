@@ -11,4 +11,5 @@ func set_health(value):
 	if health > 1:
 		health += value
 	else:
+		get_parent().get_node("sfx").position = position
 		queue_free()

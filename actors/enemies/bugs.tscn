@@ -1,10 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://actors/enemies/bugs.gd" type="Script" id=1]
+[ext_resource path="res://assets/sfx/3_bugdeath.ogg" type="AudioStream" id=2]
 
 [node name="bugs" type="Node2D"]
 
 position = Vector2( 0, -48 )
 script = ExtResource( 1 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="." index="0"]
+
+stream = ExtResource( 2 )
+volume_db = 5.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "sfx"
+area_mask = 1
 
 

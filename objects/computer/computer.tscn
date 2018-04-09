@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://objects/computer/computer.gd" type="Script" id=1]
 [ext_resource path="res://objects/computer/computer.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://interface/progress_bar_bg.tres" type="StyleBox" id=4]
 [ext_resource path="res://interface/theme.tres" type="Theme" id=5]
 [ext_resource path="res://actors/enemies/bugs.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/sfx/4_newnode.ogg" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -90,6 +91,16 @@ max_lines_visible = -1
 _sections_unfolded = [ "Theme" ]
 
 [node name="bugs" parent="." index="4" instance=ExtResource( 6 )]
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="." index="5"]
+
+stream = ExtResource( 7 )
+volume_db = 8.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "sfx"
+area_mask = 1
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 

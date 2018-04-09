@@ -1,0 +1,42 @@
+[gd_resource type="AudioBusLayout" load_steps=2 format=2]
+
+[sub_resource type="AudioEffectPitchShift" id=1]
+
+resource_name = "PitchShift"
+pitch_scale = 1.25
+
+[resource]
+
+bus/0/name = "Master"
+bus/0/solo = false
+bus/0/mute = false
+bus/0/bypass_fx = false
+bus/0/volume_db = -6.7
+bus/0/send = ""
+bus/1/name = "bgm"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = "Master"
+bus/2/name = "sfx"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = "Master"
+bus/3/name = "enemies"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = "sfx"
+bus/3/effect/0/effect = SubResource( 1 )
+bus/3/effect/0/enabled = true
+bus/4/name = "player"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = "sfx"
+

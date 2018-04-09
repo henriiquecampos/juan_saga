@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://actors/enemies/screen_bug.gd" type="Script" id=1]
 [ext_resource path="res://actors/enemies/screen_bug.png" type="Texture" id=2]
 [ext_resource path="res://actors/enemies/screen_bug_pressed.png" type="Texture" id=3]
 [ext_resource path="res://actors/enemies/screen_bug_hilit.png" type="Texture" id=4]
+[ext_resource path="res://assets/sfx/2_damage.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Animation" id=1]
 
@@ -71,5 +72,17 @@ playback_default_blend_time = 0.0
 playback_speed = 1.0
 anims/damage = SubResource( 1 )
 blend_times = [  ]
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="." index="3"]
+
+stream = ExtResource( 5 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "sfx"
+area_mask = 1
+
+[connection signal="timeout" from="timer" to="sfx" method="play"]
 
 

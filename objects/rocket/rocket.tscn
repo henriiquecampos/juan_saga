@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://objects/rocket/rocket.gd" type="Script" id=1]
 [ext_resource path="res://objects/rocket/sprite_open.png" type="Texture" id=2]
 [ext_resource path="res://interface/progress_bar_fg.tres" type="StyleBox" id=3]
 [ext_resource path="res://interface/progress_bar_bg.tres" type="StyleBox" id=4]
+[ext_resource path="res://assets/sfx/7_charging.ogg" type="AudioStream" id=5]
 
 [sub_resource type="Curve" id=1]
 
@@ -121,6 +122,21 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, -248 )
 _sections_unfolded = [ "Transform" ]
 
+[node name="ramp" type="Polygon2D" parent="sprite" index="0"]
+
+polygon = PoolVector2Array( -16, -128, -168, 0, -224, 0, -16, -168 )
+uv = PoolVector2Array(  )
+color = Color( 0.183594, 0.180725, 0.180725, 1 )
+vertex_colors = PoolColorArray(  )
+offset = Vector2( 0, 0 )
+antialiased = false
+texture = null
+texture_offset = Vector2( 0, 0 )
+texture_scale = Vector2( 1, 1 )
+texture_rotation_degrees = 0.0
+invert_enable = false
+invert_border = 100.0
+
 [node name="area" type="Area2D" parent="." index="2"]
 
 input_pickable = true
@@ -133,7 +149,7 @@ audio_bus_name = "Master"
 
 [node name="shape" type="CollisionShape2D" parent="area" index="0"]
 
-position = Vector2( 0, -32 )
+position = Vector2( -80, -32 )
 shape = SubResource( 4 )
 
 [node name="progress_bar" type="ProgressBar" parent="." index="3"]
@@ -193,7 +209,17 @@ autostart = false
 
 [node name="center" type="Position2D" parent="." index="7"]
 
-position = Vector2( 0, -208 )
+position = Vector2( 0, -280 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="." index="8"]
+
+stream = ExtResource( 5 )
+volume_db = 6.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "sfx"
+area_mask = 1
 
 [connection signal="area_entered" from="area" to="." method="_on_area_entered"]
 

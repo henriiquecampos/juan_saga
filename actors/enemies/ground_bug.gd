@@ -10,6 +10,7 @@ func _on_area_entered(area):
 	if area.is_in_group("player"):
 		velocity.x = walk_speed * (area.global_position - global_position).normalized().x
 		set_state(JUMP)
+		$sfx.play()
 
 func _on_attach_area_entered(area):
 	if area.is_in_group("player"):
@@ -24,4 +25,5 @@ func set_health(value):
 		health += value
 	else:
 		get_parent()._on_screen_bug_tree_exited()
+		get_parent().get_node("sfx").position = position
 		queue_free()

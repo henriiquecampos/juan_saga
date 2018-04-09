@@ -35,6 +35,7 @@ func _on_progress_bar_value_changed(value):
 	if value >= 100:
 		if icons_node.get_child_count() < 5:
 			icons_node.juan_new_node()
+			$sfx.play()
 			$progress_bar.value = 0
 		var bug_amount = randi()%3
 		for i in bug_amount:
