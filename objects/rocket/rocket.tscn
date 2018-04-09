@@ -214,7 +214,7 @@ position = Vector2( 0, -280 )
 [node name="sfx" type="AudioStreamPlayer2D" parent="." index="8"]
 
 stream = ExtResource( 5 )
-volume_db = 6.0
+volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0

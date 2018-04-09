@@ -92,7 +92,7 @@ _sections_unfolded = [ "Mouse", "Textures", "Visibility" ]
 [node name="sfx" type="AudioStreamPlayer2D" parent="." index="4"]
 
 stream = ExtResource( 5 )
-volume_db = 4.0
+volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
