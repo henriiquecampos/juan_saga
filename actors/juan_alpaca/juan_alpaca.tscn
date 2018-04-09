@@ -36,7 +36,7 @@ stream = ExtResource( 6 )
 volume_db = 0.0
 autoplay = false
 mix_target = 0
-bus = "Master"
+bus = "player"
 
 [connection signal="state_changed" from="." to="." method="_on_state_changed"]
 
