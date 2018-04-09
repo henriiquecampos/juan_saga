@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/level_00.tscn" type="PackedScene" id=1]
+[ext_resource path="res://actors/enemies/ground_bug.tscn" type="PackedScene" id=2]
+
+[node name="level_01" instance=ExtResource( 1 )]
+
+next_level = "res://levels/level_02.tscn"
+
+[node name="rocket" parent="." index="0"]
+
+position = Vector2( 1728, 512 )
+
+[node name="tile_map" parent="tilemap" index="0"]
+
+tile_data = PoolIntArray( 262144, 2, 0, 262145, 1, 0, 262146, 0, 0, 262147, 2, 0, 262148, 1, 0, 262149, 0, 0, 262150, 2, 0, 262151, 1, 0, 262152, 0, 0, 262153, 2, 0, 262154, 1, 0, 262155, 0, 0, 262156, 2, 0, 262157, 1, 0, 262158, 0, 0, 262159, 2, 0, 262160, 0, 0, 262161, 2, 0, 262162, 1, 0, 262163, 0, 0, 262164, 2, 0, 262165, 1, 0, 262166, 0, 0, 262167, 2, 0, 262168, 1, 0, 262169, 0, 0, 262170, 2, 0, 262171, 1, 0, 262172, 0, 0, 327680, 3, 0, 327681, 5, 0, 327682, 4, 0, 327683, 3, 0, 327684, 5, 0, 327685, 4, 0, 327686, 3, 0, 327687, 5, 0, 327688, 4, 0, 327689, 3, 0, 327690, 5, 0, 327691, 4, 0, 327692, 3, 0, 327693, 5, 0, 327694, 4, 0, 327695, 3, 0, 327696, 5, 0, 327697, 4, 0, 327698, 3, 0, 327699, 5, 0, 327700, 4, 0, 327701, 3, 0, 327702, 5, 0, 327703, 4, 0, 327704, 3, 0, 327705, 5, 0, 327706, 4, 0, 327707, 3, 0, 327708, 5, 0 )
+
+[node name="computer" parent="." index="2"]
+
+position = Vector2( 392, 328 )
+
+[node name="interface" parent="." index="6"]
+
+editor/display_folded = true
+
+[node name="timer" parent="interface/hud/counter" index="0"]
+
+wait_time = 45.0
+
+[node name="bugs" parent="." index="11"]
+
+editor/display_folded = true
+
+[node name="ground_bug" parent="bugs" index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 768, 536 )
+
+[node name="ground_bug_2" parent="bugs" index="2" instance=ExtResource( 2 )]
+
+position = Vector2( 1072, 536 )
+
+[node name="ground_bug_3" parent="bugs" index="3" instance=ExtResource( 2 )]
+
+position = Vector2( 1376, 536 )
+
+[node name="ground_bug_4" parent="bugs" index="4" instance=ExtResource( 2 )]
+
+position = Vector2( 1576, 536 )
+
+
+[editable path="interface/hud"]
+[editable path="interface/hud/counter"]
