@@ -46,7 +46,7 @@ func _process(delta):
 
 theme = ExtResource( 2 )
 script = ExtResource( 3 )
-next_scene = "res://levels/level_00.tscn"
+next_scene = "res://levels/level_01.tscn"
 
 [node name="tile_map" type="TileMap" parent="." index="0"]
 
