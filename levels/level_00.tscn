@@ -16,12 +16,38 @@ script/source = "extends Camera2D
 
 export (NodePath) var rocket_path
 onready var rocket = get_node(rocket_path)
+var magnitude = 1.0
+var time_spam = 0
+var is_shaking = false
+onready var initial_pos = get_position()
 
 func tween_position():
 	var target_pos = rocket.get_node(\"center\").global_position
 	$tween.interpolate_property(self, \"global_position\", global_position, target_pos,
 		2.0, Tween.TRANS_SINE, Tween.EASE_IN)
-	$tween.start()"
+	$tween.start()
+
+func shake(new_mag, new_spam):
+	if magnitude > new_mag:
+		return
+	magnitude = new_mag
+	time_spam = new_spam
+	
+	if is_shaking:
+		return
+	is_shaking = true
+	
+	while time_spam > 0:
+		var shake = Vector2()
+		shake.x = position.x + rand_range(-magnitude, magnitude)
+		shake.y = position.y + rand_range(-magnitude, magnitude)
+		
+		set_position(shake)
+		time_spam -= get_process_delta_time()
+		yield(get_tree(), \"idle_frame\")
+	set_position(initial_pos)
+	magnitude = 0
+	is_shaking = false"
 
 [sub_resource type="LineShape2D" id=2]
 
@@ -84,7 +110,7 @@ tracks/0/keys = {
 "values": [ Vector2( 72, -680 ), Vector2( 1752, -680 ) ]
 }
 
-[node name="level_00" type="Node2D" index="0"]
+[node name="level_00" type="Node2D"]
 
 script = ExtResource( 1 )
 next_level = "res://levels/level_01.tscn"
@@ -139,7 +165,9 @@ position = Vector2( 72, 448 )
 z_index = 1
 _sections_unfolded = [ "Z Index" ]
 
-[node name="camera" type="Camera2D" parent="juan" index="3"]
+[node name="camera" type="Camera2D" parent="juan" index="3" groups=[
+"camera",
+]]
 
 pause_mode = 2
 anchor_mode = 1
@@ -177,6 +205,10 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
+[node name="player_fighter" parent="juan" index="5"]
+
+level_path = NodePath("../..")
+
 [node name="left_wall" type="StaticBody2D" parent="." index="4"]
 
 editor/display_folded = true
@@ -210,6 +242,7 @@ shape = SubResource( 3 )
 
 [node name="interface" type="CanvasLayer" parent="." index="6"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -301,4 +334,5 @@ blend_times = [  ]
 [node name="bugs" parent="." index="11" instance=ExtResource( 9 )]
 
 
+[editable path="juan"]
 [editable path="interface/hud"]
