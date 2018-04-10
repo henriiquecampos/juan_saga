@@ -9,17 +9,17 @@
 custom_solver_bias = 0.0
 extents = Vector2( 32, 10 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 176, 96 )
+extents = Vector2( 224, 96 )
 
 [sub_resource type="CircleShape2D" id=3]
 
 custom_solver_bias = 0.0
 radius = 48.0
 
-[node name="ground_bug" instance=ExtResource( 1 )]
+[node name="boss_bug" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 walk_speed = 800
@@ -34,7 +34,7 @@ shape = SubResource( 1 )
 
 [node name="shape" parent="area" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="shape" parent="attach_area" index="0"]
 
@@ -48,18 +48,10 @@ margin_right = 104.0
 margin_bottom = 104.0
 expand = true
 
-[node name="visibility_notifier" type="VisibilityNotifier2D" parent="." index="5"]
-
-position = Vector2( -9.53674e-06, -3.8147e-06 )
-scale = Vector2( 9.6, 9.6 )
-rect = Rect2( -10, -10, 20, 20 )
-
-[node name="bugs" parent="." index="6" instance=ExtResource( 3 )]
+[node name="bugs" parent="." index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 0, 8 )
 
-[connection signal="screen_entered" from="visibility_notifier" to="." method="_spawn_minions"]
-
-[connection signal="screen_exited" from="visibility_notifier" to="." method="_remove_minions"]
+[connection signal="health_changed" from="." to="." method="_on_health_changed"]
 
 

@@ -5,6 +5,8 @@ export(int) var bugs_spawn = 1
 export(int) var score = 15
 const SCREEN_BUG = preload("res://actors/enemies/screen_bug.tscn")
 
+signal health_changed(from, to)
+
 func _ready():
 	$button.connect("button_up", self, "damage_health", [1])
 	
@@ -24,6 +26,7 @@ func _on_attach_area_entered(area):
 		queue_free()
 		
 func set_health(value):
+	emit_signal("health_changed", health, value)
 	health = value
 	if health < 1:
 		get_parent()._on_screen_bug_tree_exited(self)

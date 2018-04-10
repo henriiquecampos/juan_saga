@@ -37,6 +37,7 @@ score = 15
 [node name="shape" type="CollisionShape2D" parent="." index="0"]
 
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="area" type="Area2D" parent="." index="1"]
 
@@ -52,7 +53,9 @@ audio_bus_name = "Master"
 
 shape = SubResource( 2 )
 
-[node name="attach_area" type="Area2D" parent="." index="2"]
+[node name="attach_area" type="Area2D" parent="." index="2" groups=[
+"enemy",
+]]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
