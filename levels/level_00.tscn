@@ -110,7 +110,7 @@ tracks/0/keys = {
 "values": [ Vector2( 72, -680 ), Vector2( 1752, -680 ) ]
 }
 
-[node name="level_00" type="Node2D"]
+[node name="level_00" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 next_level = "res://levels/level_01.tscn"
@@ -204,10 +204,6 @@ playback_speed = 1.0
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
-
-[node name="player_fighter" parent="juan" index="5"]
-
-level_path = NodePath("../..")
 
 [node name="left_wall" type="StaticBody2D" parent="." index="4"]
 
