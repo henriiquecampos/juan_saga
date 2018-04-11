@@ -10,8 +10,11 @@ func _ready():
 	$timer.connect("timeout", $animator, "play", ["damage"])
 
 func set_health(value):
-	if health > 1:
-		health += value
-	else:
+	health = value
+	if health < 1:
+		get_parent()._on_screen_bug_tree_exited(self)
 		get_parent().get_node("sfx").position = position
 		queue_free()
+
+func damage_health(amount):
+	set_health(health - amount)
