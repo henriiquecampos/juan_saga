@@ -1,0 +1,148 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://actors/god_hand/god_hand.png" type="Texture" id=1]
+
+[node name="pivot" type="Node2D"]
+
+[node name="arm" type="Node2D" parent="." index="0"]
+
+position = Vector2( 72, 136 )
+
+[node name="sprite" type="Sprite" parent="arm" index="0"]
+
+position = Vector2( 0.5, 328.5 )
+rotation = 1.5708
+texture = ExtResource( 1 )
+offset = Vector2( -157.5, 0.500014 )
+region_enabled = true
+region_rect = Rect2( 128, 8, 328, 56 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ok_hand" type="Node2D" parent="arm" index="1"]
+
+editor/display_folded = true
+visible = false
+show_behind_parent = true
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="pinky" type="Sprite" parent="arm/ok_hand" index="0"]
+
+show_behind_parent = true
+position = Vector2( 17.4587, 29.8612 )
+rotation = 1.79601
+texture = ExtResource( 1 )
+offset = Vector2( 0, -40 )
+region_enabled = true
+region_rect = Rect2( 0, 280, 32, 104 )
+_sections_unfolded = [ "Region" ]
+
+[node name="ring" type="Sprite" parent="arm/ok_hand" index="1"]
+
+show_behind_parent = true
+position = Vector2( 12.3161, 20.3922 )
+rotation = 1.50414
+texture = ExtResource( 1 )
+offset = Vector2( 0, -56 )
+region_enabled = true
+region_rect = Rect2( 128, 264, 32, 120 )
+_sections_unfolded = [ "Region" ]
+
+[node name="middle" type="Sprite" parent="arm/ok_hand" index="2"]
+
+show_behind_parent = true
+position = Vector2( 11.8587, 22.043 )
+rotation = 1.12693
+texture = ExtResource( 1 )
+offset = Vector2( 0, -64 )
+region_enabled = true
+region_rect = Rect2( 256, 240, 40, 144 )
+_sections_unfolded = [ "Region" ]
+
+[node name="thumb" type="Sprite" parent="arm/ok_hand" index="3"]
+
+position = Vector2( -8, 16 )
+rotation = 0.772316
+scale = Vector2( 0.95, 0.95 )
+texture = ExtResource( 1 )
+offset = Vector2( -40, -48 )
+region_enabled = true
+region_rect = Rect2( 128, 104, 128, 152 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="index" type="Sprite" parent="arm/ok_hand" index="4"]
+
+position = Vector2( 12.5, 12.5 )
+rotation = 0.486621
+scale = Vector2( 0.95, 0.95 )
+texture = ExtResource( 1 )
+offset = Vector2( 0, -48 )
+region_enabled = true
+region_rect = Rect2( 384, 104, 96, 152 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="hand" type="Node2D" parent="arm" index="2"]
+
+[node name="palm" type="Sprite" parent="arm/hand" index="0"]
+
+position = Vector2( -1, 0 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 64, 128, 136 )
+_sections_unfolded = [ "Region" ]
+
+[node name="index" type="Sprite" parent="arm/hand/palm" index="0"]
+
+show_behind_parent = true
+position = Vector2( -40, -48 )
+rotation = -0.359634
+texture = ExtResource( 1 )
+offset = Vector2( 0, -48 )
+region_enabled = true
+region_rect = Rect2( 384, 264, 32, 120 )
+_sections_unfolded = [ "Region" ]
+
+[node name="middle" type="Sprite" parent="arm/hand/palm" index="1"]
+
+show_behind_parent = true
+position = Vector2( -8, -56 )
+rotation = -0.0520608
+texture = ExtResource( 1 )
+offset = Vector2( 0, -64 )
+region_enabled = true
+region_rect = Rect2( 256, 240, 40, 144 )
+_sections_unfolded = [ "Region" ]
+
+[node name="ring" type="Sprite" parent="arm/hand/palm" index="2"]
+
+show_behind_parent = true
+position = Vector2( 22, -47 )
+rotation = 0.150116
+texture = ExtResource( 1 )
+offset = Vector2( 0, -56 )
+region_enabled = true
+region_rect = Rect2( 128, 264, 32, 120 )
+_sections_unfolded = [ "Region" ]
+
+[node name="pinky" type="Sprite" parent="arm/hand/palm" index="3"]
+
+show_behind_parent = true
+position = Vector2( 52.6645, -29.976 )
+rotation = 0.209594
+texture = ExtResource( 1 )
+offset = Vector2( 0, -40 )
+region_enabled = true
+region_rect = Rect2( 0, 280, 32, 104 )
+_sections_unfolded = [ "Region" ]
+
+[node name="thumb" type="Sprite" parent="arm/hand/palm" index="4"]
+
+show_behind_parent = true
+position = Vector2( -29.5, 40 )
+rotation = 0.123367
+texture = ExtResource( 1 )
+offset = Vector2( -33.9263, -7.19352 )
+region_enabled = true
+region_rect = Rect2( 256, 424, 112, 64 )
+_sections_unfolded = [ "Region" ]
+
+
