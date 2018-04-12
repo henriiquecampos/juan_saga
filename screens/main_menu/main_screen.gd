@@ -1,16 +1,22 @@
 extends "res://screens/basic_screen.gd"
-
+var can_play = false
 func _ready():
-	var bgm = AudioServer.get_bus_index("bgm")
-	$bgm_volume.value = AudioServer.get_bus_volume_db(bgm)
-	var sfx = AudioServer.get_bus_index("sfx")
-	$sfx_volume.value = AudioServer.get_bus_volume_db(sfx)
+	var bus = AudioServer.get_bus_index("bgm")
+	$bgm_volume.value = AudioServer.get_bus_volume_db(bus)
+	bus = AudioServer.get_bus_index("sfx")
+	$sfx_volume.value = AudioServer.get_bus_volume_db(bus)
+	if !bgm.is_playing():
+		bgm.play()
 	
 func _on_bgm_volume_value_changed(value):
-	var bgm = AudioServer.get_bus_index("bgm")
-	AudioServer.set_bus_volume_db(bgm, value)
+	var bus = AudioServer.get_bus_index("bgm")
+	AudioServer.set_bus_volume_db(bus, value)
 
 func _on_sfx_volume_value_changed(value):
+	var bus = AudioServer.get_bus_index("sfx")
+	AudioServer.set_bus_volume_db(bus, value)
+	if !can_play:
+		can_play = true
+		return
 	$sfx_volume/sfx_test.play()
-	var sfx = AudioServer.get_bus_index("sfx")
-	AudioServer.set_bus_volume_db(sfx, value)
+	

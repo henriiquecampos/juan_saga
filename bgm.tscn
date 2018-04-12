@@ -6,7 +6,7 @@
 
 stream = ExtResource( 1 )
 volume_db = -4.0
-autoplay = true
+autoplay = false
 mix_target = 0
 bus = "bgm"
 

@@ -1,0 +1,79 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+
+resource_name = "tutoring_04"
+length = 2.0
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("dialog_box/dialog:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "you have to debug them because they leak your engine code" ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("dialog_box/dialog:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "find_latest_bug"
+} ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("pivot/arm/hand/palm/index:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -20.6055, -31.7439, -20.6055, -31.7439, -20.6055, -31.7439, -20.6055 ]
+}
+tracks/4/type = "method"
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.55, 1.65, 1.75 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "hit_latest_bug"
+}, {
+"args": [  ],
+"method": "hit_latest_bug"
+}, {
+"args": [  ],
+"method": "hit_latest_bug"
+} ]
+}
+

@@ -15,17 +15,18 @@ enum MODES {ADD, SET, REMOVE}
 func set_score(value, MODE):
 	match MODE:
 		ADD:
+			score_container.set_score(value, ADD)
 			score += value
-		SET:
-			score = value
 		REMOVE:
-			score = clamp(0, score - value, 999999)
+			score -= value
+			score = clamp(score, 0, 999999)
+			score_container.set_score(value, REMOVE)
 	var t = \"score: {amount}\"
 	text = t.format({\"amount\":int(score)})
-	score_container.score = score
 	
 func _ready():
-	set_score(0, SET)"
+	var t = \"score: {amount}\"
+	text = t.format({\"amount\":int(score)})"
 
 [node name="hud" type="Control"]
 
