@@ -2,6 +2,8 @@
 
 [ext_resource path="res://assets/bgm/background_music.ogg" type="AudioStream" id=1]
 
+
+
 [node name="bgm" type="AudioStreamPlayer"]
 
 stream = ExtResource( 1 )
