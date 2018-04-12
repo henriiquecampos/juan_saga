@@ -23,7 +23,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="jam_screen" index="0" instance=ExtResource( 1 )]
+[node name="jam_screen" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 next_scene = "res://screens/main_menu/main_screen.tscn"
