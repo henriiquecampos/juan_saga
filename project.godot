@@ -11,7 +11,7 @@ config_version=3
 [application]
 
 config/name="Juan's Saga"
-run/main_scene="res://screens/main_menu/main_screen.tscn"
+run/main_scene="res://screens/splash_screen/splash_screen.tscn"
 config/icon="res://icon.png"
 
 [autoload]
