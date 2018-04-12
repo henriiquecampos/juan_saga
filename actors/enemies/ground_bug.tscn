@@ -14,7 +14,7 @@ extents = Vector2( 16, 16 )
 [sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 112.0
+radius = 128.0
 
 [sub_resource type="CircleShape2D" id=3]
 
@@ -33,6 +33,7 @@ jump_height = 800
 health = 3
 bugs_spawn = 1
 score = 15
+jumps = 5
 
 [node name="shape" type="CollisionShape2D" parent="." index="0"]
 
@@ -105,8 +106,17 @@ attenuation = 1.0
 bus = "enemies"
 area_mask = 1
 
+[node name="jump_interval" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
 [connection signal="area_entered" from="area" to="." method="_on_area_entered"]
 
 [connection signal="area_entered" from="attach_area" to="." method="_on_attach_area_entered"]
+
+[connection signal="timeout" from="jump_interval" to="." method="_on_jump_interval_timeout"]
 
 
