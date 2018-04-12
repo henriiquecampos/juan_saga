@@ -22,10 +22,10 @@ radius = 48.0
 [node name="boss_bug" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
-walk_speed = 800
 health = 15
 bugs_spawn = 5
 score = 250
+jumps = 5
 
 [node name="shape" parent="." index="0"]
 
