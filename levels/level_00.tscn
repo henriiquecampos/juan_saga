@@ -10,58 +10,19 @@
 [ext_resource path="res://levels/spawner.gd" type="Script" id=8]
 [ext_resource path="res://actors/enemies/bugs.tscn" type="PackedScene" id=9]
 
-[sub_resource type="GDScript" id=1]
-
-script/source = "extends Camera2D
-
-export (NodePath) var rocket_path
-onready var rocket = get_node(rocket_path)
-var magnitude = 1.0
-var time_spam = 0
-var is_shaking = false
-onready var initial_pos = get_position()
-
-func tween_position():
-	var target_pos = rocket.get_node(\"center\").global_position
-	$tween.interpolate_property(self, \"global_position\", global_position, target_pos,
-		2.0, Tween.TRANS_SINE, Tween.EASE_IN)
-	$tween.start()
-
-func shake(new_mag, new_spam):
-	if magnitude > new_mag:
-		return
-	magnitude = new_mag
-	time_spam = new_spam
-	
-	if is_shaking:
-		return
-	is_shaking = true
-	
-	while time_spam > 0:
-		var shake = Vector2()
-		shake.x = position.x + rand_range(-magnitude, magnitude)
-		shake.y = position.y + rand_range(-magnitude, magnitude)
-		
-		set_position(shake)
-		time_spam -= get_process_delta_time()
-		yield(get_tree(), \"idle_frame\")
-	set_position(initial_pos)
-	magnitude = 0
-	is_shaking = false"
-
-[sub_resource type="LineShape2D" id=2]
+[sub_resource type="LineShape2D" id=1]
 
 custom_solver_bias = 0.0
 normal = Vector2( 1, 0 )
 d = 0.0
 
-[sub_resource type="LineShape2D" id=3]
+[sub_resource type="LineShape2D" id=2]
 
 custom_solver_bias = 0.0
 normal = Vector2( -1, 0 )
 d = 0.0
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 length = 1.0
 loop = false
@@ -91,7 +52,7 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.509804, 0.509804, 0.509804, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
 resource_name = "idle"
 length = 5.0
@@ -110,10 +71,52 @@ tracks/0/keys = {
 "values": [ Vector2( 72, -680 ), Vector2( 1752, -680 ) ]
 }
 
-[node name="level_00" type="Node2D" index="0"]
+[sub_resource type="GDScript" id=5]
+
+script/source = "extends Camera2D
+
+export (NodePath) var rocket_path
+onready var rocket = get_node(rocket_path)
+var magnitude = 1.0
+var time_spam = 0
+var is_shaking = false
+onready var initial_pos = get_position()
+
+func tween_position():
+	var target_pos = rocket.get_node(\"center\").global_position
+	$tween.interpolate_property(self, \"global_position\", global_position, target_pos,
+		2.0, Tween.TRANS_SINE, Tween.EASE_IN)
+	$tween.start()
+
+func shake(new_mag, new_spam):
+	print(\"shaking\")
+	if magnitude > new_mag:
+		return
+	magnitude = new_mag
+	time_spam = new_spam
+	
+	if is_shaking:
+		return
+	is_shaking = true
+	
+	while time_spam > 0:
+		var shake = Vector2()
+		shake.x = position.x + rand_range(-magnitude, magnitude)
+		shake.y = position.y + rand_range(-magnitude, magnitude)
+		
+		set_position(shake)
+		time_spam -= get_process_delta_time()
+		yield(get_tree(), \"idle_frame\")
+	set_position(initial_pos)
+	magnitude = 0
+	is_shaking = false
+	print(\"stop shaking\")"
+
+[node name="level_00" type="Node2D"]
 
 script = ExtResource( 1 )
 next_level = "res://levels/level_01.tscn"
+current_level = null
 
 [node name="rocket" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -160,50 +163,13 @@ icons_path = NodePath("../interface/hud/items_container/items")
 
 [node name="juan" parent="." index="3" instance=ExtResource( 5 )]
 
-editor/display_folded = true
 position = Vector2( 72, 448 )
 z_index = 1
 _sections_unfolded = [ "Z Index" ]
 
-[node name="camera" type="Camera2D" parent="juan" index="3" groups=[
-"camera",
-]]
+[node name="camera_rig" parent="juan" index="5"]
 
-pause_mode = 2
-anchor_mode = 1
-rotating = false
-current = true
-zoom = Vector2( 1, 1 )
-limit_left = 0
-limit_top = -10000000
-limit_right = 1856
-limit_bottom = 638
-limit_smoothed = false
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
-offset_v = 0.0
-offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
-editor_draw_screen = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
-script = SubResource( 1 )
-_sections_unfolded = [ "Limit", "Pause" ]
-rocket_path = NodePath("../../rocket")
-
-[node name="tween" type="Tween" parent="juan/camera" index="0"]
-
-repeat = false
-playback_process_mode = 1
-playback_speed = 1.0
-playback/active = false
-playback/repeat = false
-playback/speed = 1.0
+remote_path = NodePath("../../camera")
 
 [node name="left_wall" type="StaticBody2D" parent="." index="4"]
 
@@ -218,7 +184,7 @@ bounce = 0.0
 
 [node name="shape" type="CollisionShape2D" parent="left_wall" index="0"]
 
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="right_wall" type="StaticBody2D" parent="." index="5"]
 
@@ -234,7 +200,7 @@ bounce = 0.0
 
 [node name="shape" type="CollisionShape2D" parent="right_wall" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="interface" type="CanvasLayer" parent="." index="6"]
 
@@ -251,6 +217,7 @@ level_path = NodePath("../..")
 
 [node name="screen" type="CanvasLayer" parent="." index="7"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -297,13 +264,12 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/release = SubResource( 4 )
+anims/release = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause" ]
 
 [node name="spawner" type="Position2D" parent="." index="10"]
 
-editor/display_folded = true
 position = Vector2( 119.361, -680 )
 script = ExtResource( 8 )
 _sections_unfolded = [ "Transform" ]
@@ -324,10 +290,51 @@ autoplay = "idle"
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/idle = SubResource( 5 )
+anims/idle = SubResource( 4 )
 blend_times = [  ]
 
 [node name="bugs" parent="." index="11" instance=ExtResource( 9 )]
+
+[node name="camera" type="Camera2D" parent="." index="12" groups=[
+"camera",
+]]
+
+pause_mode = 2
+position = Vector2( 72, 448 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = 0
+limit_top = -10000000
+limit_right = 1856
+limit_bottom = 638
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = SubResource( 5 )
+_sections_unfolded = [ "Limit", "Pause" ]
+rocket_path = NodePath("../rocket")
+
+[node name="tween" type="Tween" parent="camera" index="0"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 
 [editable path="juan"]

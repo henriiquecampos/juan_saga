@@ -38,6 +38,14 @@ autoplay = false
 mix_target = 0
 bus = "player"
 
+[node name="camera_rig" type="RemoteTransform2D" parent="." index="5"]
+
+remote_path = NodePath("")
+use_global_coordinates = true
+update_position = true
+update_rotation = true
+update_scale = true
+
 [connection signal="state_changed" from="." to="." method="_on_state_changed"]
 
 
