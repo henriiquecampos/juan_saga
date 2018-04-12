@@ -5,6 +5,8 @@
 
 [node name="level_03" instance=ExtResource( 1 )]
 
+current_level = "res://levels/level_03.tscn"
+
 [node name="tilemap" parent="." index="1"]
 
 editor/display_folded = false
@@ -16,14 +18,6 @@ tile_data = PoolIntArray( -262127, 0, 0, -262126, 1, 0, -262125, 2, 0, -262124, 
 [node name="computer" parent="." index="2"]
 
 position = Vector2( 192, 336 )
-
-[node name="screen" parent="." index="7"]
-
-editor/display_folded = true
-
-[node name="game_screen" parent="screen" index="0"]
-
-visible = false
 
 [node name="boss_bug" parent="bugs" index="1" instance=ExtResource( 2 )]
 
