@@ -12,9 +12,6 @@
 [ext_resource path="res://screens/promo_screen/github_call.png" type="Texture" id=10]
 [ext_resource path="res://screens/promo_screen/github_call_focus.png" type="Texture" id=11]
 
-
-
-
 [sub_resource type="DynamicFont" id=1]
 
 size = 13
@@ -52,9 +49,9 @@ func darker(button):
 func open_link(link):
 	OS.shell_open(link)"
 
-[node name="promo_screen" index="0" instance=ExtResource( 1 )]
+[node name="promo_screen" instance=ExtResource( 1 )]
 
-next_scene = "res://levels/level_01/level_01.tscn"
+next_scene = "res://levels/level_01.tscn"
 
 [node name="jimjam" type="TextureRect" parent="." index="0"]
 
@@ -283,7 +280,6 @@ align = 1
 [node name="color_rect" parent="." index="7"]
 
 margin_bottom = 592.0
-_sections_unfolded = [ "Mouse", "Visibility" ]
 
 [connection signal="button_up" from="support_links/patreon" to="support_links" method="open_link" binds= [ "https://www.patreon.com/pigdev" ]]
 
