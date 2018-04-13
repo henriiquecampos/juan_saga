@@ -12,6 +12,7 @@ script/source = "extends Label
 
 var score = 0 setget set_score
 enum MODES {ADD, SET, REMOVE}
+signal score_changed(amount, mode)
 
 func set_score(value, MODE):
 	match MODE:
@@ -24,6 +25,7 @@ func set_score(value, MODE):
 			score_container.set_score(value, REMOVE)
 	var t = \"score: {amount}\"
 	text = t.format({\"amount\":int(score)})
+	emit_signal(\"score_changed\", value, MODE)
 	
 func _ready():
 	var t = \"score: {amount}\"
