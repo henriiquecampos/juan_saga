@@ -9,10 +9,11 @@
 [ext_resource path="res://actors/god_hand/animations/tutoring_05.tres" type="Animation" id=7]
 [ext_resource path="res://actors/god_hand/animations/tutoring_06.tres" type="Animation" id=8]
 
-[node name="level_01" index="0" instance=ExtResource( 1 )]
+[node name="level_01" instance=ExtResource( 1 )]
 
 next_level = "res://levels/level_02.tscn"
 current_level = "res://levels/level_01.tscn"
+min_score = 800
 
 [node name="rocket" parent="." index="0"]
 
@@ -26,14 +27,10 @@ tile_data = PoolIntArray( 262144, 2, 0, 262145, 1, 0, 262146, 0, 0, 262147, 2, 0
 
 position = Vector2( 392, 328 )
 
-[node name="interface" parent="." index="6"]
-
-editor/display_folded = false
-
 [node name="hud" parent="interface" index="0"]
 
 editor/display_folded = true
-_sections_unfolded = [ "Theme", "Visibility", "custom_constants" ]
+_sections_unfolded = [ "Pause", "Theme", "Visibility", "custom_constants" ]
 
 [node name="timer" parent="interface/hud/counter" index="0"]
 
