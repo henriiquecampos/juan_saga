@@ -52,7 +52,7 @@ func load_file():
 	already_played = d.already_played
 	highscore = d.highscore"
 
-[node name="score" type="Node" index="0"]
+[node name="score" type="Node"]
 
 script = SubResource( 1 )
 
