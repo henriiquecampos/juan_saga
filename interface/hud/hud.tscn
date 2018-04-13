@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://interface/menu_bar_hilit.tres" type="Theme" id=1]
 [ext_resource path="res://interface/hud/hud.gd" type="Script" id=2]
 [ext_resource path="res://interface/hud/items.gd" type="Script" id=3]
 [ext_resource path="res://interface/hud/count_down.tscn" type="PackedScene" id=4]
+[ext_resource path="res://font/GaroaHackerClubeBold.otf" type="DynamicFontData" id=5]
 
 [sub_resource type="GDScript" id=1]
 
@@ -11,6 +12,7 @@ script/source = "extends Label
 
 var score = 0 setget set_score
 enum MODES {ADD, SET, REMOVE}
+signal score_changed(amount, mode)
 
 func set_score(value, MODE):
 	match MODE:
@@ -23,13 +25,23 @@ func set_score(value, MODE):
 			score_container.set_score(value, REMOVE)
 	var t = \"score: {amount}\"
 	text = t.format({\"amount\":int(score)})
+	emit_signal(\"score_changed\", value, MODE)
 	
 func _ready():
 	var t = \"score: {amount}\"
 	text = t.format({\"amount\":int(score)})"
 
+[sub_resource type="DynamicFont" id=2]
+
+size = 50
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 5 )
+_sections_unfolded = [ "Font", "Settings" ]
+
 [node name="hud" type="Control"]
 
+pause_mode = 2
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -44,7 +56,7 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 theme = ExtResource( 1 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Theme", "custom_constants" ]
+_sections_unfolded = [ "Pause", "Theme", "custom_constants" ]
 level_path = null
 
 [node name="items_container" type="ScrollContainer" parent="." index="0"]
@@ -117,5 +129,72 @@ script = SubResource( 1 )
 margin_left = 446.0
 margin_top = 32.0
 margin_bottom = 104.0
+
+[node name="uncompleted" type="Control" parent="." index="3"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+
+[node name="label" type="Label" parent="uncompleted" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0.945313, 0.29541, 0.29541, 1 )
+text = "not enough features and fixes!"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="button" type="Button" parent="uncompleted" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 392.0
+margin_top = 352.0
+margin_right = 632.0
+margin_bottom = 400.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "retry"
+flat = false
+align = 1
+
+[connection signal="button_up" from="uncompleted/button" to="." method="_on_retry_button_up"]
 
 

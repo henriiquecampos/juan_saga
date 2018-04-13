@@ -7,10 +7,10 @@ path="res://.import/jimjam_splash.jpg-71e9437ba50ff4527de44af8956d989b.stex"
 [deps]
 
 source_file="res://screens/splash_screen/jim_jam/jimjam_splash.jpg"
-source_md5="d7deb8bea812d495d2dc67857b8acdf0"
+source_md5="ba849d3aba948ea9e634676c6154ae53"
 
 dest_files=[ "res://.import/jimjam_splash.jpg-71e9437ba50ff4527de44af8956d989b.stex" ]
-dest_md5="20909a84ec610da4d3a6bbcd4be87b95"
+dest_md5="d10b66f3b07d21b3e78bd3a7a73f2782"
 
 [params]
 

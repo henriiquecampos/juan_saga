@@ -15,7 +15,6 @@ extents = Vector2( 128, 80 )
 
 [node name="computer" type="Area2D"]
 
-position = Vector2( 296, 192 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -24,17 +23,18 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
 icons_path = null
 
 [node name="shape" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( 128, 72 )
+position = Vector2( 8, 0 )
 shape = SubResource( 1 )
 
 [node name="sprite" type="Sprite" parent="." index="1"]
 
+position = Vector2( 8, 0 )
 texture = ExtResource( 2 )
-centered = false
 _sections_unfolded = [ "Offset", "Region" ]
 
 [node name="progress_bar" type="ProgressBar" parent="." index="2"]
@@ -44,10 +44,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 56.0
-margin_top = 72.0
-margin_right = 184.0
-margin_bottom = 88.0
+margin_left = -64.0
+margin_right = 64.0
+margin_bottom = 16.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 0
@@ -73,10 +72,10 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 96.0
-margin_top = -24.0
-margin_right = 150.0
-margin_bottom = -10.0
+margin_left = -32.0
+margin_top = -104.0
+margin_right = 35.0
+margin_bottom = -82.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 2
@@ -92,8 +91,11 @@ _sections_unfolded = [ "Theme" ]
 
 [node name="bugs" parent="." index="4" instance=ExtResource( 6 )]
 
+position = Vector2( -88, -48 )
+
 [node name="sfx" type="AudioStreamPlayer2D" parent="." index="5"]
 
+position = Vector2( 0, 8 )
 stream = ExtResource( 7 )
 volume_db = 0.0
 autoplay = false
@@ -101,6 +103,15 @@ max_distance = 2000.0
 attenuation = 1.0
 bus = "sfx"
 area_mask = 1
+
+[node name="tween" type="Tween" parent="." index="6"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 

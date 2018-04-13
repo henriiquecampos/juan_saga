@@ -62,6 +62,7 @@ func bump_rocket():
 	$sprite.rotation_degrees = 0
 	
 func launch():
+	$label.hide()
 	$sprite/ramp.hide()
 	$progress_bar.hide()
 	$sfx.stream = load("res://assets/sfx/7_charging.ogg")
@@ -82,3 +83,13 @@ func launch():
 	set_physics_process(true)
 	yield($timer, "timeout")
 	queue_free()
+	
+func update_score(amount, mode):
+	var current = int($label.text)
+	var t = "{amount}"
+	match mode:
+		0:
+			t = t.format({"amount":int(clamp(current - amount, 0, current))})
+		2:
+			t = t.format({"amount":int(current + amount)})
+	$label.text = t

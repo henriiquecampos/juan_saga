@@ -5,12 +5,14 @@
 
 [node name="level_00" instance=ExtResource( 1 )]
 
+next_level = "res://levels/level_03.tscn"
 current_level = "res://levels/level_02.tscn"
+min_score = 1200
 
 [node name="rocket" parent="." index="0"]
 
 editor/display_folded = true
-position = Vector2( 176, 0 )
+position = Vector2( 160, 0 )
 
 [node name="sprite" parent="rocket" index="1"]
 
@@ -27,11 +29,19 @@ position = Vector2( 104, -32 )
 
 [node name="tile_map" parent="tilemap" index="0"]
 
-tile_data = PoolIntArray( -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -196599, 6, 0, -131061, 6, 0, 9, 6, 0, 131079, 6, 0, 262144, 2, 0, 262145, 1, 0, 262146, 0, 0, 262147, 2, 0, 262148, 1, 0, 262149, 0, 0, 262150, 2, 0, 262151, 1, 0, 262152, 0, 0, 262153, 2, 0, 262154, 1, 0, 262155, 0, 0, 262156, 2, 0, 262157, 1, 0, 262158, 0, 0, 262159, 2, 0, 262160, 0, 0, 262161, 2, 0, 262162, 1, 0, 262163, 0, 0, 262164, 2, 0, 262165, 1, 0, 262166, 0, 0, 262167, 2, 0, 262168, 1, 0, 262169, 0, 0, 262170, 2, 0, 262171, 1, 0, 262172, 0, 0, 327680, 3, 0, 327681, 5, 0, 327682, 4, 0, 327683, 3, 0, 327684, 5, 0, 327685, 4, 0, 327686, 3, 0, 327687, 5, 0, 327688, 4, 0, 327689, 3, 0, 327690, 5, 0, 327691, 4, 0, 327692, 3, 0, 327693, 5, 0, 327694, 4, 0, 327695, 3, 0, 327696, 5, 0, 327697, 4, 0, 327698, 3, 0, 327699, 5, 0, 327700, 4, 0, 327701, 3, 0, 327702, 5, 0, 327703, 4, 0, 327704, 3, 0, 327705, 5, 0, 327706, 4, 0, 327707, 3, 0, 327708, 5, 0 )
+tile_data = PoolIntArray( -262144, 0, 0, -262143, 1, 0, -262142, 2, 0, -262141, 0, 0, -262140, 1, 0, -262139, 2, 0, -196599, 6, 0, -131061, 6, 0, 9, 6, 0, 131079, 6, 0, 262144, 2, 0, 262145, 0, 0, 262146, 1, 0, 262147, 2, 0, 262148, 0, 0, 262149, 1, 0, 262150, 2, 0, 262151, 0, 0, 262152, 1, 0, 262153, 2, 0, 262154, 0, 0, 262155, 1, 0, 262156, 2, 0, 262157, 0, 0, 262158, 1, 0, 262159, 2, 0, 262160, 0, 0, 262161, 1, 0, 262162, 2, 0, 262163, 0, 0, 262164, 1, 0, 262165, 2, 0, 262166, 0, 0, 262167, 1, 0, 262168, 2, 0, 262169, 0, 0, 262170, 1, 0, 262171, 2, 0, 262172, 0, 0, 327680, 3, 0, 327681, 5, 0, 327682, 4, 0, 327683, 3, 0, 327684, 5, 0, 327685, 4, 0, 327686, 3, 0, 327687, 5, 0, 327688, 4, 0, 327689, 3, 0, 327690, 5, 0, 327691, 4, 0, 327692, 3, 0, 327693, 5, 0, 327694, 4, 0, 327695, 3, 0, 327696, 5, 0, 327697, 4, 0, 327698, 3, 0, 327699, 5, 0, 327700, 4, 0, 327701, 3, 0, 327702, 5, 0, 327703, 4, 0, 327704, 3, 0, 327705, 5, 0, 327706, 4, 0, 327707, 3, 0, 327708, 5, 0 )
 
 [node name="computer" parent="." index="2"]
 
-position = Vector2( 1024, 336 )
+position = Vector2( 1144, 408 )
+
+[node name="timer" parent="interface/hud/counter" index="0"]
+
+wait_time = 60.0
+
+[node name="spawner" parent="." index="10"]
+
+editor/display_folded = true
 
 [node name="bugs" parent="." index="11"]
 
@@ -39,7 +49,7 @@ editor/display_folded = true
 
 [node name="ground_bug" parent="bugs" index="1" instance=ExtResource( 2 )]
 
-position = Vector2( 424, 24 )
+position = Vector2( 112, 24 )
 
 [node name="ground_bug_2" parent="bugs" index="2" instance=ExtResource( 2 )]
 
@@ -53,7 +63,14 @@ position = Vector2( 568, 528 )
 
 position = Vector2( 984, 528 )
 
+[node name="camera" parent="." index="12"]
+
+editor/display_folded = true
+
+[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
+
 
 [editable path="rocket"]
 [editable path="juan"]
 [editable path="interface/hud"]
+[editable path="interface/hud/counter"]

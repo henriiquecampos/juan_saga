@@ -36,6 +36,7 @@ func _on_progress_bar_value_changed(value):
 		if icons_node.get_child_count() < 5:
 			icons_node.juan_new_node()
 			$sfx.play()
+			bump()
 			$progress_bar.value = 0
 		var bug_amount = randi()%3
 		for i in bug_amount:
@@ -51,3 +52,15 @@ func add_bug():
 	s.get_node("timer").connect("timeout", self, "screen_bug")
 	$bugs.add_child(s)
 	$debug.show()
+	
+func bump():
+	var initial_scale = $sprite.scale
+	$tween.interpolate_property($sprite, "scale", initial_scale, initial_scale * 1.05, 0.25,
+		Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+	$tween.start()
+	yield($tween, "tween_completed")
+	$tween.interpolate_property($sprite, "scale", $sprite.scale, initial_scale, 0.25,
+		Tween.TRANS_ELASTIC, Tween.EASE_OUT)
+	$tween.start()
+	yield($tween, "tween_completed")
+	$sprite.rotation_degrees = 0
