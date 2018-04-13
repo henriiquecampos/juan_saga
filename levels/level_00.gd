@@ -1,6 +1,7 @@
 extends Node2D
 export (String, FILE, "*.tscn") var next_level
 export (String, FILE, "*.tscn") var current_level
+export (int) var min_score = 0
 
 func _ready():
 	score_container.next_level = next_level
@@ -12,10 +13,15 @@ func _ready():
 	
 func _on_timer_timeout():
 	get_tree().set_pause(true)
+	if $interface/hud/score.score < min_score:
+		$animator.play("release")
+		yield($animator, "animation_finished")
+		$interface/hud.uncomplete()
+		return
 	$animator.play("release")
 	yield($animator, "animation_finished")
-	$juan/camera.tween_position()
-	yield($juan/camera/tween, "tween_completed")
+	$camera.tween_position()
+	yield($camera/tween, "tween_completed")
 	$rocket.launch()
 
 func _on_rocket_tree_exited():

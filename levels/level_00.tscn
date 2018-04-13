@@ -117,6 +117,7 @@ func shake(new_mag, new_spam):
 script = ExtResource( 1 )
 next_level = "res://levels/level_01.tscn"
 current_level = null
+min_score = -1
 
 [node name="rocket" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -163,6 +164,7 @@ icons_path = NodePath("../interface/hud/items_container/items")
 
 [node name="juan" parent="." index="3" instance=ExtResource( 5 )]
 
+editor/display_folded = true
 position = Vector2( 72, 448 )
 z_index = 1
 _sections_unfolded = [ "Z Index" ]
@@ -204,7 +206,6 @@ shape = SubResource( 2 )
 
 [node name="interface" type="CanvasLayer" parent="." index="6"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -217,8 +218,7 @@ level_path = NodePath("../..")
 
 [node name="screen" type="CanvasLayer" parent="." index="7"]
 
-editor/display_folded = true
-layer = 1
+layer = 2
 offset = Vector2( 0, 0 )
 rotation = 0.0
 scale = Vector2( 1, 1 )

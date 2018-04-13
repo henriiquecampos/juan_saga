@@ -6,6 +6,7 @@
 
 next_level = "res://levels/level_05.tscn"
 current_level = "res://levels/level_04.tscn"
+min_score = 2000
 
 [node name="rocket" parent="." index="0"]
 
@@ -23,9 +24,17 @@ position = Vector2( 800, -360 )
 
 position = Vector2( 96, 488 )
 
+[node name="interface" parent="." index="6"]
+
+editor/display_folded = true
+
 [node name="screen" parent="." index="7"]
 
 editor/display_folded = true
+
+[node name="camera" parent="." index="12"]
+
+position = Vector2( 96, 488 )
 
 
 [editable path="juan"]

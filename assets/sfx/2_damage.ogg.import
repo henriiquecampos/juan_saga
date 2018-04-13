@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/2_damage.ogg-caa7748d8b5194fbd843705261d00bb7.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/2_damage.ogg"
+source_md5="1b297541e20240dfac913b620c940802"
+
+dest_files=[ "res://.import/2_damage.ogg-caa7748d8b5194fbd843705261d00bb7.oggstr" ]
+dest_md5="0325e916fa6f893241619eddd76879e7"
+
+[params]
+
+loop=false
+loop_offset=0

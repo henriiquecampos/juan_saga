@@ -13,6 +13,7 @@
 
 next_level = "res://levels/level_02.tscn"
 current_level = "res://levels/level_01.tscn"
+min_score = 800
 
 [node name="rocket" parent="." index="0"]
 
@@ -26,22 +27,10 @@ tile_data = PoolIntArray( 262144, 2, 0, 262145, 1, 0, 262146, 0, 0, 262147, 2, 0
 
 position = Vector2( 392, 328 )
 
-[node name="juan" parent="." index="3"]
-
-editor/display_folded = false
-
-[node name="camera" parent="juan" index="3"]
-
-_sections_unfolded = [ "Limit", "Pause", "Transform" ]
-
-[node name="interface" parent="." index="6"]
-
-editor/display_folded = false
-
 [node name="hud" parent="interface" index="0"]
 
 editor/display_folded = true
-_sections_unfolded = [ "Theme", "Visibility", "custom_constants" ]
+_sections_unfolded = [ "Pause", "Theme", "Visibility", "custom_constants" ]
 
 [node name="timer" parent="interface/hud/counter" index="0"]
 
@@ -58,22 +47,18 @@ editor/display_folded = true
 [node name="ground_bug" parent="bugs" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 768, 536 )
-jumps = 5
 
 [node name="ground_bug_2" parent="bugs" index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 1072, 536 )
-jumps = 5
 
 [node name="ground_bug_3" parent="bugs" index="3" instance=ExtResource( 2 )]
 
 position = Vector2( 1376, 536 )
-jumps = 5
 
 [node name="ground_bug_4" parent="bugs" index="4" instance=ExtResource( 2 )]
 
 position = Vector2( 1576, 536 )
-jumps = 5
 
 [node name="tutoring" parent="." index="12" instance=ExtResource( 3 )]
 
