@@ -142,7 +142,7 @@ mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
 custom_fonts/font = SubResource( 1 )
-text = "hello there, this is what i was able to do within 48h of development. i'm very happy with the results and i hope you enjoyed too!
+text = "hello there, this is what i was able to do within a week of development. i'm very happy with the results and i hope you enjoyed too!
 
 currently this game is a prototype, there are a bunch of things i'd like to implement, you can check the game's roadmap at its github page, you can even contribute if you like! report bugs, open issues, suggest features this is an open source project, fork it make your own game if you want!
 
