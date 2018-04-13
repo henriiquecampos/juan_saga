@@ -39,7 +39,7 @@ tile_data = PoolIntArray( 196619, 6, 0, 196622, 6, 0, 196625, 6, 0, 262144, 0, 0
 
 [node name="computer" parent="." index="2"]
 
-position = Vector2( 360, 336 )
+position = Vector2( 400, 416 )
 
 [node name="void" type="Area2D" parent="." index="12"]
 
@@ -56,6 +56,8 @@ script = SubResource( 1 )
 [node name="shape" type="CollisionShape2D" parent="void" index="0"]
 
 shape = SubResource( 2 )
+
+[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
 
 [connection signal="area_entered" from="void" to="void" method="_on_area_entered"]
 

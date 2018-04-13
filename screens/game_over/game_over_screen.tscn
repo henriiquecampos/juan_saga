@@ -142,10 +142,6 @@ max_lines_visible = -1
 script = SubResource( 3 )
 _sections_unfolded = [ "Mouse", "custom_fonts" ]
 
-[node name="color_rect" parent="." index="5"]
-
-visible = false
-
 [connection signal="button_up" from="button" to="." method="change_scene"]
 
 [connection signal="button_up" from="button_2" to="." method="_on_retry_button_up"]

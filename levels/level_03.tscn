@@ -19,19 +19,17 @@ tile_data = PoolIntArray( -262127, 0, 0, -262126, 1, 0, -262125, 2, 0, -262124, 
 
 [node name="computer" parent="." index="2"]
 
-position = Vector2( 192, 336 )
+position = Vector2( 728, 408 )
 
 [node name="hud" parent="interface" index="0"]
 
 editor/display_folded = true
 
-[node name="game_screen" parent="screen" index="0"]
-
-visible = false
-
 [node name="boss_bug" parent="bugs" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 1680, 464 )
+
+[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
 
 
 [editable path="juan"]

@@ -15,10 +15,6 @@ min_score = 2500
 
 position = Vector2( 968, -392 )
 
-[node name="tilemap" parent="." index="1"]
-
-editor/display_folded = false
-
 [node name="tile_map" parent="tilemap" index="0"]
 
 tile_data = PoolIntArray( -655349, 2, 0, -655348, 0, 0, -655347, 1, 0, -655346, 2, 0, -655345, 0, 0, -655344, 1, 0, -655343, 2, 0, -655342, 0, 0, -655341, 1, 0, -524281, 6, 0, -393211, 6, 0, -262144, 0, 0, -262143, 1, 0, -262142, 2, 0, -262141, 0, 0, -196602, 6, 0, -65531, 6, 0, 14, 2, 0, 15, 2, 0, 16, 0, 0, 17, 1, 0, 65543, 6, 0, 65550, 5, 0, 65551, 4, 0, 65552, 3, 0, 65553, 5, 0, 65555, 6, 0, 131084, 6, 0, 131086, 3, 0, 131087, 5, 0, 131088, 4, 0, 131089, 3, 0, 131092, 6, 0, 196622, 4, 0, 196623, 3, 0, 196624, 5, 0, 196625, 4, 0, 262144, 2, 0, 262145, 2, 0, 262146, 0, 0, 262147, 1, 0, 262148, 2, 0, 262149, 0, 0, 262150, 1, 0, 262151, 2, 0, 262152, 0, 0, 262153, 1, 0, 262154, 2, 0, 262155, 0, 0, 262156, 1, 0, 262157, 2, 0, 262158, 5, 0, 262159, 5, 0, 262160, 5, 0, 262161, 5, 0, 262162, 2, 0, 262163, 0, 0, 262164, 1, 0, 262165, 2, 0, 262166, 0, 0, 262167, 1, 0, 262168, 2, 0, 262169, 0, 0, 262170, 1, 0, 262171, 2, 0, 262172, 0, 0, 327680, 3, 0, 327681, 5, 0, 327682, 4, 0, 327683, 3, 0, 327684, 5, 0, 327685, 4, 0, 327686, 3, 0, 327687, 5, 0, 327688, 4, 0, 327689, 3, 0, 327690, 5, 0, 327691, 4, 0, 327692, 3, 0, 327693, 5, 0, 327694, 4, 0, 327695, 3, 0, 327696, 5, 0, 327697, 4, 0, 327698, 3, 0, 327699, 5, 0, 327700, 4, 0, 327701, 3, 0, 327702, 5, 0, 327703, 4, 0, 327704, 3, 0, 327705, 5, 0, 327706, 4, 0, 327707, 3, 0, 327708, 5, 0 )
@@ -27,13 +23,21 @@ trigger = false
 unwanted_index = 1
 wanted_index = 2
 
-[node name="interface" parent="." index="6"]
+[node name="computer" parent="." index="2"]
+
+position = Vector2( 120, -96 )
+
+[node name="screen" parent="." index="7"]
 
 editor/display_folded = true
 
-[node name="game_screen" parent="screen" index="0"]
+[node name="spawner" parent="." index="10"]
 
-visible = false
+editor/display_folded = true
+
+[node name="bugs" parent="." index="11"]
+
+editor/display_folded = true
 
 [node name="boss_bug" parent="bugs" index="1" instance=ExtResource( 3 )]
 
@@ -42,6 +46,12 @@ position = Vector2( 1592, 464 )
 [node name="ground_bug" parent="bugs" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 736, 520 )
+
+[node name="camera" parent="." index="12"]
+
+editor/display_folded = true
+
+[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
 
 
 [editable path="juan"]
