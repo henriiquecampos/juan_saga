@@ -336,6 +336,8 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
+[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
+
 
 [editable path="juan"]
 [editable path="interface/hud"]
