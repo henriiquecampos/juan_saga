@@ -2,7 +2,7 @@ extends Area2D
 const BUG = preload("res://actors/enemies/screen_bug.tscn")
 
 var can_interact = false
-
+var dev_speed = 100
 export (NodePath) var icons_path
 onready var icons_node = get_node(icons_path)
 
@@ -13,9 +13,11 @@ func _process(delta):
 		if Input.is_action_pressed("interact"):
 			if $bugs.get_child_count() == 0:
 				$debug.hide()
-			$progress_bar.value += 100 * delta
+			$progress_bar.value += dev_speed * delta
 		if Input.is_action_just_released("interact"):
 			$progress_bar.value = 0
+		if Input.is_action_just_pressed("interact"):
+			$bugs.damage_child()
 			
 
 func _on_area_entered(area):
@@ -64,3 +66,6 @@ func bump():
 	$tween.start()
 	yield($tween, "tween_completed")
 	$sprite.rotation_degrees = 0
+
+func _on_bugs_new_child(penalty):
+	dev_speed -= penalty

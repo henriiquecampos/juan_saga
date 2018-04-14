@@ -119,4 +119,6 @@ playback/speed = 1.0
 
 [connection signal="value_changed" from="progress_bar" to="." method="_on_progress_bar_value_changed"]
 
+[connection signal="new_child" from="bugs" to="." method="_on_bugs_new_child"]
+
 

@@ -17,3 +17,7 @@ func _on_state_changed(from, to):
 func _on_bugs_new_child(penalty):
 	walk_speed -= penalty
 	print(walk_speed)
+	
+func _input(event):
+	if event.is_action_pressed("interact"):
+		$bugs.damage_child()

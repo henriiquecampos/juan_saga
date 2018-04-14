@@ -10,3 +10,11 @@ func _on_screen_bug_tree_exited(bug):
 
 func _on_screen_bug_timeout(bug):
 	score_node.set_score(bug.damage, score_node.REMOVE)
+	
+func damage_child():
+	if get_child_count() <= 1:
+		return
+	
+	var c = get_child(get_child_count() -1)
+	if c.has_method("damage_health"):
+		c.damage_health(1)
