@@ -1,12 +1,12 @@
 extends Node2D
+
 var speed = 200
 export (NodePath) var icons_path
 onready var icons_node = get_node(icons_path)
-
 export (NodePath) var score_path
 onready var score_node = get_node(score_path)
-
 var can_interact = false
+var min_score = 0 setget set_minimum_score
 
 func _ready():
 	set_physics_process(false)
@@ -62,7 +62,7 @@ func bump_rocket():
 	$sprite.rotation_degrees = 0
 	
 func launch():
-	$label.hide()
+	$sprite/label.hide()
 	$sprite/ramp.hide()
 	$progress_bar.hide()
 	$sfx.stream = load("res://assets/sfx/7_charging.ogg")
@@ -84,12 +84,12 @@ func launch():
 	yield($timer, "timeout")
 	queue_free()
 	
-func update_score(amount, mode):
-	var current = int($label.text)
+func set_minimum_score(value):
+	min_score = value
 	var t = "{amount}"
-	match mode:
-		0:
-			t = t.format({"amount":int(clamp(current - amount, 0, current))})
-		2:
-			t = t.format({"amount":int(current + amount)})
-	$label.text = t
+	$sprite/label.text = t.format({"amount":int(min_score)})
+	
+func update_score(current_score):
+	var d = clamp(min_score - current_score, 0, min_score)
+	var t = "{amount}"
+	$sprite/label.text = t.format({"amount":int(d)})

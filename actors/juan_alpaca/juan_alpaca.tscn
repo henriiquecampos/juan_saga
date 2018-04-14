@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://actors/juan_alpaca/basic_platform_character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://actors/juan_alpaca/juan_alpaca.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://actors/platform_actors/pickup_character.tscn" type="PackedScene" id=4]
 [ext_resource path="res://actors/enemies/bugs.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/sfx/1_jump.ogg" type="AudioStream" id=6]
+[ext_resource path="res://interface/menu_bar_hilit.tres" type="Theme" id=7]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -46,6 +47,32 @@ update_position = true
 update_rotation = true
 update_scale = true
 
+[node name="debug" type="Label" parent="." index="6"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -144.0
+margin_right = 35.0
+margin_bottom = -122.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 7 )
+text = "debug!!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
 [connection signal="state_changed" from="." to="." method="_on_state_changed"]
+
+[connection signal="new_child" from="bugs" to="." method="_on_bugs_new_child"]
 
 

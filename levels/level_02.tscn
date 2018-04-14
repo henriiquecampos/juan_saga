@@ -39,10 +39,6 @@ position = Vector2( 1144, 408 )
 
 wait_time = 60.0
 
-[node name="spawner" parent="." index="10"]
-
-editor/display_folded = true
-
 [node name="bugs" parent="." index="11"]
 
 editor/display_folded = true
@@ -62,12 +58,6 @@ position = Vector2( 568, 528 )
 [node name="ground_bug_4" parent="bugs" index="4" instance=ExtResource( 2 )]
 
 position = Vector2( 984, 528 )
-
-[node name="camera" parent="." index="12"]
-
-editor/display_folded = true
-
-[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
 
 
 [editable path="rocket"]

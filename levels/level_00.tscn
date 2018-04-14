@@ -112,12 +112,12 @@ func shake(new_mag, new_spam):
 	is_shaking = false
 	print(\"stop shaking\")"
 
-[node name="level_00" type="Node2D"]
+[node name="level_00" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 next_level = "res://levels/level_01.tscn"
 current_level = null
-min_score = -1
+min_score = 500
 
 [node name="rocket" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -159,7 +159,7 @@ _sections_unfolded = [ "Cell", "Collision", "Transform" ]
 
 [node name="computer" parent="." index="2" instance=ExtResource( 4 )]
 
-position = Vector2( 0, -168 )
+position = Vector2( 120, -96 )
 icons_path = NodePath("../interface/hud/items_container/items")
 
 [node name="juan" parent="." index="3" instance=ExtResource( 5 )]
@@ -271,6 +271,7 @@ _sections_unfolded = [ "Pause" ]
 
 [node name="spawner" type="Position2D" parent="." index="10"]
 
+editor/display_folded = true
 position = Vector2( 119.361, -680 )
 script = ExtResource( 8 )
 _sections_unfolded = [ "Transform" ]
@@ -301,6 +302,7 @@ blend_times = [  ]
 ]]
 
 pause_mode = 2
+editor/display_folded = true
 position = Vector2( 72, 448 )
 anchor_mode = 1
 rotating = false
@@ -342,3 +344,4 @@ playback/speed = 1.0
 
 [editable path="juan"]
 [editable path="interface/hud"]
+[editable path="interface/hud/counter"]
