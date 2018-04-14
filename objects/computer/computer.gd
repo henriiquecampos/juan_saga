@@ -6,8 +6,6 @@ var dev_speed = 100
 export (NodePath) var icons_path
 onready var icons_node = get_node(icons_path)
 
-
-
 func _process(delta):
 	if can_interact:
 		if Input.is_action_pressed("interact"):
@@ -53,7 +51,6 @@ func add_bug():
 	s.position.y = rand_range(16, 120)
 	s.get_node("timer").connect("timeout", self, "screen_bug")
 	$bugs.add_child(s)
-	$debug.show()
 	
 func bump():
 	var initial_scale = $sprite.scale
@@ -69,3 +66,4 @@ func bump():
 
 func _on_bugs_new_child(penalty):
 	dev_speed -= penalty
+	$debug.visible = $bugs.get_child_count() > 1

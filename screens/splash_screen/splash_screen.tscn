@@ -13,6 +13,7 @@
 [node name="splash_screen" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
+_sections_unfolded = [ "Theme", "Visibility" ]
 next_scene = "res://screens/splash_screen/jim_jam/jam_screen.tscn"
 new_anim = "pigdev_splash"
 

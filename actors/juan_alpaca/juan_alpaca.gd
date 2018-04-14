@@ -16,7 +16,7 @@ func _on_state_changed(from, to):
 
 func _on_bugs_new_child(penalty):
 	walk_speed -= penalty
-	print(walk_speed)
+	$debug.visible = $bugs.get_child_count() > 1
 	
 func _input(event):
 	if event.is_action_pressed("interact"):
