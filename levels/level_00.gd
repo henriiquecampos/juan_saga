@@ -4,7 +4,7 @@ export (String, FILE, "*.tscn") var current_level
 export (int) var min_score = 0
 
 func _ready():
-	set_rocket_text()
+	$rocket.set_minimum_score(min_score)
 	score_container.next_level = next_level
 	score_container.current_level = current_level
 	$rocket.connect("tree_exited", self, "_on_rocket_tree_exited")
@@ -27,8 +27,3 @@ func _on_timer_timeout():
 
 func _on_rocket_tree_exited():
 	$screen/game_screen.change_scene()
-
-func set_rocket_text():
-	var t = $rocket/label.text
-	t = t.format({"amount":min_score})
-	$rocket/label.text = t

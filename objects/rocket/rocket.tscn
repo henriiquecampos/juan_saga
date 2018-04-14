@@ -2,10 +2,10 @@
 
 [ext_resource path="res://objects/rocket/rocket.gd" type="Script" id=1]
 [ext_resource path="res://objects/rocket/sprite_open.png" type="Texture" id=2]
-[ext_resource path="res://interface/progress_bar_fg.tres" type="StyleBox" id=3]
-[ext_resource path="res://interface/progress_bar_bg.tres" type="StyleBox" id=4]
-[ext_resource path="res://assets/sfx/7_charging.ogg" type="AudioStream" id=5]
-[ext_resource path="res://font/GaroaHackerClubeBold.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://font/GaroaHackerClubeBold.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://interface/progress_bar_fg.tres" type="StyleBox" id=4]
+[ext_resource path="res://interface/progress_bar_bg.tres" type="StyleBox" id=5]
+[ext_resource path="res://assets/sfx/7_charging.ogg" type="AudioStream" id=6]
 
 [sub_resource type="Curve" id=1]
 
@@ -61,14 +61,20 @@ anim_offset_random = 0.0
 anim_loop = false
 _sections_unfolded = [ "Emission Shape", "Scale" ]
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="DynamicFont" id=4]
+
+size = 30
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=5]
 
 custom_solver_bias = 0.0
 extents = Vector2( 136, 32 )
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 
-resource_name = "shake"
 length = 0.25
 loop = true
 step = 0.05
@@ -85,14 +91,7 @@ tracks/0/keys = {
 "values": [ 0.0, 4.05195, 0.0, -4.1 ]
 }
 
-[sub_resource type="DynamicFont" id=6]
-
-size = 30
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 6 )
-
-[node name="rocket" type="Node2D"]
+[node name="rocket" type="Node2D" index="0"]
 
 pause_mode = 2
 position = Vector2( 520, 552 )
@@ -145,6 +144,32 @@ texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
 
+[node name="label" type="Label" parent="sprite" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -72.0
+margin_top = -232.0
+margin_right = 72.0
+margin_bottom = -184.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 4 )
+text = "{amount}"
+align = 1
+valign = 1
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors" ]
+
 [node name="area" type="Area2D" parent="." index="2"]
 
 input_pickable = true
@@ -158,7 +183,7 @@ audio_bus_name = "Master"
 [node name="shape" type="CollisionShape2D" parent="area" index="0"]
 
 position = Vector2( -80, -32 )
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="progress_bar" type="ProgressBar" parent="." index="3"]
 
@@ -177,8 +202,8 @@ mouse_filter = 0
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 0
-custom_styles/fg = ExtResource( 3 )
-custom_styles/bg = ExtResource( 4 )
+custom_styles/fg = ExtResource( 4 )
+custom_styles/bg = ExtResource( 5 )
 min_value = 0.0
 max_value = 100.0
 step = 1.0
@@ -205,7 +230,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/shake = SubResource( 5 )
+anims/shake = SubResource( 6 )
 blend_times = [  ]
 
 [node name="timer" type="Timer" parent="." index="6"]
@@ -221,39 +246,13 @@ position = Vector2( 0, -280 )
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="." index="8"]
 
-stream = ExtResource( 5 )
+stream = ExtResource( 6 )
 volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
 attenuation = 1.0
 bus = "sfx"
 area_mask = 1
-
-[node name="label" type="Label" parent="." index="9"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -72.0
-margin_top = -232.0
-margin_right = 72.0
-margin_bottom = -184.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 6 )
-text = "{amount}"
-align = 1
-valign = 1
-autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors" ]
 
 [connection signal="area_entered" from="area" to="." method="_on_area_entered"]
 
