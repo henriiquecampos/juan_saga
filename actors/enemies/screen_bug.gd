@@ -12,7 +12,6 @@ func _ready():
 func set_health(value):
 	health = value
 	if health < 1:
-		get_parent()._on_screen_bug_tree_exited(self)
 		get_parent().get_node("sfx").position = position
 		queue_free()
 

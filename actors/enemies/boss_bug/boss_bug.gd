@@ -17,3 +17,14 @@ func _remove_minions():
 func _on_health_changed(from, to):
 	if to == 0:
 		_spawn_minions(get_parent(), global_position)
+		
+
+
+func _on_state_changed(from, to):
+	match to:
+		JUMP:
+			$button/sprites/animator.play("jump")
+		IDLE:
+			$button/sprites/animator.play("idle")
+		WALK:
+			$button/sprites/animator.play("idle")

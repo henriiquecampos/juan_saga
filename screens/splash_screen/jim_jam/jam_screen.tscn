@@ -7,7 +7,7 @@
 [sub_resource type="Animation" id=1]
 
 resource_name = "jim_splash"
-length = 2.0
+length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -39,8 +39,9 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 1024.0
-margin_bottom = 592.0
+margin_left = -4.0
+margin_right = 1028.0
+margin_bottom = 600.0
 rect_pivot_offset = Vector2( 0, 0 )
 rect_clip_content = false
 mouse_filter = 1

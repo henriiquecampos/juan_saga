@@ -7,7 +7,7 @@
 [sub_resource type="Animation" id=1]
 
 resource_name = "jim_splash"
-length = 2.0
+length = 1.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
@@ -23,7 +23,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[node name="lgj_screen" index="0" instance=ExtResource( 1 )]
+[node name="lgj_screen" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 next_scene = "res://screens/main_menu/main_screen.tscn"

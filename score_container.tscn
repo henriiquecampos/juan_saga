@@ -8,7 +8,7 @@ var score = 0 setget set_score, get_score
 enum MODES {ADD, SET, REMOVE}
 var next_level = \"\"
 var current_level = \"\"
-var already_played = false
+var already_played = true
 var highscore = 0
 
 func set_score(value, MODE):
