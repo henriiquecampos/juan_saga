@@ -36,8 +36,6 @@ editor/display_folded = true
 
 position = Vector2( 96, 488 )
 
-[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
-
 
 [editable path="juan"]
 [editable path="interface/hud"]

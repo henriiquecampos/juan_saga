@@ -9,7 +9,7 @@
 [ext_resource path="res://actors/god_hand/animations/tutoring_05.tres" type="Animation" id=7]
 [ext_resource path="res://actors/god_hand/animations/tutoring_06.tres" type="Animation" id=8]
 
-[node name="level_01" instance=ExtResource( 1 )]
+[node name="level_01" index="0" instance=ExtResource( 1 )]
 
 next_level = "res://levels/level_02.tscn"
 current_level = "res://levels/level_01.tscn"
@@ -41,7 +41,6 @@ wait_time = 45.0
 
 [node name="spawner" parent="." index="10"]
 
-editor/display_folded = true
 _sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="bugs" parent="." index="11"]
@@ -102,8 +101,6 @@ _sections_unfolded = [ "Theme", "Visibility" ]
 margin_bottom = 74.0
 text = "when you have developed features for the engine you have to delvier them to the release rocket before the launching time is over!!"
 percent_visible = 0.0
-
-[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
 
 
 [editable path="juan"]
