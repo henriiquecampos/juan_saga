@@ -91,7 +91,7 @@ tracks/0/keys = {
 "values": [ 0.0, 4.05195, 0.0, -4.1 ]
 }
 
-[node name="rocket" type="Node2D" index="0"]
+[node name="rocket" type="Node2D"]
 
 pause_mode = 2
 position = Vector2( 520, 552 )

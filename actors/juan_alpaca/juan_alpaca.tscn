@@ -48,4 +48,6 @@ update_scale = true
 
 [connection signal="state_changed" from="." to="." method="_on_state_changed"]
 
+[connection signal="new_child" from="bugs" to="." method="_on_bugs_new_child"]
+
 

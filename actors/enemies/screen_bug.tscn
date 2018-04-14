@@ -31,6 +31,7 @@ script = ExtResource( 1 )
 _sections_unfolded = [ "Rect", "Textures" ]
 health = 3
 damage = 5
+penalty = 20
 score = 15
 
 [node name="timer" type="Timer" parent="." index="0"]

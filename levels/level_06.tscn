@@ -23,15 +23,7 @@ trigger = false
 unwanted_index = 1
 wanted_index = 2
 
-[node name="computer" parent="." index="2"]
-
-position = Vector2( 120, -96 )
-
 [node name="screen" parent="." index="7"]
-
-editor/display_folded = true
-
-[node name="spawner" parent="." index="10"]
 
 editor/display_folded = true
 
@@ -47,10 +39,7 @@ position = Vector2( 1592, 464 )
 
 position = Vector2( 736, 520 )
 
-[node name="camera" parent="." index="12"]
-
-editor/display_folded = true
-
 
 [editable path="juan"]
 [editable path="interface/hud"]
+[editable path="interface/hud/counter"]
