@@ -1,7 +1,7 @@
 extends "res://actors/enemies/ground_bug.gd"
 
-func _spawn_minions(to = $bugs, where = position):
-	for i in bugs_spawn:
+func _spawn_minions(to = $bugs, where = position, amount = bugs_spawn):
+	for i in amount:
 		var s = load("res://actors/enemies/ground_bug.tscn").instance()
 		s.player = get_tree().get_nodes_in_group("player")[0]
 		s.get_node("jump_interval").start()
@@ -17,8 +17,7 @@ func _remove_minions():
 func _on_health_changed(from, to):
 	if to == 0:
 		_spawn_minions(get_parent(), global_position)
-		
-
+	_spawn_minions($bugs, position, 2)
 
 func _on_state_changed(from, to):
 	match to:
