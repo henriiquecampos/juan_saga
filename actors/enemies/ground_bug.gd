@@ -4,6 +4,7 @@ export(int) var health = 3 setget set_health
 export(int) var bugs_spawn = 1
 export(int) var score = 15
 export(int) var jumps = 5
+export(int) var penalty = 5
 var player = null
 const SCREEN_BUG = preload("res://actors/enemies/screen_bug.tscn")
 

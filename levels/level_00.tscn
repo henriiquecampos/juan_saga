@@ -112,7 +112,7 @@ func shake(new_mag, new_spam):
 	is_shaking = false
 	print(\"stop shaking\")"
 
-[node name="level_00" type="Node2D" index="0"]
+[node name="level_00" type="Node2D"]
 
 script = ExtResource( 1 )
 next_level = "res://levels/level_01.tscn"

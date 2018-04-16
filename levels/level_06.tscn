@@ -34,10 +34,12 @@ editor/display_folded = true
 [node name="boss_bug" parent="bugs" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 1592, 464 )
+penalty = 5
 
 [node name="ground_bug" parent="bugs" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 736, 520 )
+penalty = 5
 
 
 [editable path="juan"]
