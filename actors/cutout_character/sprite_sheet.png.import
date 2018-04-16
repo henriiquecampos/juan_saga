@@ -2,14 +2,14 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite_sheet.png-b1cb4212f65c7b8311e9c3420c2a618b.stex"
+path="res://.import/sprite_sheet.png-c48e90aba8cffd195315a8440daf984c.stex"
 
 [deps]
 
-source_file="res://actors/juan_alpaca/sprite_sheet.png"
+source_file="res://actors/cutout_character/sprite_sheet.png"
 source_md5="dbc480d741a8bfcee5581ae88beb4120"
 
-dest_files=[ "res://.import/sprite_sheet.png-b1cb4212f65c7b8311e9c3420c2a618b.stex" ]
+dest_files=[ "res://.import/sprite_sheet.png-c48e90aba8cffd195315a8440daf984c.stex" ]
 dest_md5="fc09ef754a3b0f70657b6183f47be2cb"
 
 [params]

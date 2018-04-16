@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://actors/juan_alpaca/sprite_sheet.png" type="Texture" id=1]
+[ext_resource path="res://actors/cutout_character/sprite_sheet.png" type="Texture" id=1]
 [ext_resource path="res://actors/cutout_character/animations/setup.tres" type="Animation" id=2]
 [ext_resource path="res://actors/cutout_character/animations/damage.tres" type="Animation" id=3]
 [ext_resource path="res://actors/cutout_character/animations/fall.tres" type="Animation" id=4]
