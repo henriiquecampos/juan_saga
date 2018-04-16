@@ -1,22 +1,27 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://actors/enemies/ground_bug.gd" type="Script" id=1]
 [ext_resource path="res://actors/enemies/screen_bug.png" type="Texture" id=2]
-[ext_resource path="res://actors/enemies/screen_bug_pressed.png" type="Texture" id=3]
-[ext_resource path="res://actors/enemies/screen_bug_hilit.png" type="Texture" id=4]
-[ext_resource path="res://assets/sfx/1_jump.ogg" type="AudioStream" id=5]
+[ext_resource path="res://assets/sfx/1_jump.ogg" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 
 custom_solver_bias = 0.0
 radius = 128.0
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="GDScript" id=5]
+
+script/source = "extends Area2D
+
+func damage_parent(amount):
+	get_parent().damage_health(amount)"
+
+[sub_resource type="CircleShape2D" id=4]
 
 custom_solver_bias = 0.0
 radius = 24.0
@@ -34,6 +39,7 @@ health = 3
 bugs_spawn = 1
 score = 15
 jumps = 5
+penalty = 5
 
 [node name="shape" type="CollisionShape2D" parent="." index="0"]
 
@@ -52,7 +58,7 @@ audio_bus_name = "Master"
 
 [node name="shape" type="CollisionShape2D" parent="area" index="0"]
 
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="attach_area" type="Area2D" parent="." index="2" groups=[
 "enemy",
@@ -65,40 +71,20 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+script = SubResource( 5 )
 
 [node name="shape" type="CollisionShape2D" parent="attach_area" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
-[node name="button" type="TextureButton" parent="." index="3"]
+[node name="sprite" type="Sprite" parent="." index="3"]
 
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = -16.0
-margin_top = -16.0
-margin_right = 16.0
-margin_bottom = 16.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 2
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 3 )
-texture_hover = ExtResource( 4 )
+texture = ExtResource( 2 )
 _sections_unfolded = [ "Mouse", "Textures", "Visibility" ]
 
 [node name="sfx" type="AudioStreamPlayer2D" parent="." index="4"]
 
-stream = ExtResource( 5 )
+stream = ExtResource( 3 )
 volume_db = 0.0
 autoplay = false
 max_distance = 2000.0
