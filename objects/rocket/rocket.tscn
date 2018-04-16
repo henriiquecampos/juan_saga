@@ -127,7 +127,7 @@ _sections_unfolded = [ "Process Material", "Time" ]
 
 texture = ExtResource( 2 )
 offset = Vector2( 0, -248 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Offset", "Transform" ]
 
 [node name="ramp" type="Polygon2D" parent="sprite" index="0"]
 
