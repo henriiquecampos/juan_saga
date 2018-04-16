@@ -1,10 +1,11 @@
 extends Area2D
 
 enum states {IDLE, STAND, DUCK, IN_AIR}
-enum shapes{RIGHT_PUNCH, LEFT_PUNCH, UPPER_PUNCH, DOWN_KICK, LEFT_SWEEP, RIGHT_SWEEP, DUCK, IDLE}
+enum shapes{DOWN_KICK, IDLE}
 var state = STAND setget set_state, get_state
 
 signal state_changed(from, to)
+signal shape_enabled(shape)
 
 func set_state(new_state):
 	if state == new_state:
@@ -17,13 +18,11 @@ func set_state(new_state):
 			$idle.set_disabled(false)
 		STAND:
 			$idle.set_disabled(false)
-			$duck.set_disabled(true)
+			$down_kick.set_disabled(false)
 		DUCK:
-			$duck.set_disabled(false)
 			$idle.set_disabled(true)
 		IN_AIR:
 			$idle.set_disabled(false)
-			$duck.set_disabled(true)
 	emit_signal("state_changed", state, new_state)
 	state = new_state
 	
