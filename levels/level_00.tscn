@@ -112,7 +112,7 @@ func shake(new_mag, new_spam):
 	is_shaking = false
 	print(\"stop shaking\")"
 
-[node name="level_00" type="Node2D"]
+[node name="level_00" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 next_level = "res://levels/level_01.tscn"
@@ -169,7 +169,7 @@ position = Vector2( 72, 448 )
 z_index = 1
 _sections_unfolded = [ "Z Index" ]
 
-[node name="camera_rig" parent="juan" index="5"]
+[node name="camera_rig" parent="juan" index="4"]
 
 remote_path = NodePath("../../camera")
 
@@ -228,6 +228,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [node name="game_screen" parent="screen" index="0" instance=ExtResource( 7 )]
 
 pause_mode = 2
+visible = false
 next_scene = "res://screens/game_over/game_over_screen.tscn"
 
 [node name="fade" type="CanvasLayer" parent="." index="8"]
@@ -315,19 +316,19 @@ limit_bottom = 638
 limit_smoothed = false
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
+smoothing_enabled = true
+smoothing_speed = 10.0
 offset_v = 0.0
 offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
+drag_margin_left = 0.05
+drag_margin_top = 0.1
+drag_margin_right = 0.05
+drag_margin_bottom = 0.25
 editor_draw_screen = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 script = SubResource( 5 )
-_sections_unfolded = [ "Limit", "Pause" ]
+_sections_unfolded = [ "Pause", "Smoothing" ]
 rocket_path = NodePath("../rocket")
 
 [node name="tween" type="Tween" parent="camera" index="0"]
