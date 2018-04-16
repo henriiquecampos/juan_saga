@@ -14,9 +14,9 @@ func _on_state_changed(from, to):
 			animator.play("jump")
 			$sfx.play()
 
-func _on_bugs_new_child(penalty):
+func _on_bugs_new_child(penalty, child_amount):
 	walk_speed -= penalty
-#	$debug.visible = $bugs.get_child_count() > 1
+	$debug.visible = child_amount > 1
 	
 func _input(event):
 	if event.is_action_pressed("interact"):

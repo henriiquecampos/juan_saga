@@ -64,6 +64,6 @@ func bump():
 	yield($tween, "tween_completed")
 	$sprite.rotation_degrees = 0
 
-func _on_bugs_new_child(penalty):
+func _on_bugs_new_child(penalty, child_amount):
 	dev_speed -= penalty
-	$debug.visible = $bugs.get_child_count() > 1
+	$debug.visible = child_amount > 1

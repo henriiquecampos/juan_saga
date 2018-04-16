@@ -62,3 +62,4 @@ shape = SubResource( 2 )
 
 [editable path="juan"]
 [editable path="interface/hud"]
+[editable path="interface/hud/counter"]
