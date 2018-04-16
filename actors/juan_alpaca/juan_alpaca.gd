@@ -16,6 +16,7 @@ func _on_state_changed(from, to):
 
 func _on_bugs_new_child(penalty, child_amount):
 	walk_speed -= penalty
+	jump_height -= penalty
 	$debug.visible = child_amount > 1
 	
 func _input(event):
