@@ -9,15 +9,14 @@ func _spawn_minions(to = $bugs, where = position, amount = bugs_spawn):
 		s.position.y = where.y + rand_range(-64, 64)
 		to.add_child(s)
 
-
 func _remove_minions():
 	for c in $bugs.get_children():
 		c.queue_free()
 
 func _on_health_changed(from, to):
 	if to == 0:
-		_spawn_minions(get_parent(), global_position)
-	_spawn_minions($bugs, position, 2)
+		_spawn_minions(get_parent(), global_position, 10)
+	$sprite/cutout_character/damage.play("damage")
 
 func _on_state_changed(from, to):
 	match to:

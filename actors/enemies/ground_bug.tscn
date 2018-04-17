@@ -9,12 +9,12 @@
 custom_solver_bias = 0.0
 extents = Vector2( 16, 16 )
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
 radius = 128.0
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=3]
 
 script/source = "extends Area2D
 
@@ -33,7 +33,7 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-walk_speed = 300
+walk_speed = 100
 jump_height = 800
 health = 3
 bugs_spawn = 1
@@ -58,7 +58,7 @@ audio_bus_name = "Master"
 
 [node name="shape" type="CollisionShape2D" parent="area" index="0"]
 
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="attach_area" type="Area2D" parent="." index="2" groups=[
 "enemy",
@@ -71,7 +71,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = SubResource( 5 )
+script = SubResource( 3 )
 
 [node name="shape" type="CollisionShape2D" parent="attach_area" index="0"]
 

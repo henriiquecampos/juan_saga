@@ -10,7 +10,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 80, 40 )
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=2]
 
 custom_solver_bias = 0.0
 radius = 320.0
@@ -34,7 +34,7 @@ shape = SubResource( 1 )
 
 [node name="shape" parent="area" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 2 )
 
 [node name="shape" parent="attach_area" index="0"]
 
@@ -48,11 +48,11 @@ _sections_unfolded = [ "Mouse", "Textures", "Transform", "Visibility" ]
 
 [node name="cutout_character" parent="sprite" index="0" instance=ExtResource( 3 )]
 
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Transform", "Visibility" ]
 
 [node name="spawn_pos" type="Position2D" parent="sprite" index="1"]
 
-position = Vector2( 96, 8 )
+position = Vector2( 112, 8 )
 
 [node name="bugs" parent="." index="5" instance=ExtResource( 4 )]
 
