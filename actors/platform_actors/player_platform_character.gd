@@ -11,6 +11,7 @@ func _input(event):
 				set_state(WALK)
 			if event.is_action_pressed("jump"):
 				set_state(JUMP)
+				
 		WALK:
 			if event.is_action_pressed("right"):
 				direction = 1
@@ -22,6 +23,7 @@ func _input(event):
 				set_state(IDLE)
 			if event.is_action_pressed("jump"):
 				set_state(JUMP)
+
 		JUMP:
 			if event.is_action_pressed("right"):
 				direction = 1

@@ -25,7 +25,7 @@ func _on_bugs_new_child(penalty, child_amount):
 	$debug.visible = child_amount > 1
 	
 func _input(event):
-	if event.is_action_pressed("interact"):
+	if event.is_action_pressed("debug"):
 		$bugs.damage_child()
 
 func _on_fighter_state_changed(from, to):

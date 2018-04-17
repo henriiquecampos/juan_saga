@@ -14,7 +14,7 @@ func _process(delta):
 			$progress_bar.value += dev_speed * delta
 		if Input.is_action_just_released("interact"):
 			$progress_bar.value = 0
-		if Input.is_action_just_pressed("interact"):
+		if Input.is_action_just_pressed("debug"):
 			$bugs.damage_child()
 			
 
