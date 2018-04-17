@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/sprite_sheet.png-c48e90aba8cffd195315a8440daf984c.stex"
+path="res://.import/sprite_sheet.png-33a085a5f39930e0cf6ec0d35ef04f01.stex"
 
 [deps]
 
-source_file="res://actors/cutout_character/sprite_sheet.png"
-source_md5="dbc480d741a8bfcee5581ae88beb4120"
+source_file="res://actors/cutout_character/boss_bug/sprite_sheet.png"
+source_md5="8d139dce6c3698041d5262292d97d95b"
 
-dest_files=[ "res://.import/sprite_sheet.png-c48e90aba8cffd195315a8440daf984c.stex" ]
-dest_md5="fc09ef754a3b0f70657b6183f47be2cb"
+dest_files=[ "res://.import/sprite_sheet.png-33a085a5f39930e0cf6ec0d35ef04f01.stex" ]
+dest_md5="f06f05c8b9505b67992b0326d5b86e4d"
 
 [params]
 
