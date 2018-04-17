@@ -4,14 +4,12 @@ export(int) var health = 3 setget set_health
 export(int) var bugs_spawn = 1
 export(int) var score = 15
 export(int) var jumps = 5
+export(int) var penalty = 5
 var player = null
 const SCREEN_BUG = preload("res://actors/enemies/screen_bug.tscn")
 
 signal health_changed(from, to)
 
-func _ready():
-	$button.connect("button_up", self, "damage_health", [1])
-	
 func _on_area_entered(area):
 	if area.is_in_group("player"):
 		player = area

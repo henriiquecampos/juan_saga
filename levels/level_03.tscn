@@ -28,8 +28,7 @@ editor/display_folded = true
 [node name="boss_bug" parent="bugs" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 1680, 464 )
-
-[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
+penalty = 5
 
 
 [editable path="juan"]

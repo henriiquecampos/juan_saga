@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=2]
+[gd_resource type="Theme" load_steps=11 format=2]
 
 [ext_resource path="res://interface/menu_bar_bg.tres" type="StyleBox" id=1]
 [ext_resource path="res://interface/menu_bar_fg.tres" type="StyleBox" id=2]
@@ -148,6 +148,35 @@ shadow_size = 0
 anti_aliasing = true
 anti_aliasing_size = 1
 
+[sub_resource type="StyleBoxFlat" id=7]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+bg_color = Color( 0.208466, 0.255757, 0.386719, 1 )
+draw_center = true
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color( 0.292694, 0.359093, 0.542969, 1 )
+border_blend = false
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+corner_detail = 8
+expand_margin_left = 10.0
+expand_margin_right = 10.0
+expand_margin_top = 10.0
+expand_margin_bottom = 10.0
+shadow_color = Color( 0, 0, 0, 0.6 )
+shadow_size = 0
+anti_aliasing = true
+anti_aliasing_size = 1
+_sections_unfolded = [ "Expand Margin" ]
+
 [sub_resource type="DynamicFont" id=6]
 
 size = 20
@@ -174,10 +203,11 @@ Button/styles/pressed = SubResource( 4 )
 Panel/styles/panel = SubResource( 5 )
 Panel/styles/panelf = null
 Panel/styles/panelnc = null
+PanelContainer/styles/panel = SubResource( 7 )
 ProgressBar/colors/font_color = Color( 0.941176, 0.941176, 0.941176, 1 )
 ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 ProgressBar/fonts/font = null
 ProgressBar/styles/bg = ExtResource( 1 )
 ProgressBar/styles/fg = ExtResource( 2 )
-_sections_unfolded = [ "Button", "Panel", "Panel/styles", "ProgressBar" ]
+_sections_unfolded = [ "Button", "Panel", "Panel/styles", "PanelContainer", "PanelContainer/styles", "ProgressBar" ]
 

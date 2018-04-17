@@ -77,40 +77,12 @@ script/source = "extends Camera2D
 
 export (NodePath) var rocket_path
 onready var rocket = get_node(rocket_path)
-var magnitude = 1.0
-var time_spam = 0
-var is_shaking = false
-onready var initial_pos = get_position()
 
 func tween_position():
 	var target_pos = rocket.get_node(\"center\").global_position
 	$tween.interpolate_property(self, \"global_position\", global_position, target_pos,
 		2.0, Tween.TRANS_SINE, Tween.EASE_IN)
-	$tween.start()
-
-func shake(new_mag, new_spam):
-	print(\"shaking\")
-	if magnitude > new_mag:
-		return
-	magnitude = new_mag
-	time_spam = new_spam
-	
-	if is_shaking:
-		return
-	is_shaking = true
-	
-	while time_spam > 0:
-		var shake = Vector2()
-		shake.x = position.x + rand_range(-magnitude, magnitude)
-		shake.y = position.y + rand_range(-magnitude, magnitude)
-		
-		set_position(shake)
-		time_spam -= get_process_delta_time()
-		yield(get_tree(), \"idle_frame\")
-	set_position(initial_pos)
-	magnitude = 0
-	is_shaking = false
-	print(\"stop shaking\")"
+	$tween.start()"
 
 [node name="level_00" type="Node2D" index="0"]
 
@@ -164,12 +136,11 @@ icons_path = NodePath("../interface/hud/items_container/items")
 
 [node name="juan" parent="." index="3" instance=ExtResource( 5 )]
 
-editor/display_folded = true
 position = Vector2( 72, 448 )
 z_index = 1
 _sections_unfolded = [ "Z Index" ]
 
-[node name="camera_rig" parent="juan" index="5"]
+[node name="camera_rig" parent="juan" index="4"]
 
 remote_path = NodePath("../../camera")
 
@@ -315,19 +286,19 @@ limit_bottom = 638
 limit_smoothed = false
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
-smoothing_enabled = false
-smoothing_speed = 5.0
+smoothing_enabled = true
+smoothing_speed = 10.0
 offset_v = 0.0
 offset_h = 0.0
-drag_margin_left = 0.2
-drag_margin_top = 0.2
-drag_margin_right = 0.2
-drag_margin_bottom = 0.2
+drag_margin_left = 0.05
+drag_margin_top = 0.1
+drag_margin_right = 0.05
+drag_margin_bottom = 0.25
 editor_draw_screen = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 script = SubResource( 5 )
-_sections_unfolded = [ "Limit", "Pause" ]
+_sections_unfolded = [ "Limit", "Pause", "Smoothing" ]
 rocket_path = NodePath("../rocket")
 
 [node name="tween" type="Tween" parent="camera" index="0"]

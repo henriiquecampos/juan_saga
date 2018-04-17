@@ -1,0 +1,21 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+
+resource_name = "damage"
+length = 0.5
+loop = false
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.15, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 0.3, 1 ), Color( 1, 0.15, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 0.3, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0.15, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+

@@ -16,8 +16,12 @@ position = Vector2( 160, 0 )
 
 [node name="sprite" parent="rocket" index="1"]
 
-editor/display_folded = true
+flip_h = true
+
+[node name="ramp" parent="rocket/sprite" index="0"]
+
 scale = Vector2( -1, 1 )
+_sections_unfolded = [ "Transform" ]
 
 [node name="area" parent="rocket" index="2"]
 
@@ -46,18 +50,22 @@ editor/display_folded = true
 [node name="ground_bug" parent="bugs" index="1" instance=ExtResource( 2 )]
 
 position = Vector2( 112, 24 )
+penalty = 5
 
 [node name="ground_bug_2" parent="bugs" index="2" instance=ExtResource( 2 )]
 
 position = Vector2( 1360, 536 )
+penalty = 5
 
 [node name="ground_bug_3" parent="bugs" index="3" instance=ExtResource( 2 )]
 
 position = Vector2( 568, 528 )
+penalty = 5
 
 [node name="ground_bug_4" parent="bugs" index="4" instance=ExtResource( 2 )]
 
 position = Vector2( 984, 528 )
+penalty = 5
 
 
 [editable path="rocket"]

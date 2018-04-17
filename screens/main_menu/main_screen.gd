@@ -19,4 +19,3 @@ func _on_sfx_volume_value_changed(value):
 		can_play = true
 		return
 	$sfx_volume/sfx_test.play()
-	

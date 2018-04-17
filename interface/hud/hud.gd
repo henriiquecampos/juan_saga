@@ -10,6 +10,7 @@ func uncomplete():
 	for c in get_children():
 		c.hide()
 	$uncompleted.show()
+	$uncompleted/button.grab_focus()
 
 func _on_retry_button_up():
 	get_tree().reload_current_scene()

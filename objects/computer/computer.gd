@@ -14,7 +14,7 @@ func _process(delta):
 			$progress_bar.value += dev_speed * delta
 		if Input.is_action_just_released("interact"):
 			$progress_bar.value = 0
-		if Input.is_action_just_pressed("interact"):
+		if Input.is_action_just_pressed("debug"):
 			$bugs.damage_child()
 			
 
@@ -64,6 +64,6 @@ func bump():
 	yield($tween, "tween_completed")
 	$sprite.rotation_degrees = 0
 
-func _on_bugs_new_child(penalty):
+func _on_bugs_new_child(penalty, child_amount):
 	dev_speed -= penalty
-	$debug.visible = $bugs.get_child_count() > 1
+	$debug.visible = child_amount > 1
