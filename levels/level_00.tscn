@@ -199,7 +199,6 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [node name="game_screen" parent="screen" index="0" instance=ExtResource( 7 )]
 
 pause_mode = 2
-visible = false
 next_scene = "res://screens/game_over/game_over_screen.tscn"
 
 [node name="fade" type="CanvasLayer" parent="." index="8"]
