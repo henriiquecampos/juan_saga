@@ -84,7 +84,7 @@ func tween_position():
 		2.0, Tween.TRANS_SINE, Tween.EASE_IN)
 	$tween.start()"
 
-[node name="level_00" type="Node2D"]
+[node name="level_00" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
 next_level = "res://levels/level_01.tscn"
