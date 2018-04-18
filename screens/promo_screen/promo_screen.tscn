@@ -27,8 +27,14 @@ script/source = "extends HBoxContainer
 
 const BRIGHT = Color(1.1, 1.1, 1.1)
 const DARK = Color(0.8, 0.8, 0.8)
-
+const BGM_MUSIC = preload(\"res://assets/bgm/ending_music.ogg\")
 func _ready():
+	bgm.get_node(\"animator\").play_backwards(\"fade\")
+	yield(bgm.get_node(\"animator\"), \"animation_finished\")
+	bgm.stream = BGM_MUSIC
+	bgm.play()
+	bgm.get_node(\"animator\").play(\"fade\")
+	
 	for c in get_children():
 		c.connect(\"focus_entered\", self, \"bright\", [c])
 		c.connect(\"button_down\", self, \"darker\", [c])
@@ -48,9 +54,9 @@ func darker(button):
 func open_link(link):
 	OS.shell_open(link)"
 
-[node name="promo_screen" instance=ExtResource( 1 )]
+[node name="promo_screen" index="0" instance=ExtResource( 1 )]
 
-next_scene = "res://levels/level_01.tscn"
+next_scene = "res://screens/main_menu/main_screen.tscn"
 
 [node name="background" type="TextureRect" parent="." index="0"]
 
