@@ -5,7 +5,7 @@
 [ext_resource path="res://actors/enemies/boss_bug/boss_bug.tscn" type="PackedScene" id=3]
 [ext_resource path="res://actors/enemies/ground_bug.tscn" type="PackedScene" id=4]
 
-[node name="level_00" index="0" instance=ExtResource( 1 )]
+[node name="level_00" instance=ExtResource( 1 )]
 
 next_level = "res://screens/promo_screen/promo_screen.tscn"
 current_level = "res://levels/level_06.tscn"
@@ -34,12 +34,10 @@ editor/display_folded = true
 [node name="boss_bug" parent="bugs" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 1592, 464 )
-penalty = 5
 
 [node name="ground_bug" parent="bugs" index="2" instance=ExtResource( 4 )]
 
 position = Vector2( 736, 520 )
-penalty = 5
 
 
 [editable path="juan"]
