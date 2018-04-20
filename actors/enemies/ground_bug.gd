@@ -7,6 +7,7 @@ export(int) var jumps = 5
 export(int) var penalty = 5
 var player = null
 const SCREEN_BUG = preload("res://actors/enemies/screen_bug.tscn")
+const SCORE_POP = preload("res://interface/score_pop.tscn")
 
 signal health_changed(from, to)
 
@@ -32,6 +33,10 @@ func set_health(value):
 	emit_signal("health_changed", health, value)
 	health = value
 	if health < 1:
+		var s = SCORE_POP.instance()
+		s.global_position = global_position
+		s.get_node("label").text = s.get_node("label").text.format({"score":int(score)})
+		get_parent().add_child(s)
 		get_parent()._on_screen_bug_tree_exited(self)
 		get_parent().get_node("sfx").position = position
 		queue_free()
