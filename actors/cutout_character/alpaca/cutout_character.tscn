@@ -7,6 +7,7 @@
 [ext_resource path="res://actors/cutout_character/alpaca/animations/idle.tres" type="Animation" id=5]
 [ext_resource path="res://actors/cutout_character/alpaca/animations/jump.tres" type="Animation" id=6]
 [ext_resource path="res://actors/cutout_character/alpaca/animations/walk.tres" type="Animation" id=7]
+[ext_resource path="res://actors/cutout_character/alpaca/animations/shake.tres" type="Animation" id=8]
 
 [sub_resource type="GDScript" id=1]
 
@@ -435,157 +436,6 @@ tracks/33/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-
-resource_name = "shake"
-length = 0.2
-loop = false
-step = 0.05
-tracks/0/type = "value"
-tracks/0/path = NodePath("body/neck/head:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ Rect2( 288, 64, 96, 64 ), Rect2( 160, 64, 96, 64 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("body/tail:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 40.8628, -13.2563 ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("body/arm_left:rotation_degrees")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 0.1, 0.137961 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ -22.3628, -5.71255, 0.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("body/arm_right:rotation_degrees")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 0.1, 0.137961 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 11.2429, 0.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("body/arm_left:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = false
-tracks/4/keys = {
-"times": PoolRealArray( 0, 0.1, 0.15 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 79, -9 ), Vector2( 73.5, -1.6 ), Vector2( 79, -9 ) ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("body/arm_right:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = false
-tracks/5/keys = {
-"times": PoolRealArray( 0, 0.1, 0.15 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 53.5, -12 ), Vector2( 48, -4.6 ), Vector2( 53.5, -12 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("body:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0, 0.1, 0.15 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -32, -41 ), Vector2( -32, -48 ), Vector2( -32, -41 ) ]
-}
-tracks/7/type = "value"
-tracks/7/path = NodePath("body:rotation_degrees")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
-"times": PoolRealArray( 0, 0.1, 0.15 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 2.86473, 0.0 ]
-}
-tracks/8/type = "value"
-tracks/8/path = NodePath("body/neck/head:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
-"times": PoolRealArray( 0, 0.1, 0.15 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( -15, -101 ), Vector2( -15, -101 ), Vector2( -15, -101 ) ]
-}
-tracks/9/type = "value"
-tracks/9/path = NodePath("body/neck/head:rotation_degrees")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
-"times": PoolRealArray( 0, 0.1, 0.15 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ -6.33756, 4.34181, 0.0 ]
-}
-tracks/10/type = "value"
-tracks/10/path = NodePath("leg_right:rotation_degrees")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 17.4919, 0.0 ]
-}
-tracks/11/type = "value"
-tracks/11/path = NodePath("leg_left:rotation_degrees")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
-"times": PoolRealArray( 0.05, 0.1, 0.15 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, -28.9971, 0.0 ]
-}
-
 [node name="cutout_character" type="Position2D"]
 
 scale = Vector2( 0.5, 0.5 )
@@ -721,7 +571,7 @@ playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
 anims/SETUP = SubResource( 2 )
-anims/shake = SubResource( 3 )
+anims/shake = ExtResource( 8 )
 blend_times = [  ]
 
 

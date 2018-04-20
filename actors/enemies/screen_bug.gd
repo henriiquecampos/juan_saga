@@ -19,6 +19,10 @@ func set_health(value):
 		s.get_node("label").text = s.get_node("label").text.format({"score":int(score)})
 		get_parent().add_child(s)
 		get_parent().get_node("sfx").position = position
+		var p = load("res://actors/enemies/particles/bug_death.tscn").instance()
+		p.position = position
+		get_parent().add_child(p)
+		p.emitting = true
 		queue_free()
 
 func damage_health(amount):

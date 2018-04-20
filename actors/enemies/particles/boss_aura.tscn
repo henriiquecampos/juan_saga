@@ -1,10 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Boss.tres" type="Material" id=1]
-[ext_resource path="res://particles/02.png" type="Texture" id=2]
-[ext_resource path="res://levels/particles_2d.gd" type="Script" id=3]
+[ext_resource path="res://actors/enemies/particles/boss_bug_material.tres" type="Material" id=1]
+[ext_resource path="res://actors/enemies/particles/02.png" type="Texture" id=2]
 
-[node name="particles_2d" type="Particles2D"]
+[node name="boss_aura" type="Particles2D"]
 
 show_behind_parent = true
 position = Vector2( -3.66455, 80.729 )
@@ -27,7 +26,6 @@ texture = ExtResource( 2 )
 normal_map = null
 h_frames = 2
 v_frames = 1
-script = ExtResource( 3 )
 _sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z Index" ]
 
 

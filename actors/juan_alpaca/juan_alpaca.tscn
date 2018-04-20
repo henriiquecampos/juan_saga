@@ -18,7 +18,7 @@ extents = Vector2( 32, 16 )
 custom_solver_bias = 0.0
 radius = 32.9848
 
-[node name="platform_character" index="0" instance=ExtResource( 1 )]
+[node name="platform_character" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 walk_speed = 400
