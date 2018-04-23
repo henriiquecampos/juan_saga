@@ -99,6 +99,5 @@ func update_score(current_score):
 func pop_score(amount):
 	var s = SCORE_POP.instance()
 	s.position.y -= 100
-	s.modulate = Color("5efca3")
 	s.get_node("label").text = s.get_node("label").text.format({"score":int(amount)})
 	add_child(s)

@@ -32,9 +32,8 @@ use_filter = false
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="score_pop" type="Node2D"]
+[node name="score_pop" type="Node2D" index="0"]
 
-modulate = Color( 0.360784, 0.631373, 0.917647, 1 )
 z_index = 3
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform", "Visibility", "Z Index", "custom_fonts" ]

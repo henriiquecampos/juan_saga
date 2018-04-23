@@ -2,9 +2,9 @@
 
 [ext_resource path="res://levels/level_00.gd" type="Script" id=1]
 [ext_resource path="res://objects/rocket/rocket.tscn" type="PackedScene" id=2]
-[ext_resource path="res://levels/tilesets/tileset_godot.tres" type="TileSet" id=3]
-[ext_resource path="res://objects/computer/computer.tscn" type="PackedScene" id=4]
-[ext_resource path="res://actors/juan_alpaca/juan_alpaca.tscn" type="PackedScene" id=5]
+[ext_resource path="res://actors/juan_alpaca/juan_alpaca.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/tilesets/tileset_godot.tres" type="TileSet" id=4]
+[ext_resource path="res://objects/computer/computer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://interface/hud/hud.tscn" type="PackedScene" id=6]
 [ext_resource path="res://screens/basic_screen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://levels/spawner.gd" type="Script" id=8]
@@ -84,7 +84,7 @@ func tween_position():
 		2.0, Tween.TRANS_SINE, Tween.EASE_IN)
 	$tween.start()"
 
-[node name="level_00" type="Node2D" index="0"]
+[node name="level_00" type="Node2D"]
 
 script = ExtResource( 1 )
 next_level = "res://levels/level_01.tscn"
@@ -98,7 +98,17 @@ _sections_unfolded = [ "Pause", "Z Index" ]
 icons_path = NodePath("../interface/hud/items_container/items")
 score_path = NodePath("../interface/hud/score")
 
-[node name="tilemap" type="Node2D" parent="." index="1"]
+[node name="juan" parent="." index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 72, 448 )
+z_index = 1
+_sections_unfolded = [ "Z Index" ]
+
+[node name="camera_rig" parent="juan" index="4"]
+
+remote_path = NodePath("../../camera")
+
+[node name="tilemap" type="Node2D" parent="." index="2"]
 
 editor/display_folded = true
 position = Vector2( 0, 256 )
@@ -111,7 +121,7 @@ __meta__ = {
 
 scale = Vector2( 0.5, 0.5 )
 mode = 0
-tile_set = ExtResource( 3 )
+tile_set = ExtResource( 4 )
 cell_size = Vector2( 128, 128 )
 cell_quadrant_size = 16
 cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
@@ -129,20 +139,10 @@ format = 1
 tile_data = PoolIntArray( -262144, 0, 0, -262143, 2, 0, -262142, 1, 0, -262141, 0, 0, -262125, 6, 0, -262122, 1, 0, -262121, 0, 0, -262120, 2, 0, -262119, 1, 0, -262118, 0, 0, -262117, 2, 0, -262116, 1, 0, -196603, 6, 0, -196591, 6, 0, -131058, 6, 0, -65529, 6, 0, 3, 6, 0, 18, 6, 0, 131077, 6, 0, 131087, 6, 0, 262144, 2, 0, 262145, 1, 0, 262146, 0, 0, 262147, 2, 0, 262148, 1, 0, 262149, 0, 0, 262150, 2, 0, 262151, 1, 0, 262152, 0, 0, 262153, 2, 0, 262154, 1, 0, 262155, 0, 0, 262156, 2, 0, 262157, 1, 0, 262158, 0, 0, 262159, 2, 0, 262160, 0, 0, 262161, 2, 0, 262162, 1, 0, 262163, 0, 0, 262164, 2, 0, 262165, 1, 0, 262166, 0, 0, 262167, 2, 0, 262168, 1, 0, 262169, 0, 0, 262170, 2, 0, 262171, 1, 0, 262172, 0, 0, 327680, 3, 0, 327681, 5, 0, 327682, 4, 0, 327683, 3, 0, 327684, 5, 0, 327685, 4, 0, 327686, 3, 0, 327687, 5, 0, 327688, 4, 0, 327689, 3, 0, 327690, 5, 0, 327691, 4, 0, 327692, 3, 0, 327693, 5, 0, 327694, 4, 0, 327695, 3, 0, 327696, 5, 0, 327697, 4, 0, 327698, 3, 0, 327699, 5, 0, 327700, 4, 0, 327701, 3, 0, 327702, 5, 0, 327703, 4, 0, 327704, 3, 0, 327705, 5, 0, 327706, 4, 0, 327707, 3, 0, 327708, 5, 0 )
 _sections_unfolded = [ "Cell", "Collision", "Transform" ]
 
-[node name="computer" parent="." index="2" instance=ExtResource( 4 )]
+[node name="computer" parent="." index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 120, -96 )
 icons_path = NodePath("../interface/hud/items_container/items")
-
-[node name="juan" parent="." index="3" instance=ExtResource( 5 )]
-
-position = Vector2( 72, 448 )
-z_index = 1
-_sections_unfolded = [ "Z Index" ]
-
-[node name="camera_rig" parent="juan" index="4"]
-
-remote_path = NodePath("../../camera")
 
 [node name="left_wall" type="StaticBody2D" parent="." index="4"]
 

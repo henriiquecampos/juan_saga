@@ -2,6 +2,7 @@
 
 [resource]
 
+resource_name = "SETUP"
 length = 1.0
 loop = false
 step = 0.1
