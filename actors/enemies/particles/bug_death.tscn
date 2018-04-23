@@ -13,7 +13,7 @@ light_mode = 0
 
 material = SubResource( 1 )
 emitting = false
-amount = 11
+amount = 16
 lifetime = 1.5
 one_shot = true
 preprocess = 0.0

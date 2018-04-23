@@ -3,7 +3,7 @@
 [ext_resource path="res://actors/enemies/particles/boss_bug_material.tres" type="Material" id=1]
 [ext_resource path="res://actors/enemies/particles/02.png" type="Texture" id=2]
 
-[node name="boss_aura" type="Particles2D"]
+[node name="boss_aura" type="Particles2D" index="0"]
 
 show_behind_parent = true
 position = Vector2( -3.66455, 80.729 )

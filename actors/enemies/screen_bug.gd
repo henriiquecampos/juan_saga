@@ -14,16 +14,7 @@ func _ready():
 func set_health(value):
 	health = value
 	if health < 1:
-		var s = SCORE_POP.instance()
-		s.position = position
-		s.get_node("label").text = s.get_node("label").text.format({"score":int(score)})
-		get_parent().add_child(s)
-		get_parent().get_node("sfx").position = position
-		var p = load("res://actors/enemies/particles/bug_death.tscn").instance()
-		p.position = position
-		get_parent().add_child(p)
-		p.emitting = true
-		queue_free()
+		trigger_death()
 
 func damage_health(amount):
 	set_health(health - amount)
@@ -39,3 +30,15 @@ func _on_timer_timeout():
 	s.modulate = c
 	s.get_node("label").text = s.get_node("label").text.format({"score":int(-damage)})
 	get_parent().add_child(s)
+
+func trigger_death():
+	var s = SCORE_POP.instance()
+	s.position = position
+	s.get_node("label").text = s.get_node("label").text.format({"score":int(score)})
+	get_parent().add_child(s)
+	get_parent().get_node("sfx").position = position
+	var p = load("res://actors/enemies/particles/bug_death.tscn").instance()
+	p.position = position
+	get_parent().add_child(p)
+	p.emitting = true
+	queue_free()
