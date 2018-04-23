@@ -26,7 +26,7 @@ func damage_parent(amount):
 custom_solver_bias = 0.0
 radius = 24.0
 
-[node name="ground_bug" type="KinematicBody2D"]
+[node name="ground_bug" type="KinematicBody2D" index="0"]
 
 input_pickable = false
 collision_layer = 1

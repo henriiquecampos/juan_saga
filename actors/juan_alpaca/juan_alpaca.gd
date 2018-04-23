@@ -23,13 +23,6 @@ func _on_bugs_new_child(penalty, child_amount):
 	walk_speed -= penalty
 	jump_height -= penalty
 	$debug.visible = child_amount > 1
-	
-func _input(event):
-	if event.is_action_pressed("debug"):
-		$bugs.damage_child()
-
-func _on_fighter_state_changed(from, to):
-	pass
 
 func _on_fighter_area_shape_entered(area_id, area, area_shape, self_shape):
 	match self_shape:
@@ -42,3 +35,12 @@ func _on_fighter_area_shape_entered(area_id, area, area_shape, self_shape):
 				area.damage_parent(5)
 				set_state(JUMP)
 				velocity.y = -jump_height * 0.8
+
+func _input(event):
+	if event.is_action_pressed("debug"):
+		match state:
+			IDLE:
+				if $bugs.bugs_count() <= 0:
+					return
+				$bugs.damage_child()
+				$cutout_character/animator_01.play("shake")

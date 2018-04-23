@@ -7,6 +7,7 @@ export (NodePath) var score_path
 onready var score_node = get_node(score_path)
 var can_interact = false
 var min_score = 0 setget set_minimum_score
+const SCORE_POP = preload("res://interface/score_pop.tscn")
 
 func _ready():
 	set_physics_process(false)
@@ -42,6 +43,7 @@ func _on_progress_bar_value_changed(value):
 			icons_node.get_child(icons_node.get_child_count() -1).queue_free()
 			score_node.set_score(value, score_node.ADD)
 			bump_rocket()
+			pop_score(value)
 		if icons_node.get_child_count() > 1:
 			$progress_bar.value = 0
 
@@ -93,3 +95,9 @@ func update_score(current_score):
 	var d = clamp(min_score - current_score, 0, min_score)
 	var t = "{amount}"
 	$sprite/label.text = t.format({"amount":int(d)})
+	
+func pop_score(amount):
+	var s = SCORE_POP.instance()
+	s.position.y -= 100
+	s.get_node("label").text = s.get_node("label").text.format({"score":int(amount)})
+	add_child(s)

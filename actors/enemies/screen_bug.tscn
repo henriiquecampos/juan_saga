@@ -75,10 +75,10 @@ tracks/0/keys = {
 "values": [ ExtResource( 2 ) ]
 }
 
-[node name="screen_bug" type="Node2D"]
+[node name="screen_bug" type="Node2D" index="0"]
 
 script = ExtResource( 1 )
-_sections_unfolded = [ "Rect", "Textures" ]
+_sections_unfolded = [ "Rect", "Textures", "Visibility" ]
 health = 3
 damage = 5
 penalty = 20
@@ -119,5 +119,7 @@ bus = "enemies"
 area_mask = 1
 
 [connection signal="timeout" from="timer" to="sfx" method="play"]
+
+[connection signal="timeout" from="timer" to="." method="_on_timer_timeout"]
 
 
