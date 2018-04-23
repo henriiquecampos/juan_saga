@@ -43,5 +43,4 @@ func _input(event):
 				if $bugs.bugs_count() <= 0:
 					return
 				$bugs.damage_child()
-				if !$cutout_character/animator_01.is_playing():
-					$cutout_character/animator_01.play("shake")
+				$cutout_character/animator_01.play("shake")
