@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://levels/level_00.gd" type="Script" id=1]
 [ext_resource path="res://objects/rocket/rocket.tscn" type="PackedScene" id=2]
@@ -8,7 +8,9 @@
 [ext_resource path="res://interface/hud/hud.tscn" type="PackedScene" id=6]
 [ext_resource path="res://screens/basic_screen.tscn" type="PackedScene" id=7]
 [ext_resource path="res://levels/spawner.gd" type="Script" id=8]
-[ext_resource path="res://actors/enemies/bugs.tscn" type="PackedScene" id=9]
+[ext_resource path="res://levels/level_00/idle.tres" type="Animation" id=9]
+[ext_resource path="res://actors/enemies/bugs.tscn" type="PackedScene" id=10]
+[ext_resource path="res://interface/theme.tres" type="Theme" id=11]
 
 [sub_resource type="LineShape2D" id=1]
 
@@ -52,25 +54,6 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.509804, 0.509804, 0.509804, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-
-resource_name = "idle"
-length = 5.0
-loop = true
-step = 0.1
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 2.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 72, -680 ), Vector2( 1752, -680 ) ]
-}
-
 [sub_resource type="GDScript" id=5]
 
 script/source = "extends Camera2D
@@ -100,9 +83,10 @@ score_path = NodePath("../interface/hud/score")
 
 [node name="juan" parent="." index="1" instance=ExtResource( 3 )]
 
-position = Vector2( 72, 448 )
+editor/display_folded = true
+position = Vector2( 88, 512 )
 z_index = 1
-_sections_unfolded = [ "Z Index" ]
+_sections_unfolded = [ "Collision", "Z Index" ]
 
 [node name="camera_rig" parent="juan" index="4"]
 
@@ -177,7 +161,6 @@ shape = SubResource( 2 )
 
 [node name="interface" type="CanvasLayer" parent="." index="6"]
 
-editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -187,6 +170,20 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 [node name="hud" parent="interface" index="0" instance=ExtResource( 6 )]
 
 level_path = NodePath("../..")
+
+[node name="items_container" parent="interface/hud" index="0"]
+
+editor/display_folded = true
+
+[node name="counter" parent="interface/hud" index="2"]
+
+pause_mode = 1
+editor/display_folded = true
+_sections_unfolded = [ "Pause" ]
+
+[node name="uncompleted" parent="interface/hud" index="3"]
+
+editor/display_folded = true
 
 [node name="screen" type="CanvasLayer" parent="." index="7"]
 
@@ -248,6 +245,7 @@ script = ExtResource( 8 )
 _sections_unfolded = [ "Transform" ]
 min_time = 3.0
 max_time = 8.0
+anim = ExtResource( 9 )
 
 [node name="timer" type="Timer" parent="spawner" index="0"]
 
@@ -259,14 +257,13 @@ autostart = false
 [node name="animator" type="AnimationPlayer" parent="spawner" index="1"]
 
 root_node = NodePath("..")
-autoplay = "idle"
+autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/idle = SubResource( 4 )
 blend_times = [  ]
 
-[node name="bugs" parent="." index="11" instance=ExtResource( 9 )]
+[node name="bugs" parent="." index="11" instance=ExtResource( 10 )]
 
 [node name="camera" type="Camera2D" parent="." index="12" groups=[
 "camera",
@@ -274,7 +271,7 @@ blend_times = [  ]
 
 pause_mode = 2
 editor/display_folded = true
-position = Vector2( 72, 448 )
+position = Vector2( 88, 512 )
 anchor_mode = 1
 rotating = false
 current = true
@@ -309,6 +306,23 @@ playback_speed = 1.0
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
+
+[node name="dialogue" type="Control" parent="." index="13"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = ExtResource( 11 )
+_sections_unfolded = [ "Theme" ]
 
 [connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
 

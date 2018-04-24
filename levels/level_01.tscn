@@ -13,13 +13,13 @@
 
 next_level = "res://levels/level_02.tscn"
 current_level = "res://levels/level_01.tscn"
-min_score = 800
+min_score = 600
 
 [node name="rocket" parent="." index="0"]
 
 position = Vector2( 1728, 512 )
 
-[node name="tilemap" parent="." index="1"]
+[node name="tilemap" parent="." index="2"]
 
 editor/display_folded = false
 
@@ -27,13 +27,17 @@ editor/display_folded = false
 
 tile_data = PoolIntArray( 262144, 1, 0, 262145, 0, 0, 262146, 1, 0, 262147, 2, 0, 262148, 0, 0, 262149, 1, 0, 262150, 0, 0, 262151, 1, 0, 262152, 2, 0, 262153, 0, 0, 262154, 1, 0, 262155, 0, 0, 262156, 1, 0, 262157, 2, 0, 262158, 0, 0, 262159, 1, 0, 262160, 0, 0, 262161, 1, 0, 262162, 2, 0, 262163, 0, 0, 262164, 1, 0, 262165, 2, 0, 262166, 0, 0, 262167, 1, 0, 262168, 2, 0, 262169, 0, 0, 262170, 1, 0, 262171, 2, 0, 262172, 0, 0, 327680, 3, 0, 327681, 5, 0, 327682, 4, 0, 327683, 3, 0, 327684, 5, 0, 327685, 4, 0, 327686, 3, 0, 327687, 5, 0, 327688, 4, 0, 327689, 3, 0, 327690, 5, 0, 327691, 4, 0, 327692, 3, 0, 327693, 5, 0, 327694, 4, 0, 327695, 3, 0, 327696, 5, 0, 327697, 4, 0, 327698, 3, 0, 327699, 5, 0, 327700, 4, 0, 327701, 3, 0, 327702, 5, 0, 327703, 4, 0, 327704, 3, 0, 327705, 5, 0, 327706, 4, 0, 327707, 3, 0, 327708, 5, 0 )
 
-[node name="computer" parent="." index="2"]
+[node name="computer" parent="." index="3"]
 
 position = Vector2( 416, 408 )
 
 [node name="hud" parent="interface" index="0"]
 
 _sections_unfolded = [ "Pause", "Theme", "Visibility", "custom_constants" ]
+
+[node name="counter" parent="interface/hud" index="2"]
+
+editor/display_folded = false
 
 [node name="timer" parent="interface/hud/counter" index="0"]
 
@@ -101,6 +105,8 @@ _sections_unfolded = [ "Theme", "Visibility" ]
 margin_bottom = 74.0
 text = "when you have developed features for the engine you have to delvier them to the release rocket before the launching time is over!!"
 percent_visible = 0.0
+
+[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
 
 
 [editable path="juan"]
