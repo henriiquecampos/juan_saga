@@ -2,10 +2,13 @@ extends Position2D
 
 export (float) var min_time = 3.0
 export (float) var max_time = 8.0
+export (Animation) var anim
 
 const BUG = preload("res://actors/enemies/ground_bug.tscn")
 
 func _ready():
+	$animator.add_animation("idle", anim)
+	$animator.play("idle")
 	randomize()
 	$timer.set_wait_time(rand_range(min_time, max_time))
 	$timer.connect("timeout", self, "_spawn")
