@@ -31,7 +31,6 @@ func _ready():
 	var h = score_container.highscore
 	
 	if s > h:
-		print(\"new highscore\")
 		score_container.highscore = s
 		score_container.save_file()
 	text = t.format({\"amount\":int(score_container.score),

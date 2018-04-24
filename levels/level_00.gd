@@ -24,6 +24,8 @@ func _on_timer_timeout():
 		yield($animator, "animation_finished")
 		$interface/hud.uncomplete()
 		return
+	score_container.scene_score = $interface/hud/score.score
+	score_container.set_score(score_container.scene_score, score_container.ADD)
 	$animator.play("release")
 	yield($animator, "animation_finished")
 	$camera.tween_position()
