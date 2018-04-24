@@ -2,6 +2,7 @@ extends Area2D
 const BUG = preload("res://actors/enemies/screen_bug.tscn")
 
 var can_interact = false
+export (bool) var can_bug = true
 var dev_speed = 100
 export (NodePath) var icons_path
 onready var icons_node = get_node(icons_path)
@@ -38,6 +39,8 @@ func _on_progress_bar_value_changed(value):
 			$sfx.play()
 			bump()
 			$progress_bar.value = 0
+		if !can_bug:
+			return
 		var bug_amount = randi()%3
 		for i in bug_amount:
 			add_bug()

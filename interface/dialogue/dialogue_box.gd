@@ -1,6 +1,9 @@
 extends Node2D
 export (PoolStringArray) var dialogues
+export (NodePath) var fade_animator_path
+onready var fade_animator = get_node(fade_animator_path)
 var _index = 0
+signal dialogue_changed(to)
 func _ready():
 	$label.text = dialogues[_index]
 	pop_dialogue()
@@ -12,11 +15,12 @@ func pop_dialogue():
 		1.0, Tween.TRANS_ELASTIC, Tween.EASE_OUT)
 	$tween.start()
 	yield($tween, "tween_completed")
-	$"../../animator".play("release")
+	fade_animator.play("fade")
 	$button.grab_focus()
 	get_tree().set_pause(true)
 	
 func display_text():
+	emit_signal("dialogue_changed", _index)
 	$button.text = "skip"
 	$tween.interpolate_property($label, "percent_visible", 0.0, 1.0, 
 		2.0, Tween.TRANS_LINEAR, Tween.EASE_IN)
@@ -29,7 +33,7 @@ func finish_dialogue():
 		0.5, Tween.TRANS_BACK, Tween.EASE_IN)
 	$tween.start()
 	yield($tween, "tween_completed")
-	$"../../animator".play_backwards("release")
+	fade_animator.play_backwards("release")
 	get_tree().set_pause(false)
 	$button.release_focus()
 	queue_free()

@@ -1,0 +1,97 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://levels/level_00.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/level_01/level_01.gd" type="Script" id=2]
+[ext_resource path="res://interface/dialogue/dialogue_box.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "fade"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("fade/color_rect:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.509804 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("tilemap:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.509804, 0.509804, 0.509804, 1 ) ]
+}
+
+[node name="level_01" index="0" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+next_level = "res://levels/level_02.tscn"
+current_level = "res://levels/level_01.tscn"
+min_score = 600
+
+[node name="rocket" parent="." index="0"]
+
+position = Vector2( 1728, 512 )
+
+[node name="tile_map" parent="tilemap" index="0"]
+
+tile_data = PoolIntArray( 262144, 1, 0, 262145, 0, 0, 262146, 1, 0, 262147, 2, 0, 262148, 0, 0, 262149, 1, 0, 262150, 0, 0, 262151, 1, 0, 262152, 2, 0, 262153, 0, 0, 262154, 1, 0, 262155, 0, 0, 262156, 1, 0, 262157, 2, 0, 262158, 0, 0, 262159, 1, 0, 262160, 0, 0, 262161, 1, 0, 262162, 2, 0, 262163, 0, 0, 262164, 1, 0, 262165, 2, 0, 262166, 0, 0, 262167, 1, 0, 262168, 2, 0, 262169, 0, 0, 262170, 1, 0, 262171, 2, 0, 262172, 0, 0, 327680, 3, 0, 327681, 5, 0, 327682, 4, 0, 327683, 3, 0, 327684, 5, 0, 327685, 4, 0, 327686, 3, 0, 327687, 5, 0, 327688, 4, 0, 327689, 3, 0, 327690, 5, 0, 327691, 4, 0, 327692, 3, 0, 327693, 5, 0, 327694, 4, 0, 327695, 3, 0, 327696, 5, 0, 327697, 4, 0, 327698, 3, 0, 327699, 5, 0, 327700, 4, 0, 327701, 3, 0, 327702, 5, 0, 327703, 4, 0, 327704, 3, 0, 327705, 5, 0, 327706, 4, 0, 327707, 3, 0, 327708, 5, 0 )
+
+[node name="computer" parent="." index="3"]
+
+position = Vector2( 416, 408 )
+can_bug = false
+
+[node name="hud" parent="interface" index="0"]
+
+_sections_unfolded = [ "Pause", "Theme", "Visibility", "custom_constants" ]
+
+[node name="counter" parent="interface/hud" index="2"]
+
+editor/display_folded = false
+
+[node name="timer" parent="interface/hud/counter" index="0"]
+
+wait_time = 45.0
+
+[node name="screen" parent="." index="7"]
+
+editor/display_folded = true
+
+[node name="animator" parent="." index="9"]
+
+anims/fade = SubResource( 3 )
+
+[node name="spawner" parent="." index="10"]
+
+_sections_unfolded = [ "Pause", "Transform" ]
+min_time = 5.0
+max_time = 6.0
+can_spawn = false
+
+[node name="dialogue_box" parent="dialogue/control" index="0" instance=ExtResource( 3 )]
+
+dialogues = PoolStringArray( "this is your console! it is your main tool, it is here that you develop new features for Godot!", "when you finished developing your stuff, you have to deliver them to the release rocket!", "every release you have a minimum amount of lines of code that you have to deliver or fix", "the amount of lines of code needed for a successful release is always displayed on the release rocket, this doesn\'t mean you can\'t do more than, is just a minimum amount" )
+fade_animator_path = NodePath("../../../animator")
+
+[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
+
+[connection signal="dialogue_changed" from="dialogue/control/dialogue_box" to="." method="_on_dialogue_changed"]
+
+
+[editable path="juan"]
+[editable path="interface/hud"]
+[editable path="interface/hud/counter"]

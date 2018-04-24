@@ -24,6 +24,7 @@ audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
+can_bug = true
 icons_path = null
 
 [node name="shape" type="CollisionShape2D" parent="." index="0"]

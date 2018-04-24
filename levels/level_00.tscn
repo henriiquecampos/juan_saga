@@ -26,6 +26,7 @@ d = 0.0
 
 [sub_resource type="Animation" id=3]
 
+resource_name = "fade"
 length = 1.0
 loop = false
 step = 0.1
@@ -54,17 +55,13 @@ tracks/1/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.509804, 0.509804, 0.509804, 1 ) ]
 }
 
-[sub_resource type="GDScript" id=5]
+[sub_resource type="GDScript" id=4]
 
 script/source = "extends Camera2D
 
-export (NodePath) var rocket_path
-onready var rocket = get_node(rocket_path)
-
-func tween_position():
-	var target_pos = rocket.get_node(\"center\").global_position
+func tween_position(target_pos, time = 1.0):
 	$tween.interpolate_property(self, \"global_position\", global_position, target_pos,
-		2.0, Tween.TRANS_SINE, Tween.EASE_IN)
+		time, Tween.TRANS_SINE, Tween.EASE_IN)
 	$tween.start()"
 
 [node name="level_00" type="Node2D"]
@@ -161,6 +158,7 @@ shape = SubResource( 2 )
 
 [node name="interface" type="CanvasLayer" parent="." index="6"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
@@ -246,6 +244,7 @@ _sections_unfolded = [ "Transform" ]
 min_time = 3.0
 max_time = 8.0
 anim = ExtResource( 9 )
+can_spawn = true
 
 [node name="timer" type="Timer" parent="spawner" index="0"]
 
@@ -294,9 +293,8 @@ drag_margin_bottom = 0.25
 editor_draw_screen = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
-script = SubResource( 5 )
+script = SubResource( 4 )
 _sections_unfolded = [ "Limit", "Pause", "Smoothing" ]
-rocket_path = NodePath("../rocket")
 
 [node name="tween" type="Tween" parent="camera" index="0"]
 
@@ -307,7 +305,16 @@ playback/active = false
 playback/repeat = false
 playback/speed = 1.0
 
-[node name="dialogue" type="Control" parent="." index="13"]
+[node name="dialogue" type="CanvasLayer" parent="." index="13"]
+
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+_sections_unfolded = [ "Theme" ]
+
+[node name="control" type="Control" parent="dialogue" index="0"]
 
 anchor_left = 0.0
 anchor_top = 0.0

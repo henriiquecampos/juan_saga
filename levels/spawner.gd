@@ -3,6 +3,7 @@ extends Position2D
 export (float) var min_time = 3.0
 export (float) var max_time = 8.0
 export (Animation) var anim
+export (bool) var can_spawn = true
 
 const BUG = preload("res://actors/enemies/ground_bug.tscn")
 
@@ -15,6 +16,8 @@ func _ready():
 	$timer.start()
 
 func _spawn():
+	if !can_spawn:
+		return
 	var s = BUG.instance()
 	s.global_position = global_position
 	$"../bugs".add_child(s)

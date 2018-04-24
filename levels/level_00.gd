@@ -20,15 +20,15 @@ func _ready():
 func _on_timer_timeout():
 	get_tree().set_pause(true)
 	if $interface/hud/score.score < min_score:
-		$animator.play("release")
+		$animator.play("fade")
 		yield($animator, "animation_finished")
 		$interface/hud.uncomplete()
 		return
 	score_container.scene_score = $interface/hud/score.score
 	score_container.set_score(score_container.scene_score, score_container.ADD)
-	$animator.play("release")
+	$animator.play("fade")
 	yield($animator, "animation_finished")
-	$camera.tween_position()
+	$camera.tween_position($rocket/center.global_position)
 	yield($camera/tween, "tween_completed")
 	$rocket.launch()
 

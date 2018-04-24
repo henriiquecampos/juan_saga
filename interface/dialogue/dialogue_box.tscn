@@ -8,7 +8,8 @@ pause_mode = 2
 position = Vector2( 472, 288 )
 script = ExtResource( 1 )
 _sections_unfolded = [ "Pause", "Transform" ]
-dialogues = PoolStringArray( "Lorem ipsum dolor sit amet, consectetur adipiscing elit", "Fusce vel quam consequat, ultrices enim quis, cursus lorem", "Morbi efficitur metus libero, nec molestie urna viverra elementum" )
+dialogues = PoolStringArray(  )
+fade_animator_path = null
 
 [node name="panel" type="Panel" parent="." index="0"]
 
@@ -43,7 +44,8 @@ mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
 size_flags_vertical = 4
-align = 3
+align = 1
+valign = 1
 autowrap = true
 percent_visible = 0.0
 lines_skipped = 0
