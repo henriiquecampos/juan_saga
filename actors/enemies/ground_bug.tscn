@@ -26,13 +26,14 @@ func damage_parent(amount):
 custom_solver_bias = 0.0
 radius = 24.0
 
-[node name="ground_bug" type="KinematicBody2D" index="0"]
+[node name="ground_bug" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
-collision_mask = 1
+collision_mask = 0
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision" ]
 walk_speed = 100
 jump_height = 800
 health = 3
