@@ -34,11 +34,8 @@ func _on_area_exited(area):
 
 func _on_progress_bar_value_changed(value):
 	if value >= 100:
-		if icons_node.get_child_count() < 5:
-			icons_node.juan_new_node()
-			$sfx.play()
-			bump()
-			$progress_bar.value = 0
+		bump()
+		$progress_bar.value = 0
 		if !can_bug:
 			return
 		var bug_amount = randi()%3
@@ -56,6 +53,10 @@ func add_bug():
 	$bugs.add_child(s)
 	
 func bump():
+	if icons_node.get_child_count() >= 5:
+		return
+	icons_node.juan_new_node()
+	$sfx.play()
 	var initial_scale = $sprite.scale
 	$tween.interpolate_property($sprite, "scale", initial_scale, initial_scale * 1.05, 0.25,
 		Tween.TRANS_ELASTIC, Tween.EASE_OUT)

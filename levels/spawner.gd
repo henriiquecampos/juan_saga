@@ -12,12 +12,15 @@ func _ready():
 	$animator.play("idle")
 	randomize()
 	$timer.set_wait_time(rand_range(min_time, max_time))
-	$timer.connect("timeout", self, "_spawn")
+	$timer.connect("timeout", self, "_on_timer_timeout")
 	$timer.start()
-
-func _spawn():
+	
+func _on_timer_timeout():
 	if !can_spawn:
 		return
+	_spawn()
+
+func _spawn():
 	var s = BUG.instance()
 	s.global_position = global_position
 	$"../bugs".add_child(s)
