@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://actors/pigdev/pig_contributor.gd" type="Script" id=1]
+[ext_resource path="res://actors/cutout_character/pig/pig_character.tscn" type="PackedScene" id=2]
+
+[node name="pig_contributor" type="Node2D"]
+
+script = ExtResource( 1 )
+level_bugs = null
+
+[node name="cutout_character" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="timer" type="Timer" parent="." index="1"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = false
+
+
