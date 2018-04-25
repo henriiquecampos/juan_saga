@@ -34,3 +34,11 @@ func _on_timer_timeout():
 
 func _on_rocket_tree_exited():
 	$screen/game_screen.change_scene()
+	
+func _on_game_screen_animation_finished(anim_name):
+	if anim_name == "fade":
+		$dialogue/control/dialogue_box.show()
+		$dialogue/control/dialogue_box.pop_dialogue()
+		yield($dialogue/control/dialogue_box/tween, "tween_completed")
+		$dialogue/control/dialogue_box.display_text()
+		$screen/game_screen/animator.disconnect("animation_finished", self, "_on_game_screen_animation_finished")

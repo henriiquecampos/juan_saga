@@ -67,6 +67,10 @@ editor/display_folded = false
 
 wait_time = 45.0
 
+[node name="screen" parent="." index="7"]
+
+editor/display_folded = true
+
 [node name="game_screen" parent="screen" index="0"]
 
 _sections_unfolded = [ "Pause", "Theme" ]
@@ -92,7 +96,7 @@ visible = false
 dialogues = PoolStringArray( "hey dev! welcome to the first level of your saga, at first glance everything is simple", "you go to your computer and start coding the stuff you\'d love to show the world", "when you finished doing your stuff, you have to commit them so the whole world know the improvements you did", "there is a deadline to commit your stuff, you know the world can\'t wait for the next release", "so commit them to the release rocket before the time runs out, also don\'t forget you have a threshold of lines you have to deliver per release", "now, go! be the best developer the world ever met" )
 fade_animator_path = NodePath("../../../animator")
 
-[connection signal="animation_finished" from="screen/game_screen/animator" to="." method="_on_game_screen_animation_finished"]
+[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
 
 [connection signal="dialogue_changed" from="dialogue/control/dialogue_box" to="." method="_on_dialogue_changed"]
 
@@ -100,4 +104,3 @@ fade_animator_path = NodePath("../../../animator")
 [editable path="juan"]
 [editable path="interface/hud"]
 [editable path="interface/hud/counter"]
-[editable path="screen/game_screen"]
