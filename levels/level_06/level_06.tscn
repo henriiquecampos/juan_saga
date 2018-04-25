@@ -1,8 +1,9 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://levels/level_00.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/level_00/level_00.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/tilesets/tile_fixer.gd" type="Script" id=2]
 [ext_resource path="res://actors/enemies/boss_bug/boss_bug.tscn" type="PackedScene" id=3]
+
 
 [node name="level_00" index="0" instance=ExtResource( 1 )]
 

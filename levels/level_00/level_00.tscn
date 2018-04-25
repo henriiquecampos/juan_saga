@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=2]
 
-[ext_resource path="res://levels/level_00.gd" type="Script" id=1]
+[ext_resource path="res://levels/level_00/level_00.gd" type="Script" id=1]
 [ext_resource path="res://objects/rocket/rocket.tscn" type="PackedScene" id=2]
 [ext_resource path="res://actors/juan_alpaca/juan_alpaca.tscn" type="PackedScene" id=3]
 [ext_resource path="res://levels/tilesets/tileset_godot.tres" type="TileSet" id=4]
@@ -231,7 +231,7 @@ autoplay = ""
 playback_process_mode = 1
 playback_default_blend_time = 0.0
 playback_speed = 1.0
-anims/release = SubResource( 3 )
+anims/fade = SubResource( 3 )
 blend_times = [  ]
 _sections_unfolded = [ "Pause" ]
 

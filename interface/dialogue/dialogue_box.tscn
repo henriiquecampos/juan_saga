@@ -2,7 +2,7 @@
 
 [ext_resource path="res://interface/dialogue/dialogue_box.gd" type="Script" id=1]
 
-[node name="dialogue_box" type="Node2D"]
+[node name="dialogue_box" type="Node2D" index="0"]
 
 pause_mode = 2
 position = Vector2( 472, 288 )

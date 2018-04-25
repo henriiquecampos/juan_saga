@@ -6,9 +6,6 @@ var _index = 0
 signal dialogue_changed(to)
 func _ready():
 	$label.text = dialogues[_index]
-	pop_dialogue()
-	yield($tween, "tween_completed")
-	display_text()
 	
 func pop_dialogue():
 	$tween.interpolate_property(self, "scale", Vector2(0,0), Vector2(1,1),
@@ -17,7 +14,6 @@ func pop_dialogue():
 	yield($tween, "tween_completed")
 	fade_animator.play("fade")
 	$button.grab_focus()
-	get_tree().set_pause(true)
 	
 func display_text():
 	emit_signal("dialogue_changed", _index)
@@ -33,8 +29,7 @@ func finish_dialogue():
 		0.5, Tween.TRANS_BACK, Tween.EASE_IN)
 	$tween.start()
 	yield($tween, "tween_completed")
-	fade_animator.play_backwards("release")
-	get_tree().set_pause(false)
+	fade_animator.play_backwards("fade")
 	$button.release_focus()
 	queue_free()
 
