@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://actors/enemies/ground_bug.gd" type="Script" id=1]
 [ext_resource path="res://actors/enemies/screen_bug.png" type="Texture" id=2]
@@ -26,7 +26,12 @@ func damage_parent(amount):
 custom_solver_bias = 0.0
 radius = 24.0
 
-[node name="ground_bug" type="KinematicBody2D" index="0"]
+[sub_resource type="CircleShape2D" id=5]
+
+custom_solver_bias = 0.0
+radius = 32.9848
+
+[node name="ground_bug" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
@@ -61,9 +66,7 @@ audio_bus_name = "Master"
 
 shape = SubResource( 2 )
 
-[node name="attach_area" type="Area2D" parent="." index="2" groups=[
-"enemy",
-]]
+[node name="attach_area" type="Area2D" parent="." index="2"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -99,6 +102,22 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
+
+[node name="bounce_area" type="Area2D" parent="." index="6" groups=[
+"enemy",
+]]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="shape" type="CollisionShape2D" parent="bounce_area" index="0"]
+
+shape = SubResource( 5 )
 
 [connection signal="area_entered" from="area" to="." method="_on_area_entered"]
 
