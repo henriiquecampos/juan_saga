@@ -16,6 +16,6 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5, 2, 2.5, 3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
-"values": [ Vector2( 616, 40 ), Vector2( 744, 40 ), Vector2( 872, 40 ), Vector2( 1000, 40 ), Vector2( 1128, 40 ), Vector2( 1256, 40 ), Vector2( 1384, 40 ) ]
+"values": [ Vector2( 616, -360 ), Vector2( 744, -360 ), Vector2( 872, -360 ), Vector2( 1000, -360 ), Vector2( 1128, -360 ), Vector2( 1256, -360 ), Vector2( 1384, -360 ) ]
 }
 

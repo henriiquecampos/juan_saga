@@ -4,8 +4,8 @@
 
 [node name="level_04" instance=ExtResource( 1 )]
 
-next_level = "res://levels/level_05.tscn"
-current_level = "res://levels/level_04.tscn"
+next_level = "res://levels/level_05/level_05.tscn"
+current_level = "res://levels/level_04/level_04.tscn"
 min_score = 2000
 
 [node name="rocket" parent="." index="0"]
@@ -39,8 +39,6 @@ can_spawn = false
 [node name="camera" parent="." index="12"]
 
 position = Vector2( 96, 488 )
-
-[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
 
 
 [editable path="juan"]

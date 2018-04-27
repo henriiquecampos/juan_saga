@@ -1,6 +1,7 @@
 extends "res://levels/level_00/level_00.gd"
 
 func _ready():
+	$juan.set_process_input(false)
 	$screen/game_screen/animator.connect("animation_finished", 
 		self, "_on_game_screen_animation_finished")
 		
@@ -22,7 +23,6 @@ func _on_dialogue_changed(to):
 			$pig_contributor/cutout_character/animator.play("coding")
 		4:
 			yield($dialogue/control/dialogue_box/button, "button_up")
-			$pig_contributor/timer.connect("timeout", $computer, "bump")
-			$pig_contributor/timer.connect("timeout", $spawner, "_spawn")
 			$pig_contributor/timer.start()
+			$juan.set_process_input(true)
 			get_tree().set_pause(false)

@@ -25,7 +25,7 @@ custom_solver_bias = 0.0
 normal = Vector2( 0, -1 )
 d = 0.0
 
-[node name="level_05" index="0" instance=ExtResource( 1 )]
+[node name="level_05" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
 next_level = "res://levels/level_06/level_06.tscn"
@@ -56,9 +56,25 @@ can_bug = false
 
 disabled = true
 
+[node name="interface" parent="." index="6"]
+
+editor/display_folded = false
+
+[node name="counter" parent="interface/hud" index="2"]
+
+editor/display_folded = false
+
+[node name="timer" parent="interface/hud/counter" index="0"]
+
+wait_time = 80.0
+
 [node name="screen" parent="." index="7"]
 
 editor/display_folded = true
+
+[node name="fade" parent="." index="8"]
+
+editor/display_folded = false
 
 [node name="pig_contributor" parent="." index="10" instance=ExtResource( 3 )]
 
@@ -66,10 +82,11 @@ pause_mode = 2
 position = Vector2( 400, 512 )
 _sections_unfolded = [ "Pause" ]
 level_bugs = NodePath("../bugs")
+level_computer = NodePath("../computer")
+bugs_tolerance = 0
 
 [node name="spawner" parent="." index="11"]
 
-editor/display_folded = false
 position = Vector2( 232, 48 )
 min_time = 4.0
 max_time = 6.0
@@ -113,8 +130,6 @@ shape = SubResource( 2 )
 visible = false
 dialogues = PoolStringArray( "hey look! a wild contributor appeared!", "seems like he can be very handy, working alone isn\'t as productive as working together, so let\'s see how he goes", "hmm he codes new features for you, awesome!", "ohh wait...he is committing features with bugs, ohh noes. let\'s try to help, we gotta fix those bugs that are falling out of nowhere", "to debug these contributor bugs just stomp them, they are easy to be solved by you since you understand how they happen" )
 fade_animator_path = NodePath("../../../animator")
-
-[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
 
 [connection signal="new_child" from="bugs" to="pig_contributor" method="_on_bugs_new_child"]
 
