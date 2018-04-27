@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://levels/level_00/level_00.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/level_07/level_07.gd" type="Script" id=2]
+[ext_resource path="res://levels/level_07/idle.tres" type="Animation" id=3]
+[ext_resource path="res://actors/enemies/boss_bug/boss_bug.tscn" type="PackedScene" id=4]
+[ext_resource path="res://interface/dialogue/dialogue_box.tscn" type="PackedScene" id=5]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Area2D
+
+func _on_area_entered(area):
+	if area.is_in_group(\"player\"):
+		get_tree().reload_current_scene()
+	elif area.is_in_group(\"enemy\"):
+		area.get_parent().queue_free()
+"
+
+[sub_resource type="LineShape2D" id=2]
+
+custom_solver_bias = 0.0
+normal = Vector2( 0, -1 )
+d = 0.0
+
+[node name="level_07" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+next_level = "res://levels/level_08/level_08.tscn"
+current_level = "res://levels/level_07/level_07.tscn"
+min_score = 800
+
+[node name="rocket" parent="." index="0"]
+
+position = Vector2( 1696, 256 )
+
+[node name="tilemap" parent="." index="2"]
+
+editor/display_folded = false
+
+[node name="tile_map" parent="tilemap" index="0"]
+
+tile_data = PoolIntArray( -327680, 0, 0, -327679, 1, 0, -327678, 2, 0, -327677, 0, 0, -327676, 1, 0, -327675, 2, 0, -327674, 0, 0, -327673, 1, 0, -327672, 2, 0, -262144, 3, 0, -262143, 5, 0, -262142, 4, 0, -262141, 3, 0, -262140, 5, 0, -262139, 4, 0, -262138, 3, 0, -262137, 5, 0, -262136, 4, 0, -196598, 6, 0, -65524, 6, 0, 14, 6, 0, 23, 2, 0, 24, 0, 0, 25, 1, 0, 26, 2, 0, 27, 0, 0, 28, 1, 0, 65552, 6, 0, 131093, 6, 0, 196619, 6, 0, 196623, 6, 0, 196627, 6, 0, 262144, 0, 0, 262145, 1, 0, 262146, 2, 0, 262147, 0, 0, 262148, 1, 0, 262149, 2, 0, 262150, 0, 0, 262151, 1, 0, 262153, 6, 0, 262157, 6, 0, 262161, 6, 0 )
+
+[node name="computer" parent="." index="3"]
+
+visible = false
+
+[node name="spawner" parent="." index="10"]
+
+editor/display_folded = false
+position = Vector2( 616, -360 )
+min_time = 1.0
+max_time = 4.0
+anim = ExtResource( 3 )
+can_spawn = false
+
+[node name="boss_bug" parent="bugs" index="1" instance=ExtResource( 4 )]
+
+pause_mode = 2
+position = Vector2( 208, -104 )
+collision_mask = 1
+_sections_unfolded = [ "Collision", "Pause" ]
+walk_speed = 300
+bugs_spawn = 10
+
+[node name="attach_area" parent="bugs/boss_bug" index="2" groups=[
+"enemy",
+]]
+
+[node name="sprite" parent="bugs/boss_bug" index="3"]
+
+scale = Vector2( -1, 1 )
+
+[node name="void" type="Area2D" parent="." index="13"]
+
+position = Vector2( 976, 824 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = SubResource( 1 )
+
+[node name="shape" type="CollisionShape2D" parent="void" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="dialogue_box" parent="dialogue/control" index="0" instance=ExtResource( 5 )]
+
+visible = false
+dialogues = PoolStringArray( "ohh lord, your project seems to be growing really well! congratulations on that", "the community around it is becoming more and more active and making lots of contributions", "so how about check out the project\'s issues reports, seems like there are lots of bugs to fix", "hmm...seems like there is a huge bug someone found! you need to fix it asap, but beware", "these huge bugs tend to cause more bugs when fixed, so fix it carefully" )
+fade_animator_path = NodePath("../../../animator")
+
+[connection signal="area_entered" from="void" to="void" method="_on_area_entered"]
+
+[connection signal="dialogue_changed" from="dialogue/control/dialogue_box" to="." method="_on_dialogue_changed"]
+
+
+[editable path="juan"]
+[editable path="interface/hud"]
+[editable path="interface/hud/counter"]
+[editable path="bugs/boss_bug"]

@@ -41,10 +41,10 @@ func _process(delta):
 
 "
 
-[node name="main_screen" instance=ExtResource( 1 )]
+[node name="main_screen" index="0" instance=ExtResource( 1 )]
 
 script = ExtResource( 2 )
-next_scene = "res://levels/level_01.tscn"
+next_scene = "res://levels/level_01/level_01.tscn"
 
 [node name="tile_map" type="TileMap" parent="." index="0"]
 

@@ -1,12 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://levels/level_00.tscn" type="PackedScene" id=1]
-[ext_resource path="res://actors/enemies/ground_bug.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/level_00/level_00.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/level_02/level_02.gd" type="Script" id=2]
+[ext_resource path="res://interface/dialogue/dialogue_box.tscn" type="PackedScene" id=3]
 
-[node name="level_00" instance=ExtResource( 1 )]
+[node name="level_02" instance=ExtResource( 1 )]
 
-next_level = "res://levels/level_03.tscn"
-current_level = "res://levels/level_02.tscn"
+script = ExtResource( 2 )
+next_level = "res://levels/level_03/level_03.tscn"
+current_level = "res://levels/level_02/level_02.tscn"
 min_score = 1200
 
 [node name="rocket" parent="." index="0"]
@@ -35,37 +37,29 @@ position = Vector2( 104, -32 )
 
 tile_data = PoolIntArray( -262144, 0, 0, -262143, 1, 0, -262142, 2, 0, -262141, 0, 0, -262140, 1, 0, -262139, 2, 0, -196599, 6, 0, -131061, 6, 0, 9, 6, 0, 131079, 6, 0, 262144, 2, 0, 262145, 0, 0, 262146, 1, 0, 262147, 2, 0, 262148, 0, 0, 262149, 1, 0, 262150, 2, 0, 262151, 0, 0, 262152, 1, 0, 262153, 2, 0, 262154, 0, 0, 262155, 1, 0, 262156, 2, 0, 262157, 0, 0, 262158, 1, 0, 262159, 2, 0, 262160, 0, 0, 262161, 1, 0, 262162, 2, 0, 262163, 0, 0, 262164, 1, 0, 262165, 2, 0, 262166, 0, 0, 262167, 1, 0, 262168, 2, 0, 262169, 0, 0, 262170, 1, 0, 262171, 2, 0, 262172, 0, 0, 327680, 3, 0, 327681, 5, 0, 327682, 4, 0, 327683, 3, 0, 327684, 5, 0, 327685, 4, 0, 327686, 3, 0, 327687, 5, 0, 327688, 4, 0, 327689, 3, 0, 327690, 5, 0, 327691, 4, 0, 327692, 3, 0, 327693, 5, 0, 327694, 4, 0, 327695, 3, 0, 327696, 5, 0, 327697, 4, 0, 327698, 3, 0, 327699, 5, 0, 327700, 4, 0, 327701, 3, 0, 327702, 5, 0, 327703, 4, 0, 327704, 3, 0, 327705, 5, 0, 327706, 4, 0, 327707, 3, 0, 327708, 5, 0 )
 
-[node name="computer" parent="." index="2"]
+[node name="computer" parent="." index="3"]
 
+pause_mode = 2
 position = Vector2( 1144, 408 )
+_sections_unfolded = [ "Pause", "Transform" ]
 
 [node name="timer" parent="interface/hud/counter" index="0"]
 
 wait_time = 60.0
 
-[node name="bugs" parent="." index="11"]
+[node name="spawner" parent="." index="10"]
 
-editor/display_folded = true
+can_spawn = false
 
-[node name="ground_bug" parent="bugs" index="1" instance=ExtResource( 2 )]
+[node name="dialogue_box" parent="dialogue/control" index="0" instance=ExtResource( 3 )]
 
-position = Vector2( 112, 24 )
-penalty = 5
+visible = false
+dialogues = PoolStringArray( "so you did the release of your project\'s first build\? awesome!", "back then things were simple, it was the first iteratiion of your work after all", "but now is time for more complex stuff, and when complexity happens stuff get messy", "some times when you code complex features it\'s normal that bugs appear", "when they do, you have to debug them! otherwise they will feast on your work", "to debug the console, just get close to it and press the debug button until the bug is fixed" )
+fade_animator_path = NodePath("../../../animator")
 
-[node name="ground_bug_2" parent="bugs" index="2" instance=ExtResource( 2 )]
+[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
 
-position = Vector2( 1360, 536 )
-penalty = 5
-
-[node name="ground_bug_3" parent="bugs" index="3" instance=ExtResource( 2 )]
-
-position = Vector2( 568, 528 )
-penalty = 5
-
-[node name="ground_bug_4" parent="bugs" index="4" instance=ExtResource( 2 )]
-
-position = Vector2( 984, 528 )
-penalty = 5
+[connection signal="dialogue_changed" from="dialogue/control/dialogue_box" to="." method="_on_dialogue_changed"]
 
 
 [editable path="rocket"]

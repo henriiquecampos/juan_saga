@@ -20,15 +20,25 @@ func _ready():
 func _on_timer_timeout():
 	get_tree().set_pause(true)
 	if $interface/hud/score.score < min_score:
-		$animator.play("release")
+		$animator.play("fade")
 		yield($animator, "animation_finished")
 		$interface/hud.uncomplete()
 		return
-	$animator.play("release")
+	score_container.scene_score = $interface/hud/score.score
+	score_container.set_score(score_container.scene_score, score_container.ADD)
+	$animator.play("fade")
 	yield($animator, "animation_finished")
-	$camera.tween_position()
+	$camera.tween_position($rocket/center.global_position)
 	yield($camera/tween, "tween_completed")
 	$rocket.launch()
 
 func _on_rocket_tree_exited():
 	$screen/game_screen.change_scene()
+	
+func _on_game_screen_animation_finished(anim_name):
+	if anim_name == "fade":
+		$dialogue/control/dialogue_box.show()
+		$dialogue/control/dialogue_box.pop_dialogue()
+		yield($dialogue/control/dialogue_box/tween, "tween_completed")
+		$dialogue/control/dialogue_box.display_text()
+		$screen/game_screen/animator.disconnect("animation_finished", self, "_on_game_screen_animation_finished")
