@@ -281,7 +281,7 @@ tracks/12/keys = {
 "values": [ 0.0 ]
 }
 
-[node name="cutout_character" type="Node2D"]
+[node name="cutout_character" type="Node2D" index="0"]
 
 scale = Vector2( 0.4, 0.4 )
 _sections_unfolded = [ "Transform", "Visibility" ]
