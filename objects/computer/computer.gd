@@ -35,9 +35,8 @@ func _on_area_exited(area):
 func _on_progress_bar_value_changed(value):
 	if value >= 100:
 		bump()
+		add_bug()
 		$progress_bar.value = 0
-		if !can_bug:
-			return
 		var bug_amount = randi()%3
 		for i in bug_amount:
 			add_bug()
@@ -46,6 +45,8 @@ func screen_bug():
 	$progress_bar.value -= 10
 	
 func add_bug():
+	if !can_bug:
+		return
 	var s = BUG.instance()
 	s.position.x = rand_range(16, 200)
 	s.position.y = rand_range(16, 120)
