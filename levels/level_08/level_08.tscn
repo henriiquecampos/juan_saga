@@ -4,25 +4,15 @@
 [ext_resource path="res://levels/level_08/idle.tres" type="Animation" id=2]
 [ext_resource path="res://actors/enemies/boss_bug/boss_bug.tscn" type="PackedScene" id=3]
 
-<<<<<<< HEAD
 [node name="level_08" instance=ExtResource( 1 )]
 
 next_level = "res://screens/credit_screen/credit_screen.tscn"
-=======
-[node name="level_08" index="0" instance=ExtResource( 1 )]
-
-next_level = "res://screens/promo_screen/promo_screen.tscn"
->>>>>>> master
 current_level = "res://levels/level_08/level_08.tscn"
 min_score = 2000
 
 [node name="rocket" parent="." index="0"]
 
-<<<<<<< HEAD
 position = Vector2( 2096, 509 )
-=======
-position = Vector2( 2096, 504 )
->>>>>>> master
 
 [node name="tile_map" parent="tilemap" index="0"]
 
@@ -36,13 +26,6 @@ position = Vector2( 440, -176 )
 
 position = Vector2( 2240, 408 )
 
-<<<<<<< HEAD
-=======
-[node name="interface" parent="." index="6"]
-
-editor/display_folded = false
-
->>>>>>> master
 [node name="counter" parent="interface/hud" index="2"]
 
 editor/display_folded = false
@@ -51,17 +34,6 @@ editor/display_folded = false
 
 wait_time = 80.0
 
-<<<<<<< HEAD
-=======
-[node name="screen" parent="." index="7"]
-
-editor/display_folded = true
-
-[node name="game_screen" parent="screen" index="0"]
-
-visible = false
-
->>>>>>> master
 [node name="spawner" parent="." index="10"]
 
 position = Vector2( 277.742, -680 )

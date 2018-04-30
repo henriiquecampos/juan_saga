@@ -59,15 +59,8 @@ level_computer = NodePath("../computer_2")
 bugs_tolerance = 5
 
 [node name="timer" parent="pig_contributor" index="1"]
-<<<<<<< HEAD:levels/level_06/level_06.tscn
 
 wait_time = 5.0
-=======
-
-wait_time = 5.0
-
-[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
->>>>>>> master:levels/level_06/level_06.tscn
 
 
 [editable path="juan"]
