@@ -28,6 +28,7 @@ tile_data = PoolIntArray( -458740, 0, 0, -458739, 1, 0, -458738, 2, 0, -458737, 
 
 position = Vector2( 912, -288 )
 
+<<<<<<< HEAD:levels/level_04/level_04.tscn
 [node name="interface" parent="." index="6"]
 
 editor/display_folded = false
@@ -40,6 +41,8 @@ editor/display_folded = false
 
 wait_time = 95.0
 
+=======
+>>>>>>> master:levels/level_04/level_04.tscn
 [node name="screen" parent="." index="7"]
 
 editor/display_folded = true

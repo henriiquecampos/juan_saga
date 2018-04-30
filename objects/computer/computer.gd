@@ -36,8 +36,11 @@ func _on_progress_bar_value_changed(value):
 	if value >= 100:
 		bump()
 		add_bug()
+<<<<<<< HEAD
 		if icons_node.get_child_count() >= 5:
 			return
+=======
+>>>>>>> master
 		$progress_bar.value = 0
 		var bug_amount = randi()%3
 		for i in bug_amount:

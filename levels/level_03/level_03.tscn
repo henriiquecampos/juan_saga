@@ -49,6 +49,11 @@ visible = false
 dialogues = PoolStringArray( "so you got the idea, keep developing, when bugs happen fix them, deliver your work before the release!" )
 fade_animator_path = NodePath("../../../animator")
 
+<<<<<<< HEAD
+=======
+[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
+
+>>>>>>> master
 [connection signal="dialogue_changed" from="dialogue/control/dialogue_box" to="." method="_on_dialogue_changed"]
 
 
