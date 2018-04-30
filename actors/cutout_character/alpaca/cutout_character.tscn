@@ -16,12 +16,20 @@ script/source = "extends Position2D
 var init_scale = get_scale()
 
 func _input(event):
-	if event.is_action_pressed(\"left\"):
+	var right = false
+	var left = false
+	if event is InputEventJoypadMotion:
+		if event.get_axis() == 0:
+			if int(event.axis_value) > 0:
+				right = true
+			elif int(event.axis_value) < 0:
+				left = true
+	if event.is_action_pressed(\"left\") or left:
 		set_scale(Vector2(init_scale.x * -1, init_scale.y))
-	elif event.is_action_pressed(\"right\"):
+	elif event.is_action_pressed(\"right\") or right:
 		set_scale(init_scale)"
 
-[node name="cutout_character" type="Position2D" index="0"]
+[node name="cutout_character" type="Position2D"]
 
 scale = Vector2( 0.5, 0.5 )
 script = SubResource( 1 )

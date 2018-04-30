@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/3_bugdeath.ogg-e643d9040fefb47d606cd19689f911cc.oggstr"
+
+[deps]
+
+source_file="res://actors/enemies/3_bugdeath.ogg"
+source_md5="f460a255da62020e2c0abe4db3e11c75"
+
+dest_files=[ "res://.import/3_bugdeath.ogg-e643d9040fefb47d606cd19689f911cc.oggstr" ]
+dest_md5="bb19a95010597a7f519f3e92a6fe4cb7"
+
+[params]
+
+loop=false
+loop_offset=0

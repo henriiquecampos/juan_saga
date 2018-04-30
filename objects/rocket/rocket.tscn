@@ -5,7 +5,8 @@
 [ext_resource path="res://font/GaroaHackerClubeBold.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://interface/progress_bar_fg.tres" type="StyleBox" id=4]
 [ext_resource path="res://interface/progress_bar_bg.tres" type="StyleBox" id=5]
-[ext_resource path="res://assets/sfx/7_charging.ogg" type="AudioStream" id=6]
+[ext_resource path="res://objects/rocket/7_charging.ogg" type="AudioStream" id=6]
+
 
 [sub_resource type="Curve" id=1]
 

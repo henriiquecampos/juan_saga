@@ -1,6 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/bgm/ending_music.ogg" type="AudioStream" id=1]
+[ext_resource path="res://screens/credit_screen/ending_music.ogg" type="AudioStream" id=1]
+
 
 [sub_resource type="Animation" id=1]
 

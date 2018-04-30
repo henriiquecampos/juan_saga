@@ -2,7 +2,7 @@ extends Node2D
 export (String, FILE, "*.tscn") var next_level
 export (String, FILE, "*.tscn") var current_level
 export (int) var min_score = 0
-const BGM_MUSIC = preload("res://assets/bgm/background_music.ogg")
+const BGM_MUSIC = preload("../background_music.ogg")
 
 func _ready():
 	if !bgm.stream == BGM_MUSIC:

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/itch_cover.png-8648a9c2f99668f3d52ffa3f92fff432.stex"
+path="res://.import/logo.png-d34074f2830c9bbe14d43809bb0b4842.stex"
 
 [deps]
 
-source_file="res://promo/itch_cover.png"
-source_md5="0906de0829ca453b6bd886923e537ce7"
+source_file="res://screens/credit_screen/logo.png"
+source_md5="aee6cb5226b00e865d75efdf09df57a4"
 
-dest_files=[ "res://.import/itch_cover.png-8648a9c2f99668f3d52ffa3f92fff432.stex" ]
-dest_md5="374333550fb228797cf0e0937fb8cbf8"
+dest_files=[ "res://.import/logo.png-d34074f2830c9bbe14d43809bb0b4842.stex" ]
+dest_md5="4ec7d9a20a1f46d7f286982e41d6e41d"
 
 [params]
 

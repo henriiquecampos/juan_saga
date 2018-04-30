@@ -28,6 +28,18 @@ tile_data = PoolIntArray( -458740, 0, 0, -458739, 1, 0, -458738, 2, 0, -458737, 
 
 position = Vector2( 912, -288 )
 
+[node name="interface" parent="." index="6"]
+
+editor/display_folded = false
+
+[node name="counter" parent="interface/hud" index="2"]
+
+editor/display_folded = false
+
+[node name="timer" parent="interface/hud/counter" index="0"]
+
+wait_time = 95.0
+
 [node name="screen" parent="." index="7"]
 
 editor/display_folded = true

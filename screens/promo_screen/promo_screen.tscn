@@ -27,13 +27,7 @@ script/source = "extends HBoxContainer
 
 const BRIGHT = Color(1.1, 1.1, 1.1)
 const DARK = Color(0.8, 0.8, 0.8)
-const BGM_MUSIC = preload(\"res://assets/bgm/ending_music.ogg\")
 func _ready():
-	bgm.get_node(\"animator\").play_backwards(\"fade\")
-	yield(bgm.get_node(\"animator\"), \"animation_finished\")
-	bgm.stream = BGM_MUSIC
-	bgm.play()
-	bgm.get_node(\"animator\").play(\"fade\")
 	
 	for c in get_children():
 		c.connect(\"focus_entered\", self, \"bright\", [c])

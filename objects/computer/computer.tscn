@@ -6,7 +6,8 @@
 [ext_resource path="res://interface/menu_bar_bg.tres" type="StyleBox" id=4]
 [ext_resource path="res://interface/menu_bar_hilit.tres" type="Theme" id=5]
 [ext_resource path="res://actors/enemies/bugs.tscn" type="PackedScene" id=6]
-[ext_resource path="res://assets/sfx/4_newnode.ogg" type="AudioStream" id=7]
+[ext_resource path="res://objects/computer/4_newnode.ogg" type="AudioStream" id=7]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 
