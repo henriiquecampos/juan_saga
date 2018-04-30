@@ -49,7 +49,7 @@ func _on_progress_bar_value_changed(value):
 
 func bump_rocket():
 	var initial_scale = $sprite.scale
-	$sfx.stream = load("res://assets/sfx/5_scoring.ogg")
+	$sfx.stream = load("res://objects/rocket/5_scoring.ogg")
 	$sfx.play()
 	$tween.interpolate_property($sprite, "scale", initial_scale, initial_scale * 1.05, 0.25,
 		Tween.TRANS_ELASTIC, Tween.EASE_OUT)
@@ -67,7 +67,7 @@ func launch():
 	$sprite/label.hide()
 	$sprite/ramp.hide()
 	$progress_bar.hide()
-	$sfx.stream = load("res://assets/sfx/7_charging.ogg")
+	$sfx.stream = load("res://objects/rocket/7_charging.ogg")
 	$sfx.play()
 	$sprite.texture = load("res://objects/rocket/sprite_closed.png")
 	$animator.play("shake")
@@ -79,7 +79,7 @@ func launch():
 	$particles.lifetime = 4
 	$particles.speed_scale = 2
 	$timer.start()
-	$sfx.stream = load("res://assets/sfx/6_launching.ogg")
+	$sfx.stream = load("res://objects/rocket/6_launching.ogg")
 	$sfx.play()
 	$sprite.rotation_degrees = 0
 	set_physics_process(true)

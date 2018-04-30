@@ -62,8 +62,6 @@ bugs_tolerance = 5
 
 wait_time = 5.0
 
-[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
-
 
 [editable path="juan"]
 [editable path="interface/hud"]

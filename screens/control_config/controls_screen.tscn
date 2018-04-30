@@ -42,6 +42,8 @@ func _input(event):
 		button.release_focus()
 		button.get_parent().get_node(\"input\").text = event.as_text().to_lower()
 		for e in InputMap.get_action_list(button.action):
+			if e is InputEventJoypadButton or e is InputEventJoypadMotion:
+				continue
 			InputMap.action_erase_event(button.action, e)
 		InputMap.action_add_event(button.action, event)
 	if event is InputEventKey and !event.is_pressed():

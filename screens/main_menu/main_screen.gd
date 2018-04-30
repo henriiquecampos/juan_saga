@@ -1,6 +1,6 @@
 extends "res://screens/basic_screen.gd"
 var can_play = false
-const BGM_MUSIC = preload("res://assets/bgm/main_menu_music.ogg")
+const BGM_MUSIC = preload("res://screens/main_menu/main_menu_music.ogg")
 func _ready():
 	var bus = AudioServer.get_bus_index("bgm")
 	$bgm_volume.value = AudioServer.get_bus_volume_db(bus)
