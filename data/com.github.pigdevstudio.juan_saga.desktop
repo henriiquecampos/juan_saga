@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Juan's Saga
+GenericName=Platformer Game
+Comment=Play the journey of a software developer trying to understand and manage how an open source software is developed, maintained and released
+Categories=Game;
+Exec=com.github.pigdevstudio.juan_saga
+Icon=com.github.pigdevstudio.juan_saga
+Terminal=false
+Type=Application
+Keywords=pigdev;Linietsky;godot;platformer;jam;debug;
