@@ -2,4 +2,4 @@
 source/
 build/
 *~
-
+data/icons/**/*.import

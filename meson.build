@@ -1,6 +1,6 @@
-project('com.github.pigdevstudio.juan_saga')
+project('com.github.pigdevstudio.juans-saga')
 
-# godot --export Linux build/com.github.pigdevstudio.juan_saga
+# godot --export Linux build/com.github.pigdevstudio.juans-saga
 # Might want to use meson.add_install_script('meson/myscript.sh') and move this to bash?
 run_command(
     'godot',
