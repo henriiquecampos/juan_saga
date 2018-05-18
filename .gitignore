@@ -1,2 +1,5 @@
 .import/
 source/
+build/
+*~
+data/icons/**/*.import
