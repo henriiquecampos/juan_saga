@@ -84,6 +84,7 @@ editor/display_folded = true
 position = Vector2( 88, 512 )
 z_index = 1
 _sections_unfolded = [ "Collision", "Z Index" ]
+player = "_1"
 
 [node name="camera_rig" parent="juan" index="4"]
 

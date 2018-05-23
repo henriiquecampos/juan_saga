@@ -8,6 +8,7 @@ onready var score_node = get_node(score_path)
 var can_interact = false
 var min_score = 0 setget set_minimum_score
 const SCORE_POP = preload("res://interface/score_pop.tscn")
+var player = "_1"
 
 func _ready():
 	set_physics_process(false)
@@ -16,9 +17,9 @@ func _process(delta):
 	if get_tree().is_paused():
 		return
 	if can_interact:
-		if Input.is_action_pressed("interact"):
+		if Input.is_action_pressed("interact" + player):
 			$progress_bar.value += 100 * delta
-		if Input.is_action_just_released("interact"):
+		if Input.is_action_just_released("interact" + player):
 			$progress_bar.value = 0
 
 func _physics_process(delta):
@@ -30,6 +31,7 @@ func _on_area_entered(area):
 		can_interact = true
 		$progress_bar.value = 0
 		$progress_bar.show()
+		player = area.get_parent().player
 
 func _on_area_exited(area):
 	if area.is_in_group("player"):

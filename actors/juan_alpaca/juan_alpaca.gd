@@ -37,7 +37,7 @@ func _on_fighter_area_shape_entered(area_id, area, area_shape, self_shape):
 				velocity.y = -jump_height * 0.8
 
 func _input(event):
-	if event.is_action_pressed("debug"):
+	if event.is_action_pressed("debug" + player):
 		match state:
 			IDLE:
 				if $bugs.bugs_count() <= 0:

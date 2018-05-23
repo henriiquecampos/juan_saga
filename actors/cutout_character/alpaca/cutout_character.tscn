@@ -14,7 +14,11 @@
 script/source = "extends Position2D
 
 var init_scale = get_scale()
+export (String) var player = \"_1\"
 
+func _ready():
+	if player == null:
+		player = \"_1\"
 func _input(event):
 	var right = false
 	var left = false
@@ -24,9 +28,9 @@ func _input(event):
 				right = true
 			elif int(event.axis_value) < 0:
 				left = true
-	if event.is_action_pressed(\"left\") or left:
+	if event.is_action_pressed(\"left\" + player) or left:
 		set_scale(Vector2(init_scale.x * -1, init_scale.y))
-	elif event.is_action_pressed(\"right\") or right:
+	elif event.is_action_pressed(\"right\" + player) or right:
 		set_scale(init_scale)"
 
 [node name="cutout_character" type="Position2D"]
@@ -34,6 +38,7 @@ func _input(event):
 scale = Vector2( 0.5, 0.5 )
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
+player = "_1"
 
 [node name="leg_left" type="Sprite" parent="." index="0"]
 

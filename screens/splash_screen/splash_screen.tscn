@@ -177,6 +177,10 @@ texture = ExtResource( 9 )
 stretch_mode = 0
 _sections_unfolded = [ "Visibility" ]
 
+[node name="color_rect" parent="." index="3"]
+
+visible = false
+
 [connection signal="animation_finished" from="animator" to="." method="_on_animator_animation_finished"]
 
 

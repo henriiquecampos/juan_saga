@@ -6,16 +6,17 @@ export (bool) var can_bug = true
 var dev_speed = 100
 export (NodePath) var icons_path
 onready var icons_node = get_node(icons_path)
+var player = "_1"
 
 func _process(delta):
 	if can_interact:
-		if Input.is_action_pressed("interact"):
+		if Input.is_action_pressed("interact" + player):
 			if $bugs.get_child_count() == 0:
 				$debug.hide()
 			$progress_bar.value += dev_speed * delta
-		if Input.is_action_just_released("interact"):
+		if Input.is_action_just_released("interact"+ player):
 			$progress_bar.value = 0
-		if Input.is_action_just_pressed("debug"):
+		if Input.is_action_just_pressed("debug"+ player):
 			$bugs.damage_child()
 			
 
@@ -31,6 +32,7 @@ func _on_area_exited(area):
 		$progress_bar.value = 0
 		$progress_bar.hide()
 		$debug.hide()
+		player = area.get_parent().player
 
 func _on_progress_bar_value_changed(value):
 	if value >= 100:
