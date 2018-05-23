@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://actors/enemies/ground_bug.gd" type="Script" id=1]
 [ext_resource path="res://actors/enemies/screen_bug.png" type="Texture" id=2]
 [ext_resource path="res://actors/juan_alpaca/1_jump.ogg" type="AudioStream" id=3]
-
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -26,6 +25,13 @@ func damage_parent(amount):
 
 custom_solver_bias = 0.0
 radius = 24.0
+
+[sub_resource type="GDScript" id=6]
+
+script/source = "extends Area2D
+
+func damage_parent(amount):
+	get_parent().damage_health(amount)"
 
 [sub_resource type="CircleShape2D" id=5]
 
@@ -115,6 +121,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+script = SubResource( 6 )
 
 [node name="shape" type="CollisionShape2D" parent="bounce_area" index="0"]
 

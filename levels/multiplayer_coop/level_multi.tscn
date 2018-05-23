@@ -52,10 +52,6 @@ editor/display_folded = true
 position = Vector2( 764, 512 )
 player = "_2"
 
-[node name="cutout_character" parent="juan_2" index="1"]
-
-player = "_2"
-
 [node name="interact_area" parent="juan_2" index="7"]
 
 editor/display_folded = true
@@ -80,8 +76,6 @@ playback_speed = 1.0
 playback/active = false
 playback/repeat = false
 playback/speed = 1.0
-
-[connection signal="score_changed" from="interface/hud/score" to="rocket" method="update_score"]
 
 
 [editable path="juan"]

@@ -11,34 +11,44 @@
 
 [sub_resource type="GDScript" id=1]
 
-script/source = "extends Position2D
+script/source = "extends Node2D
 
-var init_scale = get_scale()
-export (String) var player = \"_1\"
+onready var initial_scale = get_scale()
+enum directions {RIGHT, LEFT}
 
-func _ready():
-	if player == null:
-		player = \"_1\"
-func _input(event):
-	var right = false
-	var left = false
-	if event is InputEventJoypadMotion:
-		if event.get_axis() == 0:
-			if int(event.axis_value) > 0:
-				right = true
-			elif int(event.axis_value) < 0:
-				left = true
-	if event.is_action_pressed(\"left\" + player) or left:
-		set_scale(Vector2(init_scale.x * -1, init_scale.y))
-	elif event.is_action_pressed(\"right\" + player) or right:
-		set_scale(init_scale)"
+func _on_character_perform_action(action):
+	match action:
+		\"idle\":
+			$animator.play(\"idle\")
+		\"walk\":
+			$animator.play(\"walk\")
+		\"jump\":
+			$animator.play(\"jump\")
+		\"dash\":
+			$animator.play(\"dash\")
+		\"wall\":
+			$animator.play(\"wall\")
+		\"fall\":
+			$animator.play(\"fall\")
+
+func flip_sprites(direction):
+	if direction == RIGHT:
+		scale.x = initial_scale.x
+	else:
+		scale.x = initial_scale.x * -1
+
+func _on_character_direction_changed(new_direction):
+	if new_direction > 0:
+		flip_sprites(RIGHT)
+	else:
+		flip_sprites(LEFT)
+"
 
 [node name="cutout_character" type="Position2D"]
 
 scale = Vector2( 0.5, 0.5 )
 script = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
-player = "_1"
 
 [node name="leg_left" type="Sprite" parent="." index="0"]
 

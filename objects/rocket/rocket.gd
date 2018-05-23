@@ -17,9 +17,9 @@ func _process(delta):
 	if get_tree().is_paused():
 		return
 	if can_interact:
-		if Input.is_action_pressed("interact" + player):
+		if Input.is_action_pressed(player.interact):
 			$progress_bar.value += 100 * delta
-		if Input.is_action_just_released("interact" + player):
+		if Input.is_action_just_released(player.interact):
 			$progress_bar.value = 0
 
 func _physics_process(delta):
@@ -31,7 +31,7 @@ func _on_area_entered(area):
 		can_interact = true
 		$progress_bar.value = 0
 		$progress_bar.show()
-		player = area.get_parent().player
+		player = area.get_parent()
 
 func _on_area_exited(area):
 	if area.is_in_group("player"):

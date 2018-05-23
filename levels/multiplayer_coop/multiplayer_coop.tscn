@@ -31,7 +31,7 @@ func _process(delta):
 		$viewport_player_2.hide()
 	$viewport_oversee/viewport/camera.zoom = z"
 
-[node name="multiplayer_coop" type="Node" index="0"]
+[node name="multiplayer_coop" type="Node"]
 
 script = SubResource( 1 )
 
