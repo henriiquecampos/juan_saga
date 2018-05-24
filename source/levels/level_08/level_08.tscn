@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://levels/level_00/level_00.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/level_08/idle.tres" type="Animation" id=2]
+[ext_resource path="res://actors/enemies/boss_bug/boss_bug.tscn" type="PackedScene" id=3]
+
+[node name="level_08" instance=ExtResource( 1 )]
+
+next_level = "res://screens/credit_screen/credit_screen.tscn"
+current_level = "res://levels/level_08/level_08.tscn"
+min_score = 2000
+
+[node name="rocket" parent="." index="0"]
+
+position = Vector2( 2096, 509 )
+
+[node name="tile_map" parent="tilemap" index="0"]
+
+tile_data = PoolIntArray( -327676, 0, 0, -327675, 1, 0, -327674, 2, 0, -327673, 0, 0, -327672, 1, 0, -327671, 2, 0, -262140, 4, 0, -262139, 3, 0, -262138, 5, 0, -262137, 4, 0, -262136, 3, 0, -262135, 5, 0, -262133, 6, 0, -196604, 3, 0, -196603, 5, 0, -196602, 4, 0, -196601, 3, 0, -196600, 5, 0, -196599, 4, 0, -196595, 6, 0, -65524, 6, 0, 65546, 6, 0, 196616, 0, 0, 196617, 1, 0, 196618, 2, 0, 196619, 0, 0, 196620, 1, 0, 196621, 2, 0, 196622, 0, 0, 262144, 0, 0, 262145, 1, 0, 262146, 2, 0, 262147, 0, 0, 262148, 1, 0, 262149, 2, 0, 262150, 0, 0, 262151, 1, 0, 262152, 5, 0, 262153, 4, 0, 262154, 3, 0, 262155, 5, 0, 262156, 4, 0, 262157, 3, 0, 262158, 5, 0, 262159, 2, 0, 262160, 0, 0, 262161, 1, 0, 262162, 2, 0, 262163, 0, 0, 262164, 1, 0, 262165, 2, 0, 262166, 0, 0, 262167, 1, 0, 262168, 2, 0, 262169, 0, 0, 262170, 1, 0, 262171, 2, 0, 262172, 0, 0, 262173, 1, 0, 262174, 2, 0, 262175, 0, 0, 262176, 1, 0, 262177, 2, 0, 262178, 0, 0, 262179, 1, 0, 262180, 2, 0, 262181, 0, 0, 262182, 1, 0, 262183, 2, 0, 262184, 0, 0, 262185, 1, 0, 262186, 2, 0, 327680, 3, 0, 327681, 5, 0, 327682, 4, 0, 327683, 3, 0, 327684, 5, 0, 327685, 4, 0, 327686, 3, 0, 327687, 5, 0, 327688, 4, 0, 327689, 3, 0, 327690, 5, 0, 327691, 4, 0, 327692, 3, 0, 327693, 5, 0, 327694, 4, 0, 327695, 3, 0, 327696, 5, 0, 327697, 4, 0, 327698, 3, 0, 327699, 5, 0, 327700, 4, 0, 327701, 3, 0, 327702, 5, 0, 327703, 4, 0, 327704, 3, 0, 327705, 5, 0, 327706, 4, 0, 327707, 3, 0, 327708, 5, 0, 327709, 4, 0, 327710, 3, 0, 327711, 5, 0, 327712, 4, 0, 327713, 3, 0, 327714, 5, 0, 327715, 4, 0, 327716, 3, 0, 327717, 5, 0, 327718, 4, 0, 327719, 3, 0, 327720, 5, 0, 327721, 4, 0, 327722, 3, 0 )
+
+[node name="computer" parent="." index="3"]
+
+position = Vector2( 440, -176 )
+
+[node name="right_wall" parent="." index="5"]
+
+position = Vector2( 2240, 408 )
+
+[node name="counter" parent="interface/hud" index="2"]
+
+editor/display_folded = false
+
+[node name="timer" parent="interface/hud/counter" index="0"]
+
+wait_time = 80.0
+
+[node name="spawner" parent="." index="10"]
+
+position = Vector2( 277.742, -680 )
+min_time = 2.0
+max_time = 5.0
+anim = ExtResource( 2 )
+
+[node name="animator" parent="spawner" index="1"]
+
+anims/idle = ExtResource( 2 )
+
+[node name="bugs" parent="." index="11"]
+
+editor/display_folded = true
+
+[node name="boss_bug" parent="bugs" index="1" instance=ExtResource( 3 )]
+
+position = Vector2( 1424, 464 )
+walk_speed = 300
+jump_height = 600
+
+[node name="camera" parent="." index="12"]
+
+limit_right = 2697
+
+[node name="dialogue" parent="." index="13"]
+
+editor/display_folded = true
+
+
+[editable path="juan"]
+[editable path="interface/hud"]
+[editable path="interface/hud/counter"]

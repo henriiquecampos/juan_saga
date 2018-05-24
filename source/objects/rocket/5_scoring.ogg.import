@@ -1,0 +1,18 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/5_scoring.ogg-6a225ee9ba4d35d7778da433d8cfb806.oggstr"
+
+[deps]
+
+source_file="res://objects/rocket/5_scoring.ogg"
+source_md5="4118377de64c167257e5857963f337c5"
+
+dest_files=[ "res://.import/5_scoring.ogg-6a225ee9ba4d35d7778da433d8cfb806.oggstr" ]
+dest_md5="bd31f9f0290d0aa977bd7f48e648eb00"
+
+[params]
+
+loop=false
+loop_offset=0

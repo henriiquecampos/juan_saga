@@ -1,5 +1,6 @@
 .import/
-source/
+assets/
+releases/
 build/
 *~
 data/icons/**/*.import

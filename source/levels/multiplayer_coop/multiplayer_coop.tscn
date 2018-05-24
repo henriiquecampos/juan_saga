@@ -1,0 +1,272 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/multiplayer_coop/level_multi.tscn" type="PackedScene" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Node
+
+func _ready():
+	var v1 = $viewport_player_1/viewport
+	var v2 = $viewport_player_2/viewport
+	var v3 = $viewport_oversee/viewport
+	v2.world_2d = v1.world_2d
+	v3.world_2d = v1.world_2d
+	
+	var c2 = $viewport_player_2/viewport/camera
+	c2.set_custom_viewport(v2)
+	var c3 = $viewport_oversee/viewport/camera
+	c3.set_custom_viewport(v3)
+	
+func _process(delta):
+	var z = $viewport_player_1/viewport/level_multi/camera_rig.zoom
+	z = Vector2(max(1, z.x), max(1, z.y))
+	if z.x > 2:
+		$viewport_oversee.hide()
+		$viewport_player_1.show()
+		$viewport_player_2.show()
+	else:
+		$viewport_oversee.show()
+		$viewport_player_1.hide()
+		$viewport_player_2.hide()
+	$viewport_oversee/viewport/camera.zoom = z"
+
+[node name="multiplayer_coop" type="Node" index="0"]
+
+script = SubResource( 1 )
+
+[node name="viewport_oversee" type="ViewportContainer" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+stretch = true
+stretch_shrink = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="viewport" type="Viewport" parent="viewport_oversee" index="0"]
+
+arvr = false
+size = Vector2( 1024, 600 )
+own_world = false
+world = null
+transparent_bg = false
+msaa = 0
+hdr = true
+disable_3d = false
+usage = 2
+debug_draw = 0
+render_target_v_flip = false
+render_target_clear_mode = 0
+render_target_update_mode = 3
+audio_listener_enable_2d = false
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = false
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
+
+[node name="camera" type="Camera2D" parent="viewport_oversee/viewport" index="0"]
+
+position = Vector2( 832, 264 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = 0
+limit_top = -10000000
+limit_right = 1856
+limit_bottom = 638
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = true
+smoothing_speed = 10.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Limit", "Smoothing" ]
+
+[node name="viewport_player_1" type="ViewportContainer" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 1024.0
+margin_bottom = 300.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+stretch = true
+stretch_shrink = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="viewport" type="Viewport" parent="viewport_player_1" index="0"]
+
+editor/display_folded = true
+arvr = false
+size = Vector2( 1024, 300 )
+own_world = false
+world = null
+transparent_bg = false
+msaa = 0
+hdr = true
+disable_3d = false
+usage = 0
+debug_draw = 0
+render_target_v_flip = false
+render_target_clear_mode = 0
+render_target_update_mode = 3
+audio_listener_enable_2d = true
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = false
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
+_sections_unfolded = [ "Audio Listener", "Render Target", "Rendering" ]
+
+[node name="camera" type="Camera2D" parent="viewport_player_1/viewport" index="0"]
+
+position = Vector2( 184, 376 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = 0
+limit_top = -10000000
+limit_right = 1856
+limit_bottom = 638
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Limit" ]
+
+[node name="level_multi" parent="viewport_player_1/viewport" index="1" instance=ExtResource( 1 )]
+
+[node name="camera_rig" parent="viewport_player_1/viewport/level_multi" index="14"]
+
+remote_path = NodePath("../../../../viewport_oversee/viewport/camera")
+
+[node name="camera_rig" parent="viewport_player_1/viewport/level_multi/juan" index="5"]
+
+remote_path = NodePath("../../../camera")
+
+[node name="camera_rig" parent="viewport_player_1/viewport/level_multi/remi" index="5"]
+
+remote_path = NodePath("../../../../../viewport_player_2/viewport/camera")
+
+[node name="viewport_player_2" type="ViewportContainer" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 300.0
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+stretch = true
+stretch_shrink = 1
+_sections_unfolded = [ "Rect" ]
+
+[node name="viewport" type="Viewport" parent="viewport_player_2" index="0"]
+
+arvr = false
+size = Vector2( 1024, 300 )
+own_world = false
+world = null
+transparent_bg = false
+msaa = 0
+hdr = true
+disable_3d = false
+usage = 2
+debug_draw = 0
+render_target_v_flip = false
+render_target_clear_mode = 0
+render_target_update_mode = 3
+audio_listener_enable_2d = true
+audio_listener_enable_3d = false
+physics_object_picking = false
+gui_disable_input = false
+gui_snap_controls_to_pixels = true
+shadow_atlas_size = 0
+shadow_atlas_quad_0 = 2
+shadow_atlas_quad_1 = 2
+shadow_atlas_quad_2 = 3
+shadow_atlas_quad_3 = 4
+_sections_unfolded = [ "Audio Listener", "Render Target" ]
+
+[node name="camera" type="Camera2D" parent="viewport_player_2/viewport" index="0"]
+
+position = Vector2( 72, 376 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = 0
+limit_top = -10000000
+limit_right = 1856
+limit_bottom = 638
+limit_smoothed = false
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+smoothing_enabled = false
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Limit", "Transform" ]
+
+
+[editable path="viewport_player_1/viewport/level_multi"]
+[editable path="viewport_player_1/viewport/level_multi/juan"]
+[editable path="viewport_player_1/viewport/level_multi/remi"]

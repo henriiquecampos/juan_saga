@@ -1,0 +1,614 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://screens/basic_screen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://screens/control_config/controls_screen.gd" type="Script" id=2]
+[ext_resource path="res://levels/tilesets/tileset_godot.tres" type="TileSet" id=3]
+[ext_resource path="res://screens/control_config/action_button.gd" type="Script" id=4]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends PanelContainer
+
+onready var pop_up = $\"../pop_up\"
+func _ready():
+	$\"../button\".grab_focus()
+	get_all_nodes($controls)
+
+func _on_pop_up_visibility_changed():
+	pop_up.set_process_input(pop_up.visible)
+		
+func get_all_nodes(from):
+	for c in from.get_children():
+		if c.get_child_count() > 0:
+			get_all_nodes(c)
+		else:
+			if c is Button:
+				c.connect(\"button_up\", self, \"set_input\", [c])
+				
+func set_input(which):
+	pop_up.visible = true
+	pop_up.button = which"
+
+[sub_resource type="GDScript" id=2]
+
+script/source = "extends Panel
+
+var button
+
+func _ready():
+	set_process_input(false)
+func _input(event):
+	if event is InputEventKey and event.is_pressed():
+		button.release_focus()
+		button.get_parent().get_node(\"input\").text = event.as_text().to_lower()
+		for e in InputMap.get_action_list(button.action):
+			if e is InputEventJoypadButton or e is InputEventJoypadMotion:
+				continue
+			InputMap.action_erase_event(button.action, e)
+		InputMap.action_add_event(button.action, event)
+	if event is InputEventKey and !event.is_pressed():
+		hide()
+		button.grab_focus()"
+
+[node name="controls_screen" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+next_scene = "res://screens/main_menu/main_screen.tscn"
+
+[node name="tile_map" type="TileMap" parent="." index="0"]
+
+modulate = Color( 0.509804, 0.509804, 0.509804, 1 )
+mode = 0
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 64, 64 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 0, 0, 0, 2, 1, 0, 4, 2, 0, 6, 0, 0, 8, 1, 0, 10, 2, 0, 12, 0, 0, 14, 1, 0, 131072, 1073741827, 0, 131074, 1073741829, 0, 131076, 1073741828, 0, 131078, 1073741827, 0, 131080, 1073741829, 0, 131082, 1073741828, 0, 131084, 1073741827, 0, 131086, 1073741829, 0, 262144, 1073741828, 0, 262146, 1073741827, 0, 262148, 1073741829, 0, 262150, 1073741828, 0, 262152, 1073741827, 0, 262154, 1073741829, 0, 262156, 1073741828, 0, 262158, 1073741827, 0, 393216, 1073741829, 0, 393218, 1073741828, 0, 393220, 1073741827, 0, 393222, 1073741829, 0, 393224, 1073741828, 0, 393226, 1073741827, 0, 393228, 1073741829, 0, 393230, 1073741828, 0, 524288, 1073741826, 0, 524290, 1073741824, 0, 524292, 1073741825, 0, 524294, 1073741826, 0, 524296, 1073741824, 0, 524298, 1073741825, 0, 524300, 1073741826, 0, 524302, 1073741824, 0 )
+_sections_unfolded = [ "Visibility" ]
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="panel" type="PanelContainer" parent="." index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 338.0
+margin_top = 56.0
+margin_right = 662.0
+margin_bottom = 568.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = SubResource( 1 )
+
+[node name="controls" type="ScrollContainer" parent="panel" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 316.0
+margin_bottom = 504.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+scroll_horizontal_enabled = true
+scroll_horizontal = 0
+scroll_vertical_enabled = true
+scroll_vertical = 0
+
+[node name="rows" type="VBoxContainer" parent="panel/controls" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 308.0
+margin_bottom = 496.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 35
+alignment = 0
+_sections_unfolded = [ "custom_constants" ]
+
+[node name="label" type="Label" parent="panel/controls/rows" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 308.0
+margin_bottom = 22.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "controls"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="titles" type="HBoxContainer" parent="panel/controls/rows" index="1"]
+
+editor/display_folded = true
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 57.0
+margin_right = 308.0
+margin_bottom = 101.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+
+[node name="action" type="Label" parent="panel/controls/rows/titles" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 152.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "action"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="input" type="Label" parent="panel/controls/rows/titles" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 156.0
+margin_right = 308.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "input"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="row_00" type="HBoxContainer" parent="panel/controls/rows" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 136.0
+margin_right = 308.0
+margin_bottom = 180.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+
+[node name="action" type="Button" parent="panel/controls/rows/row_00" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 152.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "walk left"
+flat = false
+align = 1
+script = ExtResource( 4 )
+action = "left"
+
+[node name="input" type="Label" parent="panel/controls/rows/row_00" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 156.0
+margin_right = 308.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "left"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="row_01" type="HBoxContainer" parent="panel/controls/rows" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 215.0
+margin_right = 308.0
+margin_bottom = 259.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+
+[node name="action" type="Button" parent="panel/controls/rows/row_01" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 152.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "walk right"
+flat = false
+align = 1
+script = ExtResource( 4 )
+action = "right"
+
+[node name="input" type="Label" parent="panel/controls/rows/row_01" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 156.0
+margin_right = 308.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "right"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="row_02" type="HBoxContainer" parent="panel/controls/rows" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 294.0
+margin_right = 308.0
+margin_bottom = 338.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+
+[node name="action" type="Button" parent="panel/controls/rows/row_02" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 152.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "jump"
+flat = false
+align = 1
+script = ExtResource( 4 )
+action = "jump"
+
+[node name="input" type="Label" parent="panel/controls/rows/row_02" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 156.0
+margin_right = 308.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "space"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="row_03" type="HBoxContainer" parent="panel/controls/rows" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 373.0
+margin_right = 308.0
+margin_bottom = 417.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+
+[node name="action" type="Button" parent="panel/controls/rows/row_03" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 152.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "interact"
+flat = false
+align = 1
+script = ExtResource( 4 )
+action = "interact"
+
+[node name="input" type="Label" parent="panel/controls/rows/row_03" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 156.0
+margin_right = 308.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "E"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="row_04" type="HBoxContainer" parent="panel/controls/rows" index="6"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 452.0
+margin_right = 308.0
+margin_bottom = 496.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 0
+
+[node name="action" type="Button" parent="panel/controls/rows/row_04" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 152.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "debug"
+flat = false
+align = 1
+script = ExtResource( 4 )
+action = "debug"
+
+[node name="input" type="Label" parent="panel/controls/rows/row_04" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 156.0
+margin_right = 308.0
+margin_bottom = 44.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "F"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="button" type="Button" parent="." index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_top = 22.0
+margin_right = 192.0
+margin_bottom = 62.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+text = "back"
+flat = false
+align = 1
+
+[node name="pop_up" type="Panel" parent="." index="4"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 336.0
+margin_top = 273.0
+margin_right = 664.0
+margin_bottom = 406.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = SubResource( 2 )
+_sections_unfolded = [ "Visibility" ]
+
+[node name="label" type="Label" parent="pop_up" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 16.0
+margin_top = 14.0
+margin_right = 312.0
+margin_bottom = 118.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+text = "press new key"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[connection signal="button_up" from="button" to="." method="change_scene"]
+
+[connection signal="visibility_changed" from="pop_up" to="panel" method="_on_pop_up_visibility_changed"]
+
+

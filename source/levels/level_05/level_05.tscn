@@ -1,0 +1,149 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://levels/level_00/level_00.tscn" type="PackedScene" id=1]
+[ext_resource path="res://levels/level_05/level_05.gd" type="Script" id=2]
+[ext_resource path="res://actors/pigdev/pig_contributor.tscn" type="PackedScene" id=3]
+[ext_resource path="res://levels/level_05/level_05_spawn.tres" type="Animation" id=4]
+[ext_resource path="res://actors/enemies/ground_bug.tscn" type="PackedScene" id=5]
+[ext_resource path="res://actors/enemies/particles/bug_death.tscn" type="PackedScene" id=6]
+[ext_resource path="res://interface/dialogue/dialogue_box.tscn" type="PackedScene" id=7]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends Area2D
+
+func _on_area_entered(area):
+	if area.is_in_group(\"player\"):
+		get_tree().reload_current_scene()
+	elif area.is_in_group(\"enemy\"):
+		area.get_parent().queue_free()
+"
+
+[sub_resource type="LineShape2D" id=2]
+
+custom_solver_bias = 0.0
+normal = Vector2( 0, -1 )
+d = 0.0
+
+[node name="level_05" instance=ExtResource( 1 )]
+
+script = ExtResource( 2 )
+next_level = "res://levels/level_06/level_06.tscn"
+current_level = "res://levels/level_05/level_05.tscn"
+min_score = 2000
+
+[node name="rocket" parent="." index="0"]
+
+position = Vector2( 1656, 512 )
+
+[node name="juan" parent="." index="1"]
+
+z_index = 4
+
+[node name="tilemap" parent="." index="2"]
+
+position = Vector2( -2, 255 )
+
+[node name="tile_map" parent="tilemap" index="0"]
+
+tile_data = PoolIntArray( 196619, 6, 0, 196622, 6, 0, 196625, 6, 0, 262144, 0, 0, 262145, 1, 0, 262146, 2, 0, 262147, 0, 0, 262148, 1, 0, 262149, 2, 0, 262150, 0, 0, 262151, 1, 0, 262152, 2, 0, 262153, 0, 0, 262164, 0, 0, 262165, 1, 0, 262166, 2, 0, 262167, 0, 0, 262168, 1, 0, 262169, 2, 0, 262170, 0, 0, 262171, 1, 0, 262172, 2, 0, 327680, 3, 0, 327681, 5, 0, 327682, 4, 0, 327683, 3, 0, 327684, 5, 0, 327685, 4, 0, 327686, 3, 0, 327687, 5, 0, 327688, 4, 0, 327689, 3, 0, 327700, 4, 0, 327701, 3, 0, 327702, 5, 0, 327703, 4, 0, 327704, 3, 0, 327705, 5, 0, 327706, 4, 0, 327707, 3, 0, 327708, 5, 0 )
+
+[node name="computer" parent="." index="3"]
+
+pause_mode = 2
+editor/display_folded = true
+position = Vector2( 400, 416 )
+_sections_unfolded = [ "Pause", "Transform" ]
+can_bug = false
+
+[node name="shape" parent="computer" index="0"]
+
+disabled = true
+
+[node name="interface" parent="." index="6"]
+
+editor/display_folded = false
+
+[node name="counter" parent="interface/hud" index="2"]
+
+editor/display_folded = false
+
+[node name="timer" parent="interface/hud/counter" index="0"]
+
+wait_time = 100.0
+
+[node name="screen" parent="." index="7"]
+
+editor/display_folded = true
+
+[node name="fade" parent="." index="8"]
+
+editor/display_folded = false
+
+[node name="pig_contributor" parent="." index="10" instance=ExtResource( 3 )]
+
+pause_mode = 2
+position = Vector2( 400, 512 )
+_sections_unfolded = [ "Pause" ]
+level_bugs = NodePath("../bugs")
+level_computer = NodePath("../computer")
+bugs_tolerance = 0
+
+[node name="spawner" parent="." index="11"]
+
+position = Vector2( 232, 48 )
+min_time = 4.0
+max_time = 6.0
+anim = ExtResource( 4 )
+can_spawn = false
+
+[node name="ground_bug" parent="bugs" index="1" instance=ExtResource( 5 )]
+
+visible = false
+position = Vector2( 600, 536 )
+
+[node name="spawn_particle" parent="bugs" index="2" instance=ExtResource( 6 )]
+
+pause_mode = 2
+position = Vector2( 600, 536 )
+_sections_unfolded = [ "Drawing", "Pause", "Process Material", "Textures", "Time", "Transform" ]
+
+[node name="timer" parent="bugs/spawn_particle" index="0"]
+
+autostart = false
+
+[node name="void" type="Area2D" parent="." index="13"]
+
+editor/display_folded = true
+position = Vector2( 976, 824 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = SubResource( 1 )
+
+[node name="shape" type="CollisionShape2D" parent="void" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="dialogue_box" parent="dialogue/control" index="0" instance=ExtResource( 7 )]
+
+visible = false
+dialogues = PoolStringArray( "hey look! a wild contributor appeared!", "seems like he can be very handy, working alone isn\'t as productive as working together, so let\'s see how he goes", "hmm he codes new features for you, awesome!", "ohh wait...he is committing features with bugs, ohh noes. let\'s try to help, we gotta fix those bugs that are falling out of nowhere", "to debug these contributor bugs just stomp them, they are easy to be solved by you since you understand how they happen" )
+fade_animator_path = NodePath("../../../animator")
+
+[connection signal="new_child" from="bugs" to="pig_contributor" method="_on_bugs_new_child"]
+
+[connection signal="area_entered" from="void" to="void" method="_on_area_entered"]
+
+[connection signal="dialogue_changed" from="dialogue/control/dialogue_box" to="." method="_on_dialogue_changed"]
+
+
+[editable path="juan"]
+[editable path="computer"]
+[editable path="interface/hud"]
+[editable path="interface/hud/counter"]
+[editable path="bugs/spawn_particle"]

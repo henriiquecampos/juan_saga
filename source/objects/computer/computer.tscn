@@ -1,0 +1,126 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://objects/computer/computer.gd" type="Script" id=1]
+[ext_resource path="res://objects/computer/computer.png" type="Texture" id=2]
+[ext_resource path="res://interface/menu_bar_fg.tres" type="StyleBox" id=3]
+[ext_resource path="res://interface/menu_bar_bg.tres" type="StyleBox" id=4]
+[ext_resource path="res://interface/menu_bar_hilit.tres" type="Theme" id=5]
+[ext_resource path="res://actors/enemies/bugs.tscn" type="PackedScene" id=6]
+[ext_resource path="res://objects/computer/4_newnode.ogg" type="AudioStream" id=7]
+
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 128, 80 )
+
+[node name="computer" type="Area2D"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+can_bug = true
+icons_path = null
+
+[node name="shape" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 8, 0 )
+shape = SubResource( 1 )
+
+[node name="sprite" type="Sprite" parent="." index="1"]
+
+position = Vector2( 8, 0 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Region" ]
+
+[node name="progress_bar" type="ProgressBar" parent="." index="2"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -64.0
+margin_right = 64.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 0
+custom_styles/fg = ExtResource( 3 )
+custom_styles/bg = ExtResource( 4 )
+min_value = 0.0
+max_value = 100.0
+step = 1.0
+page = 0.0
+value = 0.0
+exp_edit = false
+rounded = false
+percent_visible = false
+_sections_unfolded = [ "custom_styles" ]
+
+[node name="debug" type="Label" parent="." index="3"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -32.0
+margin_top = -104.0
+margin_right = 35.0
+margin_bottom = -82.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+theme = ExtResource( 5 )
+text = "debug!!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Theme" ]
+
+[node name="bugs" parent="." index="4" instance=ExtResource( 6 )]
+
+position = Vector2( -88, -48 )
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="." index="5"]
+
+position = Vector2( 0, 8 )
+stream = ExtResource( 7 )
+volume_db = 0.0
+autoplay = false
+max_distance = 2000.0
+attenuation = 1.0
+bus = "sfx"
+area_mask = 1
+
+[node name="tween" type="Tween" parent="." index="6"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+
+[connection signal="value_changed" from="progress_bar" to="." method="_on_progress_bar_value_changed"]
+
+[connection signal="new_child" from="bugs" to="." method="_on_bugs_new_child"]
+
+

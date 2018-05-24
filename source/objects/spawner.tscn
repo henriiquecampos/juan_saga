@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://levels/spawner.gd" type="Script" id=1]
+[ext_resource path="res://levels/level_00/idle.tres" type="Animation" id=2]
+
+[node name="spawner" type="Position2D"]
+
+editor/display_folded = true
+position = Vector2( 119.361, -680 )
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+min_time = 3.0
+max_time = 8.0
+anim = ExtResource( 2 )
+can_spawn = true
+
+[node name="timer" type="Timer" parent="." index="0"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="animator" type="AnimationPlayer" parent="." index="1"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+blend_times = [  ]
+
+
