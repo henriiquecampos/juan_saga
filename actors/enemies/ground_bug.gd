@@ -17,7 +17,7 @@ func _on_area_entered(area):
 		player = area
 		jumps = 5
 		velocity.x = walk_speed * (player.global_position - global_position).normalized().x
-		set_state(JUMP)
+		set_state(states.JUMP)
 		$sfx.play()
 		$jump_interval.start()
 
@@ -45,7 +45,7 @@ func _on_jump_interval_timeout():
 	var n = (global_position - player.global_position).normalized()
 	$sprite.scale.x = -1 if n.x < 0 else 1
 	velocity.x = walk_speed * (player.global_position - global_position).normalized().x
-	set_state(JUMP)
+	set_state(states.JUMP)
 	$sfx.play()
 	jumps -= 1
 

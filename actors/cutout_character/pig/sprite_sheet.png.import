@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/sprite_sheet.png-8bd0eee431dbbb74b4b291f5e1180c25.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://actors/cutout_character/pig/sprite_sheet.png"
-source_md5="42e33ffbdaae13873384feb18160f539"
-
 dest_files=[ "res://.import/sprite_sheet.png-8bd0eee431dbbb74b4b291f5e1180c25.stex" ]
-dest_md5="359f7bd45ec2cd423ededf9c8bf8991b"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

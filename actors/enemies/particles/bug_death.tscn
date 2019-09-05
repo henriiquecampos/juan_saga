@@ -1,44 +1,25 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://actors/enemies/particles/bug_death.tres" type="Material" id=1]
-[ext_resource path="res://actors/enemies/particles/02.png" type="Texture" id=2]
+[ext_resource path="res://actors/enemies/particles/02.png" type="Texture" id=1]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 
-render_priority = 0
-blend_mode = 0
-light_mode = 0
-
-[node name="death_particle" type="Particles2D"]
-
+[node name="death_particle" type="CPUParticles2D"]
 material = SubResource( 1 )
 emitting = false
 amount = 16
 lifetime = 1.5
 one_shot = true
-preprocess = 0.0
 speed_scale = 5.0
 explosiveness = 0.6
-randomness = 0.0
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
-draw_order = 0
-process_material = ExtResource( 1 )
-texture = ExtResource( 2 )
-normal_map = null
-h_frames = 2
-v_frames = 1
-_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform" ]
+texture = ExtResource( 1 )
+spread = 180.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 21.0
 
-[node name="timer" type="Timer" parent="." index="0"]
-
-process_mode = 1
+[node name="timer" type="Timer" parent="."]
 wait_time = 1.5
 one_shot = true
 autostart = true
-
 [connection signal="timeout" from="timer" to="." method="queue_free"]
-
-

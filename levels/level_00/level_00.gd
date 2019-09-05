@@ -25,7 +25,7 @@ func _on_timer_timeout():
 		$interface/hud.uncomplete()
 		return
 	score_container.scene_score = $interface/hud/score.score
-	score_container.set_score(score_container.scene_score, score_container.ADD)
+	score_container.score += score_container.scene_score
 	$animator.play("fade")
 	yield($animator, "animation_finished")
 	$camera.tween_position($rocket/center.global_position)

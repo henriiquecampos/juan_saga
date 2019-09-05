@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/02.png-15290c554678d953f7628f18c1e23f0d.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://actors/enemies/particles/02.png"
-source_md5="5d007e4f3151ff6fe47ecf1156920f1a"
-
 dest_files=[ "res://.import/02.png-15290c554678d953f7628f18c1e23f0d.stex" ]
-dest_md5="89c2510c0f79c2ee25725598626f3831"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

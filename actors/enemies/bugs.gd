@@ -6,10 +6,10 @@ signal new_child(penalty, child_amount)
 func _on_screen_bug_tree_exited(bug):
 	$sfx.play()
 	emit_signal("new_child", -bug.penalty, bugs_count())
-	score_node.set_score(bug.score, score_node.ADD)
+	score_node.score += bug.score
 
 func _on_screen_bug_timeout(bug):
-	score_node.set_score(bug.damage, score_node.REMOVE)
+	score_node.score -= bug.damage
 	
 func damage_child():
 	if get_child_count() <= 1:

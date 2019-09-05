@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/linux_game_jam.jpg-c519ef10a634a2be7682220d9ee59985.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://screens/splash_screen/linux_game_jam/linux_game_jam.jpg"
-source_md5="93786825131cca9159d506b6f267c6dd"
-
 dest_files=[ "res://.import/linux_game_jam.jpg-c519ef10a634a2be7682220d9ee59985.stex" ]
-dest_md5="f32178d4873f7d00ebf051f8ef15d74a"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

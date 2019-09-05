@@ -7,10 +7,7 @@ path="res://.import/ending_music.ogg-dc5ca4f19ae4ea4390c36dc377017fc9.oggstr"
 [deps]
 
 source_file="res://screens/credit_screen/ending_music.ogg"
-source_md5="bfab6c911c2a4b8168649865defb3045"
-
 dest_files=[ "res://.import/ending_music.ogg-dc5ca4f19ae4ea4390c36dc377017fc9.oggstr" ]
-dest_md5="53966eef73348be9f470d555827b0bd7"
 
 [params]
 

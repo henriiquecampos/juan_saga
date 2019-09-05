@@ -1,31 +1,19 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://actors/enemies/particles/boss_bug_material.tres" type="Material" id=1]
-[ext_resource path="res://actors/enemies/particles/02.png" type="Texture" id=2]
+[ext_resource path="res://actors/enemies/particles/02.png" type="Texture" id=1]
 
-[node name="boss_aura" type="Particles2D" index="0"]
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0.521127, 0.985915 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
+[node name="boss_aura" type="CPUParticles2D"]
 show_behind_parent = true
-position = Vector2( -3.66455, 80.729 )
-z_index = -21
-emitting = true
 amount = 14
 lifetime = 2.5
-one_shot = false
-preprocess = 0.0
-speed_scale = 1.0
-explosiveness = 0.0
 randomness = 0.5
-fixed_fps = 0
-fract_delta = true
-visibility_rect = Rect2( -100, -100, 200, 200 )
 local_coords = false
-draw_order = 0
-process_material = ExtResource( 1 )
-texture = ExtResource( 2 )
-normal_map = null
-h_frames = 2
-v_frames = 1
-_sections_unfolded = [ "Drawing", "Process Material", "Textures", "Time", "Transform", "Visibility", "Z Index" ]
-
-
+texture = ExtResource( 1 )
+emission_shape = 2
+emission_rect_extents = Vector2( 128, 70 )
+gravity = Vector2( 0, -37 )
+color_ramp = SubResource( 1 )

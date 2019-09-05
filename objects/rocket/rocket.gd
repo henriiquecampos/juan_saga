@@ -41,7 +41,7 @@ func _on_progress_bar_value_changed(value):
 	if value >= 100:
 		if icons_node.get_child_count() > 0:
 			icons_node.get_child(icons_node.get_child_count() -1).queue_free()
-			score_node.set_score(value, score_node.ADD)
+			score_node.score += value
 			bump_rocket()
 			pop_score(value)
 		if icons_node.get_child_count() > 1:

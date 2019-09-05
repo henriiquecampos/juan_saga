@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/patreon_call.png-d7a64e81cef36af485f3ad638c5b0e99.stex"
+path="res://.import/03-background-render.png-96c75ec16744317b2c8493c7da6d2009.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://screens/promo_screen/patreon_call.png"
-dest_files=[ "res://.import/patreon_call.png-d7a64e81cef36af485f3ad638c5b0e99.stex" ]
+source_file="res://screens/splash_screen/03-background-render.png"
+dest_files=[ "res://.import/03-background-render.png-96c75ec16744317b2c8493c7da6d2009.stex" ]
 
 [params]
 

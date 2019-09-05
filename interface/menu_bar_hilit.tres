@@ -5,189 +5,59 @@
 [ext_resource path="res://font/GaroaHackerClubeBold.otf" type="DynamicFontData" id=3]
 
 [sub_resource type="StyleBoxFlat" id=1]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
 bg_color = Color( 0.376471, 0.478431, 0.760784, 1 )
-draw_center = true
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color( 1, 1, 1, 1 )
-border_blend = false
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-_sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
 
 [sub_resource type="StyleBoxFlat" id=2]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
 bg_color = Color( 0.498039, 0.576471, 0.85098, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-_sections_unfolded = [ "Corner Radius" ]
 
 [sub_resource type="StyleBoxFlat" id=3]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
 bg_color = Color( 0.376471, 0.478431, 0.760784, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-_sections_unfolded = [ "Corner Radius" ]
 
 [sub_resource type="StyleBoxFlat" id=4]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
 bg_color = Color( 0.301961, 0.364706, 0.537255, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-_sections_unfolded = [ "Corner Radius" ]
 
 [sub_resource type="StyleBoxFlat" id=5]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
 bg_color = Color( 0.414063, 0.698893, 1, 1 )
-draw_center = true
-border_width_left = 0
-border_width_top = 0
-border_width_right = 0
-border_width_bottom = 0
-border_color = Color( 0.8, 0.8, 0.8, 1 )
-border_blend = false
-corner_radius_top_left = 0
-corner_radius_top_right = 0
-corner_radius_bottom_right = 0
-corner_radius_bottom_left = 0
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
 
 [sub_resource type="StyleBoxFlat" id=6]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
 bg_color = Color( 0.376471, 0.478431, 0.760784, 1 )
-draw_center = true
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
 border_width_bottom = 5
 border_color = Color( 0.299057, 0.363768, 0.542969, 1 )
-border_blend = false
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
-corner_detail = 8
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-shadow_color = Color( 0, 0, 0, 0.6 )
-shadow_size = 0
-anti_aliasing = true
-anti_aliasing_size = 1
-_sections_unfolded = [ "Border", "Border Width", "Corner Radius" ]
 
 [sub_resource type="DynamicFont" id=7]
-
 size = 20
-use_mipmaps = false
-use_filter = false
 extra_spacing_top = 2
 font_data = ExtResource( 3 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
 
 [resource]
-
 default_font = SubResource( 7 )
 Button/colors/font_color = Color( 1, 1, 1, 1 )
 Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
@@ -217,5 +87,3 @@ ProgressBar/colors/font_color_shadow = Color( 0, 0, 0, 1 )
 ProgressBar/fonts/font = null
 ProgressBar/styles/bg = ExtResource( 2 )
 ProgressBar/styles/fg = SubResource( 5 )
-_sections_unfolded = [ "Button", "Button/styles", "HSlider/styles", "Panel", "Panel/styles", "ProgressBar" ]
-

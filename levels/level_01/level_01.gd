@@ -15,6 +15,6 @@ func _on_dialogue_changed(to):
 		4:
 			$camera.tween_position($rocket/center.global_position)
 		5:
-			yield($dialogue/control/dialogue_box/button, "button_up")
+			yield($dialogue/control/dialogue_box.button, "button_up")
 			$juan.set_process_input(true)
 			get_tree().set_pause(false)

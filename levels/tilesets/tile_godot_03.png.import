@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/tile_godot_03.png-6997b3618ddf62f73fb96796fa3059c0.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://levels/tilesets/tile_godot_03.png"
-source_md5="8cabbd0ed5755cd190a115f535f907a2"
-
 dest_files=[ "res://.import/tile_godot_03.png-6997b3618ddf62f73fb96796fa3059c0.stex" ]
-dest_md5="5da60b13a499a9243e8be2151bb77a87"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

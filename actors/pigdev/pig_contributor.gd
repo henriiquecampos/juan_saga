@@ -11,7 +11,6 @@ func _ready():
 func _on_timeout():
 	if bugs.bugs_count() > bugs_tolerance:
 		return
-	print(bugs.bugs_count())
 	computer.bump()
 	$"../spawner"._spawn()
 	$cutout_character/animator.play("bug")

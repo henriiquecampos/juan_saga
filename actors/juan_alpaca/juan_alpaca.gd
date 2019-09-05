@@ -5,17 +5,17 @@ onready var animator = $cutout_character/animator
 onready var fighter = $player_fighter
 func _on_state_changed(from, to):
 	match to:
-		WALK:
+		states.WALK:
 			animator.play("walk")
-			fighter.set_state(fighter.STAND)
-		IDLE:
+			fighter.set_state(fighter.states.STAND)
+		states.IDLE:
 			animator.play("idle")
-			fighter.set_state(fighter.STAND)
-		FALL:
+			fighter.set_state(fighter.states.STAND)
+		states.FALL:
 			animator.play("fall")
-			fighter.set_state(fighter.IN_AIR)
-		JUMP:
-			fighter.set_state(fighter.IN_AIR)
+			fighter.set_state(fighter.states.IN_AIR)
+		states.JUMP:
+			fighter.set_state(fighter.states.IN_AIR)
 			animator.play("jump")
 			$sfx.play()
 
@@ -26,20 +26,20 @@ func _on_bugs_new_child(penalty, child_amount):
 
 func _on_fighter_area_shape_entered(area_id, area, area_shape, self_shape):
 	match self_shape:
-		fighter.IDLE:
+		fighter.states.IDLE:
 			var n = (fighter.get_child(self_shape).global_position - area.get_child(area_shape).global_position).normalized()
 			n = floor(n.y)
-			if n >= 0 or state != FALL:
+			if n >= 0 or state != states.FALL:
 				return
 			if area.has_method("damage_parent"):
 				area.damage_parent(5)
-				set_state(JUMP)
+				set_state(states.JUMP)
 				velocity.y = -jump_height * 0.8
 
 func _input(event):
 	if event.is_action_pressed("debug"):
 		match state:
-			IDLE:
+			states.IDLE:
 				if $bugs.bugs_count() <= 0:
 					return
 				$bugs.damage_child()

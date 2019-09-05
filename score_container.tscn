@@ -1,32 +1,24 @@
 [gd_scene load_steps=2 format=2]
 
 [sub_resource type="GDScript" id=1]
-
 script/source = "extends Node
 
-var score = 0 setget set_score, get_score
-var scene_score = 0
+var score = 0
+var scene_score = 0 setget set_score
 enum MODES {ADD, SET, REMOVE}
 var next_level = \"\"
 var current_level = \"\"
 var already_played = true
 var highscore = 0
 
-func set_score(value, MODE):
-	print(\"global score changing\")
-	match MODE:
-		ADD:
-			score += value
-		SET:
-			score = value
-		REMOVE:
-			score = clamp(0, score - value, 999999)
+func set_score(value):
+	score = clamp(0, value, 999999)
 
 func get_score():
 	return(score)
 	
 func _ready():
-	set_score(0, SET)
+	set_score(0)
 	load_file()
 	save_file()
 	
@@ -54,8 +46,5 @@ func load_file():
 	already_played = d.already_played
 	highscore = d.highscore"
 
-[node name="score" type="Node" index="0"]
-
+[node name="score" type="Node"]
 script = SubResource( 1 )
-
-

@@ -10,9 +10,9 @@ func _on_dialogue_changed(to):
 			get_tree().set_pause(true)
 		3:
 			$camera.tween_position($computer.global_position + Vector2(50, -200))
-			yield($dialogue/control/dialogue_box/button, "button_up")
+			yield($dialogue/control/dialogue_box.button, "button_up")
 			$computer.add_bug()
 		5:
-			yield($dialogue/control/dialogue_box/button, "button_up")
+			yield($dialogue/control/dialogue_box.button, "button_up")
 			$juan.set_process_input(true)
 			get_tree().set_pause(false)

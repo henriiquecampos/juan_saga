@@ -3,20 +3,21 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/itch_call_focus.png-29aea6e65997f4e18c6f67aab01b7081.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
 source_file="res://screens/promo_screen/itch_call_focus.png"
-source_md5="3685b8262b6278a8188339fffb750343"
-
 dest_files=[ "res://.import/itch_call_focus.png-29aea6e65997f4e18c6f67aab01b7081.stex" ]
-dest_md5="34b2ffe3d7d6cb8b468122180a14d426"
 
 [params]
 
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=true
@@ -26,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

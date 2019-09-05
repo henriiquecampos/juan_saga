@@ -14,7 +14,7 @@ func _on_dialogue_changed(to):
 		2:
 			$computer.bump()
 		3:
-			yield($dialogue/control/dialogue_box/button, "button_up")
+			yield($dialogue/control/dialogue_box.button, "button_up")
 			$pig_contributor/cutout_character/animator.play("bug")
 			$bugs/ground_bug.show()
 			$bugs/spawn_particle.set_emitting(true)
@@ -22,7 +22,7 @@ func _on_dialogue_changed(to):
 			yield($pig_contributor/cutout_character/animator, "animation_finished")
 			$pig_contributor/cutout_character/animator.play("coding")
 		4:
-			yield($dialogue/control/dialogue_box/button, "button_up")
+			yield($dialogue/control/dialogue_box.button, "button_up")
 			$pig_contributor/timer.start()
 			$juan.set_process_input(true)
 			get_tree().set_pause(false)

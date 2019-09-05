@@ -20,9 +20,9 @@ func _on_health_changed(from, to):
 
 func _on_state_changed(from, to):
 	match to:
-		JUMP:
+		states.JUMP:
 			$sprite/cutout_character/animator.play("jump")
-		IDLE:
+		states.IDLE:
 			$sprite/cutout_character/animator.play("idle")
-		WALK:
+		states.WALK:
 			$sprite/cutout_character/animator.play("idle")
